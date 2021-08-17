@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kiểm tra - Test</title>
+  <link rel="favicon" href="favicon.ico">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <link href="/css/sweetalert.css" rel="stylesheet" />
+  <script src="/js/sweetalert.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,500" rel='stylesheet'>
+    <link href='/vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
+    <link href="/css/vertical-responsive-menu.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
+    <link href="/css/night-mode.css" rel="stylesheet">
+  <link href="/css/ratingstar.css" rel="stylesheet">
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="/vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/vendor/semantic/semantic.min.css">
+  <style>
+    @charset "UTF-8";
+    @import url("//fonts.googleapis.com/css?family=Raleway:400,800");
+    @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+
+    .row:after {
+      clear: both;
+      content: "";
+      display: table;
+
+    }
+
+    .row:before {
+      content: "";
+      display: table;
+    }
+
+    *,
+    *:after,
+    *:before {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    /* body a {
+  color: #27b198;
+  text-decoration: none;
+  border-bottom: 2px solid #fff;
+}
+body a:hover {
+  border-color: #eeeeee;
+} */
+
+    code {
+      background: #fff;
+      color: #999999;
+      padding: 2px 8px;
+    }
+
+    header {
+      position: relative;
+      text-align: center;
+      text-transform: uppercase;
+      color: #1f8f7b;
+      border-bottom: 1px solid dareken(#2dceb1, 15%);
+      letter-spacing: 4px;
+      padding: 12px 0;
+      background: #fafafa;
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    .wrap {
+      max-width: 48em;
+      margin: 0 auto;
+      padding: 2.5em 0 4em;
+    }
+
+    .row.last {
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    section {
+      position: relative;
+      padding: auto;
+      width: 100%;
+      min-height: 12em;
+      float: left;
+      background: #fafafa;
+      border-top: 1px solid #eeeeee;
+      border-left: 1px solid #eeeeee;
+    }
+
+    section:nth-child(even) {
+      border-right: 1px solid #eeeeee;
+    }
+
+    section.item-incorrect {
+      background: #f6f6f6;
+    }
+
+    section.item-incorrect:before {
+      position: absolute;
+      z-index: 399;
+      bottom: 0;
+      right: 0;
+      content: "";
+      height: 0;
+      width: 0;
+      border: 35px solid;
+      border-color: transparent #ff5c61 #ff5c61 transparent;
+    }
+
+    section.item-incorrect:after {
+      line-height: 1.4;
+      position: absolute;
+      z-index: 499;
+      font-family: "fontawesome";
+      content: "";
+      bottom: 0;
+      right: 7px;
+      font-size: 1.9em;
+      color: #ff383e;
+    }
+
+    section.item-correct:before {
+      position: absolute;
+      z-index: 399;
+      bottom: 0;
+      right: 0;
+      content: "";
+      height: 0;
+      width: 0;
+      border: 35px solid;
+      border-color: transparent #48d7bd #48d7bd transparent;
+    }
+
+    section.item-correct:after {
+      line-height: 1.4;
+      position: absolute;
+      z-index: 499;
+      font-family: "fontawesome";
+      content: "";
+      bottom: 0;
+      right: 7px;
+      font-size: 1.9em;
+      color: #2dceb1;
+    }
+
+    input[type=radio] {
+      position: absolute;
+      visibility: hidden;
+    }
+
+    input[type=radio]+label {
+      background: #fff;
+      display: inline-block;
+      padding: 5px 15px;
+      margin: 5px 5px 5px 0;
+      border: 1px solid #eeeeee;
+      -webkit-transition: all 0.1s linear;
+      -moz-transition: all 0.1s linear;
+      transition: all 0.1s linear;
+      width: 100%;
+    }
+
+    input[type=radio]+label:before {
+      content: "";
+      font-family: "fontawesome";
+      margin-right: 7px;
+      color: #2dceb1;
+    }
+
+    input[type=radio]+label:hover {
+      cursor: pointer;
+    }
+
+    input[type=radio]:checked+label {
+      background: #50d9c0;
+      color: #1f8f7b;
+    }
+
+    input[type=radio]:checked+label:before {
+      content: "";
+      color: #1f8f7b;
+    }
+
+    .question {
+      font-weight: bold;
+      margin-bottom: 20px;
+      padding: 10px;
+    }
+
+    .submit {
+      padding: 20px 5px;
+    }
+
+    .submit button {
+      display: block;
+      outline: none;
+      width: 300px;
+      margin: 1em auto 1.5em;
+      padding: 0.8em 1em;
+      background: #f8f8f8;
+      color: gainsboro;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      border: 1px solid #eeeeee;
+    }
+
+    #emc-score {
+      text-align: center;
+      opacity: 0;
+      padding: 0;
+      -webkit-transition: all 0.55s ease;
+      -moz-transition: all 0.55s ease;
+      transition: all 0.55s ease;
+    }
+
+    #emc-score.new-score {
+      opacity: 1;
+      background: #2dceb1;
+      color: #fbfbfb;
+      padding: 20px;
+    }
+
+    #emc-submit {
+      position: relative;
+      -webkit-transition: all 0.33s ease;
+      -moz-transition: all 0.33s ease;
+      transition: all 0.33s ease;
+    }
+
+    #emc-submit.ready-show {
+      background: #2dceb1;
+      color: #1f8f7b;
+      border: none;
+      border-bottom: 2px solid #26af96;
+      box-shadow: 0 1px 1px rgba(68, 68, 68, 0.2);
+      -webkit-transform: rotateX(360deg);
+      -moz-transform: rotateX(360deg);
+      -ms-transform: rotateX(360deg);
+      -o-transform: rotateX(360deg);
+      transform: rotateX(360deg);
+    }
+
+    #emc-submit.ready-show:hover {
+      color: #fbfbfb;
+      background: #27b198;
+      border-color: #1f8f7b;
+    }
+
+    #emc-submit.ready-show:active {
+      top: 2px;
+      border-bottom: none;
+    }
+
+    #emc-progress {
+      height: 100%;
+      border: 1px solid #1f8f7b;
+      background: #2dceb1;
+    }
+
+    #emc-progress_inner {
+      width: 100%;
+      height: 0;
+      background: #1f8f7b;
+      -webkit-transition: height 0.33s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      -moz-transition: height 0.33s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      transition: height 0.33s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    #emc-progress_ind {
+      position: absolute;
+      display: block;
+      width: 100%;
+      font-size: 0.7em;
+      font-weight: bold;
+      padding: 7px 5px 5px;
+      top: 0;
+      left: 0;
+      text-align: center;
+      color: #1f8f7b;
+    }
+
+    footer {
+      position: fixed;
+      width: 40px;
+      height: 100%;
+      background: rgba(251, 251, 251, 0.85);
+      bottom: 0;
+      left: 0;
+      padding: 25px 12px 10px;
+    }
+
+    .attrib {
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .attrib i {
+      margin-right: 7px;
+      margin-left: 7px;
+    }
+
+    div .sa-custom {
+      width: 200px !important;
+      height: 200px !important;
+    }
+  </style>
+
+</head>
+
+<body>
+ 
+    <input id="correctAnwser" type="hidden" th:value='${test.correctAnwserList}'>
+	<div id="emc-score"></div>
+	<div class="wrap">
+	<form action="/subScore" method="post" id="subScore" hidden="" >
+	<input type="text" name="score" id="score"/>
+	<input type="text" name="idTest" th:value="${tests.id}">
+</form>
+<div class="title126">
+                            <h2>BÀI KIỂM TRA CUỐI KỲ KHOÁ HỌC AN TOÀN THỰC PHẨM</h2>
+                        </div>
+<div class="faq1256">
+            <div class="container">
+                <div class="row">
+ 		<div class="col-lg-4 col-md-6">
+                        <div class="certi_form rght1528">
+                            <div class="test_timer_bg">
+                                <ul class="test_timer_left">
+                                 
+                                    <li>
+                                        <div class="timer_time">
+                                            <h4 id="timer">30:00</h4>
+                                       
+                                        </div>
+                                    </li>
+                                      
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                            </div>
+                        </div>
+                    </div>
+             
+		<someHtmlTag th:each="question : ${test.questionList}">
+		<section data-quiz-item>
+			<div class="question" th:text="${question.content}"></div>
+			<div class="choices" th:data-choices='${question.anwserSet}'></div>
+		</section>
+		</someHtmlTag>
+		<div class="submit">
+			<button id="emc-submit">Submit Answers</button>
+		</div>
+	</div>
+
+	<footer>
+		<div id="emc-progress"></div>
+	</footer>
+	<script src="https://unpkg.com/pdf-lib@1.4.0"></script>
+    <script src="/FileSaver.js"></script>
+    <script src="https://unpkg.com/@pdf-lib/fontkit@0.0.4"></script>
+
+	<!-- partial -->
+	<script
+		src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script>
+    (function ($) {
+      $.fn.emc = function (options) {
+        var defaults = {
+            key: [],
+            scoring: "normal",
+            progress: true
+          },
+          settings = $.extend(defaults, options),
+          $quizItems = $("[data-quiz-item]"),
+          $choices = $("[data-choices]"),
+          itemCount = $quizItems.length,
+          chosen = [],
+          $option = null,
+          $label = null;
+
+        emcInit();
+
+        if (settings.progress) {
+          var $bar = $("#emc-progress"),
+            $inner = $('<div id="emc-progress_inner"></div>'),
+            $perc = $('<span id="emc-progress_ind">0/' + itemCount + "</span>");
+          $bar.append($inner).prepend($perc);
+        }
+
+        function emcInit() {
+          $quizItems.each(function (index, value) {
+            var $this = $(this),
+              $choiceEl = $this.find(".choices"),
+              choices = $choiceEl.data("choices");
+            for (var i = 0; i < choices.length; i++) {
+              $option = $(
+                '<input name="' +
+                index +
+                '" id="' +
+                index +
+                "_" +
+                i +
+                '" type="radio">'
+              );
+              $label = $(
+                '<label for="' + index + "_" + i + '">' + choices[i] + "</label>"
+              );
+              $choiceEl.append($option).append($label);
+
+              $option.on("change", function () {
+                return getChosen();
+              });
+            }
+          });
+        }
+
+        function getChosen() {
+          chosen = [];
+          $choices.each(function () {
+            var $inputs = $(this).find('input[type="radio"]');
+            $inputs.each(function (index, value) {
+              if ($(this).is(":checked")) {
+                chosen.push(index + 1);
+              }
+            });
+          });
+          getProgress();
+        }
+
+        function getProgress() {
+          var prog = (chosen.length / itemCount) * 100 + "%",
+            $submit = $("#emc-submit");
+          if (settings.progress) {
+            $perc.text(chosen.length + "/" + itemCount);
+            $inner.css({
+              height: prog
+            });
+          }
+          if (chosen.length === itemCount) {
+            $submit.addClass("ready-show");
+            $submit.click(function () {
+              $submit.attr('disabled', 'disabled');
+              return scoreNormal();
+            });
+          }
+        }
+
+        function scoreNormal() {
+          var wrong = [],
+            score = null,
+            $scoreEl = $("#emc-score");
+          for (var i = 0; i < itemCount; i++) {
+            if (chosen[i] != settings.key[i]) {
+              wrong.push(i);
+            }
+          }
+          $quizItems.each(function (index) {
+            var $this = $(this);
+            if ($.inArray(index, wrong) !== -1) {
+              $this.removeClass("item-correct").addClass("item-incorrect");
+            } else {
+              $this.removeClass("item-incorrect").addClass("item-correct");
+            }
+          });
+
+          score = ((itemCount - wrong.length) / itemCount).toFixed(2) * 100;
+          $('#score').val(score);
+          if (score >= 80) {
+        	  certification();
+            swal({
+              title: "Sweet!",
+              text: "Chúc mừng bạn đã đạt thành tích tốt khóa học này.",
+              imageUrl: "https://giffiles.alphacoders.com/842/84298.gif",
+              confirmButtonText: "Ok",
+            })
+            $('#subScore').submit();
+          } else {
+            swal({
+                title: "Sweet!",
+                text: "Bạn đã không đủ điểm để nhận chứng chỉ môn này. Bạn có thể kiểm tra lại để có điểm tốt hơn nhé!",
+                imageUrl: "https://media4.giphy.com/media/9Y5BbDSkSTiY8/giphy.gif",
+                confirmButtonText: "Thi lại bây giờ!",
+                showCancelButton: true,
+                closeOnConfirm: false,
+                cancelButtonText: "Lần sau nhắc tôi!",
+
+              },
+              function (isConfirm) {
+                if (isConfirm) {
+                	window.location.href = window.location.href
+                } 
+              }
+
+            )
+          }
+
+          $scoreEl.text("You scored a " + score + "%").addClass("new-score");
+          $("html,body").animate({
+            scrollTop: 0
+          }, 50);
+        }
+      };
+    })(jQuery);
+
+    var correctAnwser = document.getElementById('correctAnwser').value
+		var correctAnwserList = correctAnwser.split(',');
+		console.log(correctAnwserList)
+		$(document).emc({
+			key : correctAnwserList
+		});
+		
+		
+		
+	//	------------------------------
+const userName = "quang";
+const typeCourse =  "cao cấp"
+const nameCourse = "ĂN CHAY"
+
+
+var today = new Date();
+var date = 'Đà Nẵng,Ngày ' + today.getDate() + ' Tháng ' + (today.getMonth() + 1) + ' Năm ' + today.getFullYear();
+
+const {
+    PDFDocument,
+    rgb,
+    degrees
+} = PDFLib;
+
+
+const capitalize = (str, lower = false) =>
+    (lower ? str.toLowerCase() : str).replace(/(?:^|\s|["'([{])+\S/g, (match) =>
+        match.toUpperCase()
+    );
+ function certification () {
+    const val = capitalize(userName);
+    console.log("val:"+val)
+       generatePDF(val);
+
+};
+
+const generatePDF = async(name) => {
+    const existingPdfBytes = await fetch("/cert2.pdf").then((res) =>
+        res.arrayBuffer()
+    );
+
+
+    // Load a PDFDocument from the existing PDF bytes
+    const pdfDoc = await PDFDocument.load(existingPdfBytes);
+    pdfDoc.registerFontkit(fontkit);
+    //get font
+    const fontBytes = await fetch("/DancingScript-VariableFont_wght.ttf").then((res) =>
+        res.arrayBuffer()
+    );
+    const fontBytes1 = await fetch("/font-times-new-roman.ttf").then((res) =>
+        res.arrayBuffer()
+    );
+
+    // Embed our custom font in the document
+    const SanChezFont = await pdfDoc.embedFont(fontBytes);
+    const Timenew = await pdfDoc.embedFont(fontBytes1);
+
+
+
+    const textWidth = SanChezFont.widthOfTextAtSize(userName.value, 48);
+    // Get the first page of the document
+    const pages = pdfDoc.getPages();
+    const firstPage = pages[0];
+
+
+    // Draw a string of text diagonally across the first page
+    firstPage.drawText(name, {
+        x: firstPage.getWidth() * 2 / 3.15 - textWidth / 2,
+        y: 400,
+        size: 48,
+        font: SanChezFont,
+        color: rgb(0.0, 0.0, 0.0),
+
+    });
+    var nameCourse1 = 'Đã hoàn thành khoá học ' + '"' + nameCourse.value + '"';
+    firstPage.drawText(nameCourse1, {
+        x: 280,
+        y: 310,
+        size: 20,
+        font: Timenew,
+        color: rgb(0.0, 0.0, 0.0),
+    });
+    var nameCourse2 = 'Has successfully completed the course ' + '"' + nameCourse.value + '"';
+    firstPage.drawText(nameCourse2, {
+        x: 280,
+        y: 280,
+        size: 22,
+        font: SanChezFont,
+        color: rgb(0.0, 0.0, 0.0),
+    });
+
+
+
+    firstPage.drawText(typeCourse.value, {
+        x: 320,
+        y: 160,
+        size: 22,
+        font: SanChezFont,
+        color: rgb(0.35, 0.15, 0.13),
+    });
+
+    firstPage.drawText(date, {
+        x: 300,
+        y: 130,
+        size: 14,
+        font: Timenew,
+        color: rgb(0.35, 0.15, 0.13),
+    });
+    var chuky = "Xác nhận tại Mlemmlem.com/Certification/"
+    firstPage.drawText(chuky, {
+        x: 40,
+        y: 40,
+        size: 10,
+        font: Timenew,
+        color: rgb(0.0, 0.0, 0.0),
+    });
+
+    // Serialize the PDFDocument to bytes (a Uint8Array)
+    const pdfBytes = await pdfDoc.save();
+    console.log("Done creating");
+
+    var namefix ='quang-ăn-chay';
+    var file = new File(
+        [pdfBytes],
+        namefix + ".pdf", {
+            type: "application/pdf;charset=utf-8",
+        }
+    );
+    saveAs(file);
+};
+		
+  </script>
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/OwlCarousel/owl.carousel.js"></script>
+    <script src="/vendor/semantic/semantic.min.js"></script>
+    <script src="/js/custom.js"></script>
+    <script src="/js/test-timer.js"></script>
+    <script src="/js/night-mode.js"></script>
+</body>
+
+</html>

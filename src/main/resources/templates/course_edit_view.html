@@ -1,0 +1,962 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from gambolthemes.net/html-items/cursus_demo_f12/create_new_course.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 May 2021 03:49:46 GMT -->
+
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+   <meta name="description" content="Gambolthemes">
+   <meta name="author" content="Gambolthemes">
+   <title>Tạo Khóa Học</title>
+
+   <link href="/css/sweetalert.css" rel="stylesheet" />
+   <script src="/js/sweetalert.min.js"></script>
+
+   <link rel="icon" type="image/png" href="images/fav.png">
+
+   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,500" rel='stylesheet'>
+   <link href='/vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
+   <link href="/css/vertical-responsive-menu1.min.css" rel="stylesheet">
+   <link href="/css/instructor-dashboard.css" rel="stylesheet">
+   <link href="/css/instructor-responsive.css" rel="stylesheet">
+   <link href="/css/night-mode.css" rel="stylesheet">
+   <link href="/css/jquery-steps.css" rel="stylesheet">
+   <link href="/css/style.css" rel="stylesheet">
+   <link href="/css/datepicker.min.css" rel="stylesheet">
+   <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+   <link href="/vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+   <link href="/vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+   <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" type="text/css" href="/vendor/semantic/semantic.min.css">
+
+   <script src="/js/jquery.min.js"></script>
+   <script src="/js/chosen.jquery.min.js"></script>
+   <link href="/css/chosen.min.css" rel="stylesheet" />
+   <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+   <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
+
+   <!-- table thống kê  -->
+   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.min.css'>
+   <link rel='stylesheet'
+      href='https://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css'>
+
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
+   
+   <style>
+      .more_dropdown {
+         width: 100%;
+      }
+
+      .explore_search {
+         margin-top: 20px;
+      }
+
+      /* table thống kê  */
+
+      .export {
+         visibility: visible;
+         background-color: #009688;
+         width: 100%;
+
+      }
+      .export a{
+         text-align: center;
+         color: #009688;
+         padding-left: 20px !important;
+      }
+      .bold-blue {
+         font-weight: bold;
+         color: #0277BD;
+      }
+   </style>
+
+   <!-- popup div  -->
+   <style>
+      .popup-container a,
+      .popup-container a:hover,
+      .popup-container a:active,
+      .popup-container a:visited {
+         color: #009688;
+         font-weight: 500;
+         text-decoration: none;
+      }
+
+      ::-webkit-scrollbar {
+         width: 12px;
+      }
+
+      ::-webkit-scrollbar-track {
+         background-color: rgba(0, 0, 0, 0);
+      }
+
+      ::-webkit-scrollbar-thumb {
+         background-color: rgba(0, 0, 0, 0.1);
+         background-clip: padding-box;
+         border: solid rgba(0, 0, 0, 0);
+         border-width: 2px 3px 2px 3px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+         background-color: rgba(0, 0, 0, 0.15);
+      }
+
+      .popup-container {
+         position: fixed;
+         z-index: 2000;
+         top: 0;
+         left: 0;
+         bottom: 0;
+         right: 0;
+         background-color: rgba(0, 0, 0, 0.15);
+         -webkit-transition: opacity 0.1s linear;
+         transition: opacity 0.1s linear;
+         overflow-y: hidden;
+      }
+
+      .popup-container.hide {
+         opacity: 0;
+         pointer-events: none;
+      }
+
+      .popup-table {
+         position: absolute;
+         top: 0;
+         left: 0;
+         display: table;
+         table-layout: fixed;
+         width: 100%;
+         height: 100%;
+         -webkit-transition: -webkit-transform 0.3s ease;
+         transition: transform 0.3s ease;
+      }
+
+      .popup-container.hide .popup-table {
+         opacity: 0;
+         pointer-events: none;
+         -webkit-transform: translateY(6px);
+         transform: translateY(6px);
+      }
+
+      .popup-table-cell {
+         display: table-cell;
+         vertical-align: middle;
+         box-sizing: border-box;
+         padding: 16px;
+      }
+
+      .popup {
+         position: relative;
+         margin: auto;
+         max-width: 920px;
+         /* a regular height must be set here, or nothing works */
+         height: 100vh;
+         max-height: 80vh;
+         overflow-y: auto;
+         overflow: hidden;
+         padding: 48px 0 65px 0;
+         background-color: #fafafa;
+         border-radius: 4px;
+         box-sizing: border-box;
+         font-size: 100%;
+         color: #303030;
+         box-shadow: 0 10px 40px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .popup .title {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 48px;
+         min-width: 200px;
+         line-height: 48px;
+         box-sizing: border-box;
+         padding: 0 12px;
+         -webkit-transition: background-color 0.1s linear;
+         transition: background-color 0.1s linear;
+         font-weight: 500;
+         font-size: 20px;
+         border-bottom: 1px solid #EAEAEA;
+         background-color: #FAFAFA;
+         border-radius: 2px 2px 0 0;
+         -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+         -webkit-touch-callout: none;
+         -webkit-user-select: none;
+         -khtml-user-select: none;
+         -moz-user-select: none;
+         -ms-user-select: none;
+         user-select: none;
+      }
+
+      .popup .content {
+         width: 100%;
+         min-width: 200px;
+         height: 100%;
+         overflow: hidden;
+         overflow-y: auto;
+         box-sizing: border-box;
+         padding: 12px;
+         -webkit-overflow-scrolling: touch;
+      }
+
+      .popup .subtitle {
+         color: #009688;
+         font-size: 18px;
+      }
+
+      .popup .text {
+         box-sizing: border-box;
+         padding: 12px;
+         line-height: 1.5em;
+         font-size: 15px;
+      }
+
+      .popup-container .buttons {
+         padding: 8px 10px;
+         position: absolute;
+         bottom: 0;
+         width: 100%;
+         text-align: right;
+         font-weight: 500;
+         box-sizing: border-box;
+         border-top: 1px solid #EAEAEA;
+         background-color: #FAFAFA;
+         border-radius: 0 0 2px 2px;
+      }
+
+      .popup-container .button {
+         display: inline-block;
+         box-sizing: border-box;
+         text-align: center;
+         min-width: 60px;
+         height: 48px;
+         line-height: 50px;
+         padding: 0 12px;
+         color: #009688;
+         cursor: pointer;
+         border-radius: 3px;
+         -webkit-transition: background-color 0.1s linear;
+         transition: background-color 0.1s linear;
+         -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+         -webkit-touch-callout: none;
+         -webkit-user-select: none;
+         -khtml-user-select: none;
+         -moz-user-select: none;
+         -ms-user-select: none;
+         user-select: none;
+      }
+
+      .popup-container .button:hover {
+         background-color: #eeeeee;
+      }
+
+      .popup-container .button:active {
+         background-color: #e5e5e5;
+      }
+   </style>
+
+   <!-- search dropdown  -->
+   <link href="/css/search_jquery.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+   <!-- Thanh header -->
+   <div id="header_html"></div>
+
+   <!-- Thanh menu -->
+   <div id="menu_mana"></div>
+
+   <!-- Thanh main -->
+
+   <div class="wrapper">
+      <div class="sa4d25">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-lg-12">
+                  <!-- <h2 class="st_title"><i class="uil uil-book-alt"></i>Khóa học</h2> -->
+               </div>
+               <div class="col-md-12">
+                  <div class="card_dash1">
+                     <div class="card_dash_left1">
+                        <i class="uil uil-book-alt"></i>
+                        <h1>Khóa học</h1>
+                     </div>
+                     <div class="card_dash_right1">
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+           
+               <div class="col-md-12">
+                  <div class="my_courses_tabs">
+                     <ul class="nav nav-pills my_crse_nav" id="pills-tab" role="tablist">
+                        <li class="nav-item">
+                           <a class="nav-link active" id="pills-my-courses-tab" data-toggle="pill"
+                              href="#pills-my-courses" role="tab" aria-controls="pills-my-courses"
+                              aria-selected="true"><i class="uil uil-book-alt"></i>Khóa học đã tạo</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" id="pills-my-purchases-tab" data-toggle="pill" href="#pills-my-purchases"
+                              role="tab" aria-controls="pills-my-purchases" aria-selected="false"><i
+                                 class="uil uil-download-alt"></i>Khóa học tạm
+                              dừng</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" id="pills-upcoming-courses-tab" data-toggle="pill"
+                              href="#pills-upcoming-courses" role="tab" aria-controls="pills-upcoming-courses"
+                              aria-selected="false"><i class="uil uil-upload-alt"></i>Khóa
+                              học đợi xử lý</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" id="pills-discount-tab" data-toggle="pill" href="#pills-discount"
+                              role="tab" aria-controls="pills-discount" aria-selected="false"><i
+                                 class="uil uil-tag-alt"></i>Giảm giá</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" id="pills-promotions-tab" data-toggle="pill" href="#pills-promotions"
+                              role="tab" aria-controls="pills-promotions" aria-selected="false"><i
+                                 class="uil uil-megaphone"></i>Thống kê</a>
+                        </li>
+                     </ul>
+                     <div class="tab-content" id="pills-tabContent">
+
+                        <div class="tab-pane fade show active" id="pills-my-courses" role="tabpanel">
+                           <div class="explore_search ">
+                              <div class="ui search">
+                                 <div class="ui left icon input swdh11">
+                                    <input class="prompt srch_explore" type="text" id="myInput1" onkeyup="myFunction1()"
+                                       placeholder="Tìm kiếm khóa học..">
+                                    <i class="uil uil-search-alt icon icon2"></i>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="table-responsive mt-30">
+                              <table class="table ucp-table" id="myTable1">
+                                 <thead class="thead-s">
+                                    <tr>
+                                       <th class="text-center" scope="col">No</th>
+                                       <th>Tên Khóa Học</th>
+                                       <th class="text-center" scope="col">Ngày Đăng</th>
+                                       <th class="text-center" scope="col">Giá</th>
+                       
+                                       <th class="text-center" scope="col">Thể loại</th>
+                                       <th class="text-center" scope="col">Tình Trạng</th>
+                                       <th class="text-center" scope="col">Tác vụ</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+
+                                    
+                                    <tr th:each="act : ${liActive}">
+                                       <td class="text-center idcourse" th:text="${act.id}"></td>
+                                       <td th:text="${act.name}"></td>
+                                       <td class="text-center" th:text="${act.createDate}"></td>
+                                       <td class="text-center"><span th:text="${act.price}"></span><span>$</span></td>
+                             
+                                       <td class="text-center" th:text="${act.level.name}"></td>
+                                       <td class="text-center"><b class="course_active" th:text="${act.status}"></b></td>
+                                       <td class="text-center more_dropdown">
+                                          <a href="#" title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a>
+                                          <div class="dropdown-content">
+                                             <span><i class='uil uil-download-alt'></i>Tạm dừng</span>
+                                             <span><i class="uil uil-upload-alt"></i>Đợi xử lý</span>
+                                          </div>
+                                       </td>
+                                    </tr>
+                                   
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-my-purchases" role="tabpanel">
+                           <div class="explore_search ">
+                              <div class="ui search">
+                                 <div class="ui left icon input swdh11">
+                                    <input class="prompt srch_explore" type="text" id="myInput2" onkeyup="myFunction2()"
+                                       placeholder="Tìm Kiếm khóa học..">
+                                    <i class="uil uil-search-alt icon icon2"></i>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="table-responsive mt-30">
+                              <table class="table ucp-table" id="myTable2">
+                                 <thead class="thead-s">
+                                    <tr>
+                                       <th class="text-center" scope="col">ID</th>
+                                       <th class="cell-ta" scope="col">Tên khóa học</th>
+                                       <th class="cell-ta" scope="col">Manager Course</th>
+                                       <th class="cell-ta" scope="col">Thể loại</th>
+                                       <th class="text-center" scope="col">Tình trạng</th>
+                                       <th class="text-center" scope="col">Giá</th>
+                                       <th class="text-center" scope="col">Ngày tạm dừng</th>
+                                       <th class="text-center" scope="col">Tác vụ</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr th:each="c : ${liPause}">
+                                       <td class="text-center idcourse" th:text="${c.id}"></td>
+                                       <td class="cell-ta" th:text="${c.name}"></td>
+                                       <td class="cell-ta" th:text="${c.manager.fullName}"></td>
+                                       <td class="cell-ta" th:text="${c.level.name}"></td>
+                                       <td class="text-center"><b class="course_active" th:text="${c.status}"></b></td>
+                                       <td class="text-center" th:text="${c.price}"></td>
+                                       <td class="text-center" th:text="${c.endDate}"></td>
+                                       <td class="text-center more_dropdown">
+                                          <a href="#" title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a>
+                                          <div class="dropdown-content">
+                                             <span><i class='uil uil-book-alt'></i>Hoạt động</span>
+                                             <span><i class="uil uil-upload-alt"></i>Đợi xử lý</span>
+                                          </div>
+                                       </td>
+                                    </tr>
+                                    
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                        <div class="tab-pane fade " id="pills-upcoming-courses" role="tabpanel">
+
+                           <div class="explore_search ">
+                              <div class="ui search">
+                                 <div class="ui left icon input swdh11">
+                                    <input class="prompt srch_explore" type="text" id="myInput3" onkeyup="myFunction3()"
+                                       placeholder="Tìm kiếm khóa học..">
+                                    <i class="uil uil-search-alt icon icon2"></i>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="table-responsive mt-30">
+                              <table class="table ucp-table" id="myTable3">
+                                 <thead class="thead-s">
+                                    <tr>
+                                       <th class="text-center" scope="col">ID</th>
+                                       <th class="cell-ta">Tên khóa học</th>
+                                       <th class="text-center" scope="col">Thao tác</th>
+                                       <th class="text-center">Thể loại</th>
+                                       <th class="text-center">Giá</th>
+                                       <th class="text-center">Ngày cập nhập</th>
+                                       <th class="text-center" scope="col">Tình trạng</th>
+                                       <th class="text-center" scope="col">Tác vụ</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr th:each="cPro : ${liProcessing}">
+                                       <td class="text-center idcourse" th:text="${cPro.id}"></td>
+                                       <td class="cell-ta" th:text="${cPro.name}"></td>
+                                       <td class="text-center showpopup"><a href="#">Xem</a></td>
+                                       <td class="text-center" th:text="${cPro.level.name}"></td>
+                                       <td class="text-center"><span th:text="${cPro.price}"></span><span>$</span></td>
+                                       <td class="text-center" th:text="${cPro.createDate}"></td>
+                                       <td class="text-center"><b class="course_active" th:text="${cPro.status}"></b>
+                                       </td>
+                                       <td class="text-center more_dropdown">
+                                          <a href="#" title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a>
+                                          <div class="dropdown-content">
+                                             <span><i class='uil uil-book-alt'></i>Hoạt động</span>
+                                             <span><i class="uil uil-download-alt"></i>Tạm dừng</span>
+                                          </div>
+                                       </td>
+                                    </tr>
+                                   
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-discount" role="tabpanel">
+                           <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                              <div class="panel panel-default">
+                                 <div class="panel-heading" role="tab" id="headingOne">
+                                    <div class="panel-title adcrse1250">
+                                       <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+                                          href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                          Tạo giảm giá
+                                       </a>
+                                    </div>
+                                 </div>
+
+                                 <div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
+                                    aria-labelledby="headingOne">
+                                    <div class="panel-body adcrse_body">
+                                       <div class="row">
+                                          <div class="col-lg-8">
+                                           <form  action="/manager/savesale" method="post">
+                                             <div class="discount_form">
+                                             
+                                                <div class="row">
+                                                
+                                                   <div class="col-lg-6 col-md-6">
+                                                      <div class="mt-20 lbel25">
+                                                         <label id="text_course">Khóa học*</label>
+                                                      </div>
+                                                      <div >
+                                                         <select name="id"  class="search-select" >
+                                               
+                                                            <option th:each="lA :${listAllCourse}" th:value="${lA.id}" th:text="${lA.name}"></option>
+                                                         </select>
+                                                     
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-lg-6 col-md-6">
+                                                      <div class="ui search focus mt-20 lbel25">
+                                                         <label class="textcost">Phần trăm giảm
+                                                            giá*</label>
+                                                         <div class="ui left icon input swdh19">
+                                                            <input id="discount" name="sale"
+                                                               onKeyPress="if(this.value.length==2) return false;"
+                                                               class="prompt srch_explore checkpersen" type="number"
+                                                               value="" required="" min="1" max="99" maxlength="2"
+                                                               placeholder="phần trăm (nhập 20 cho 20%)">
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-lg-6 col-md-6">
+                                                      <div class="ui search focus mt-20 lbel25">
+                                                         <label class="timefrom">Ngày bắt đầu</label>
+                                                         <div class="ui left icon input swdh19">
+                                                            <input id="timefrom" name="startSale"
+                                                              type="date"
+                                                               data-language="en" placeholder="dd/mm/yyyy">
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-lg-6 col-md-6">
+                                                      <div class="ui search focus mt-20 lbel25">
+                                                         <label class="timeto">Ngày kết thúc</label>
+                                                         <div class="ui left icon input swdh19">
+                                                            <input id="timeto" name="endSale"
+                                                              type="date"
+                                                               data-language="en" placeholder="dd/mm/yyyy">
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-lg-6 col-md-6">
+                                                      <button class="discount_btn" type="submit">
+                                                         Đăng giảm giá</button>
+
+                                                   </div>
+                                                  
+                                                </div>
+                                                
+                                             </div>
+                                              </form>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="table-responsive mt-30">
+                              <table class="table ucp-table">
+                                 <thead class="thead-s">
+                                    <tr>
+                                       <th class="text-center" scope="col">ID</th>
+                                       <th class="cell-ta">Course</th>
+                                       <th class="text-center" scope="col">Ngày bắt đầu</th>
+                                       <th class="text-center" scope="col">Ngày kết thúc</th>
+                                       <th class="text-center" scope="col">Giảm giá</th>
+                                       <th class="text-center" scope="col">Tình trạng</th>
+                                       <th class="text-center" scope="col">Tác vụ</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr th:each="lss : ${listAllCourse}"  th:if="${lss.sale > 0}">
+                                       <td class="text-center idcourse"  th:text="${lss.id}" >01</td>
+                                       <td class="cell-ta nameCourse" th:text="${lss.name}"></td>
+                                       <td class="text-center startDate" th:text="${lss.startSale}"></td>
+                                       <td class="text-center endDate" th:text="${lss.endSale}"></td>
+                                       <td class="text-center discount" th:text="${lss.sale}">20%</td>
+                                       <td class="text-center"><b class="course_active" th:text="${lss.status}"></b></td>
+                                       <td class="text-center">
+                                          <a href="#" title="Delete" class="gray-s deleteDiscount"><i
+                                                class="uil uil-trash-alt"></i></a>
+                                       </td>
+                                    </tr>
+                                  
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-promotions" role="tabpanel"
+                           aria-labelledby="pills-promotions-tab">
+                           <div class="table ucp-table">
+                              <table id="table" data-toggle="table" data-search="true" data-filter-control="true"
+                                 data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                                 <thead>
+                                    <tr>
+                                       <th data-field="state" data-checkbox="true"></th>
+                                       <th data-field="nameCourse" data-filter-control="input" data-sortable="true">
+                                          Tên khóa học</th>
+                                       <th data-field="detail" data-filter-control="input" data-sortable="true">Tên
+                                          bài học</th>
+                                       <th data-field="teacher" data-filter-control="input" data-sortable="true">
+                                          Giảng viên</th>
+                                       <th data-field="date" data-filter-control="select" data-sortable="true">Ngày
+                                          tạo</th>
+                                       <th data-field="type" data-filter-control="select" data-sortable="true">Thể
+                                          loại</th>
+                                       <th data-field="static" data-filter-control="select" data-sortable="true">Trang
+                                          thái</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr th:each="list : ${listAll}">
+                                       <td class="bs-checkbox "><input data-index="0" name="btSelectItem"
+                                             type="checkbox"></td>
+                                       <td th:text="${list.course.name}"></td>
+                                       <td th:text="${list.name}"></td>
+                                       <td th:text="${list.teacher.fullName}"></td>
+                                       <td th:text="${list.creatDate}"></td>
+                                       <td th:text="${list.course.level.name}"></td>
+                                       <td th:text="${list.course.status}"></td>
+                                    </tr>
+                                    
+                                   
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+   </div>
+
+   <div class="popup-container" >
+      <div class="popup-table">
+         <div class="popup-table-cell">
+            <div class="popup">
+               <div class="title">
+                  Khóa học món chay
+               </div>
+               <div class="content">
+                  <div class="subtitle">
+                     Chương 1: Học cắt thái hoa quả
+                  </div>
+                  <select class="search-select">
+                     <option value="">chọn giảng viên</option>
+                     <option value="1">Phan Văn Khải</option>
+                     <option value="2">Võ Khôi Tuấn Anh</option>
+                     <option value="3">Nguyễn Quang Hải Trường</option>
+                  </select>
+
+                  <div class="text">
+                     Ngày nay, việc ăn chay ngày càng được nhiều người sử dụng phổ biến và dần có xu hướng lan rộng vì
+                     đem lại nhiều tác dụng tốt đến sức khỏe. Hôm nay hãy cùng chuyên mục Mẹo vào bếp tìm hiểu ăn chay
+                     là gì? Lợi ích của việc ăn chay và các món chay ngon nhé!
+                  </div>
+                  <div class="subtitle">Chương 2: Học cách bảo quản thực phẩm</div>
+                  <select class="search-select">
+                     <option value="">chọn giảng viên</option>
+                     <option value="1">Phan Văn Khải</option>
+                     <option value="2">Võ Khôi Tuấn Anh</option>
+                     <option value="3">Nguyễn Quang Hải Trường</option>
+                  </select>
+                  <div class="text">
+                     Ăn chay là một phương pháp ăn uống lành mạnh, với thực đơn chủ yếu là các món ăn, sản phẩm có nguồn
+                     gốc từ thực vật. Người ăn chay sẽ thực hiện kiêng thịt như: thịt đỏ, thịt gia cầm, hải sản hoặc bất
+                     cứ thịt từ mọi loại động vật. Bao gồm cả việc kiêng những sản phẩm phụ của quá trình giết mổ như
+                     các loại chả từ thịt, đồ hộp, chà bông, lạp xưởng,...
+                  </div>
+                  <div class="subtitle">Chương 3: Học cách chế biến món ăn</div>
+                  <select class="search-select">
+                     <option value="">chọn giảng viên</option>
+                     <option value="1">Phan Văn Khải</option>
+                     <option value="2">Võ Khôi Tuấn Anh</option>
+                     <option value="3">Nguyễn Quang Hải Trường</option>
+                  </select>
+                  <div class="text">
+                     Đơn thuần việc ăn chay bắt nguồn từ nhiều ý nghĩa khác nhau về: tư tưởng tôn trọng sự sống, bảo vệ
+                     động vật hoặc mang một ý nghĩa đạo đức, tuân theo luật lệ của tôn giáo hướng tới lòng từ bi, yêu
+                     thương cũng như hãm mình tránh khỏi những ham muốn trong ăn uống, lòng tham, hướng thiện,... và tùy
+                     theo mỗi tôn giáo sẽ có hình thức ăn chay khác nhau.
+                  </div>
+               </div>
+               <div class="buttons">
+                  <button class="cancel btn btn-light" style="color: #303030;">
+                     Hoàn thành
+                  </button>
+                  <button class="cancel btn btn-danger" style="color: #303030;">
+                     Thoát
+                  </button>
+
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+
+   <script data-cfasync="" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+   <script src="/js/vertical-responsive-menu.min.js"></script>
+   <script src="/js/jquery-3.3.1.min.js"></script>
+   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <!-- <script src="/vendor/OwlCarousel/owl.carousel.js"></script> -->
+   <script src="/vendor/semantic/semantic.min.js"></script>
+   <script src="/js/custom.js"></script>
+   <script src="/js/night-mode.js"></script>
+   <script src="/js/jquery-steps.min.js"></script>
+   <script src="/js/datepicker.min.js"></script>
+   <script src="/js/i18n/datepicker.en.js"></script>
+   <script>
+      function discount() {
+
+         if ($("#nameCourse").val() == "") {
+            $("#text_course").css("color", "red");
+         } else {
+            $("#text_course").css("color", "green");
+         }
+
+         if ($(".checkpersen").val() === "" || $(".checkpersen").val() > 99) {
+            $(".textcost").css("color", "red");
+         } else {
+            $(".textcost").css("color", "green");
+         }
+
+         if ($("#timefrom").val() === "" || $("#timefrom").val() === "") {
+            $(".timefrom").css("color", "red");
+            $(".timeto").css("color", "red");
+
+         }
+
+         var end_time = $('#timeto').val();
+         var start_time = $('#timefrom').val();
+
+         var stt = new Date(start_time);
+         var start_date = stt.getDate();
+         var start_mounth = stt.getMonth();
+         var start_year = stt.getUTCFullYear();
+
+         var endt = new Date(end_time);
+         var end_date = endt.getDate();
+         var end_mounth = endt.getMonth();
+         var end_year = endt.getUTCFullYear();
+
+         var check = true;
+              if(start_year > end_year){
+    		 sweetAlert("Oops...", "Năm bắt đầu bé hơn hoặc bằng năm kết thúc!", "error");
+
+             $(".timefrom").css("color", "red")
+             $(".timeto").css("color", "red")
+             check = false;
+    	 }
+         if (start_year == end_year) {
+            if (start_mounth > end_mounth) {
+               sweetAlert("Oops...", "Tháng bắt đầu bé hơn hoặc bằng tháng kết thúc!", "error");
+
+               $(".timefrom").css("color", "red")
+               $(".timeto").css("color", "red")
+               check = false;
+            }
+               if (start_mounth == end_mounth) {
+            	   if(start_date > end_date){
+                       sweetAlert("Oops...", "Ngày bắt đầu bé hơn hoặc bằng ngày kết thúc!", "error");
+                       $(".timefrom").css("color", "red");
+                       $(".timeto").css("color", "red");
+                       check = false;
+            	   }
+               }
+            } 
+         else  {
+             $(".timefrom").css("color", "green");
+             $(".timeto").css("color", "green");
+
+          }
+
+
+         var nameCourse = $("#nameCourse").val()
+         var discount = $("#discount").val()
+         var timefrom = $("#timefrom").val()
+         var timeto = $("#timeto").val()
+
+         if (nameCourse != null && discount != null && check == true) {
+            alert(nameCourse + " " + discount + " " + timefrom + " " + timeto)
+            $("#nameDis").val(nameCourse)
+            $("#discountDis").val(discount)
+            $("#startDis").val(timefrom)
+            $("#endDis").val(timeto)
+
+         }
+      }
+   </script>
+   <script>
+      $('#courseSearch').dropdown({
+         fullTextSearch: true
+      });
+   </script>
+
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+   <script>
+      $(function () {
+    	  $('#header_html').load('/header');
+         $('#menu_mana').load('/menu_mana', function () {
+            $(".Courses").addClass("active");
+         });
+      })
+   </script>
+
+   <script>
+      $("span").click(function () {
+         var idcourse = $(this).parent().parent().parent().find($(".idcourse")).text()
+         var statusCourse = $(this).text()
+         $("#status").val(statusCourse)
+         $("#idCourse").val(idcourse)
+         // alert("id = " + idcourse + " status = " + statusCourse)
+
+         if ($("#status").val != null) {
+            $("#formSubmit").submit()
+         }
+
+      })
+
+      $(".deleteDiscount").click(function () {
+         var $this = $(this).parent().parent()
+         var idcourse = $this.find($(".idcourse")).text()
+         var nameCourse = $this.find($(".nameCourse")).text()
+
+         // alert(idcourse + " - " + nameCourse + " - " + startDate + " - " + endDate + " - " + discount)
+
+         $("#idDiscount").val(idcourse)
+
+         swal({
+               title: "Bạn thật sự muốn xóa không?",
+               text: "Nếu xóa sẽ mất mã giảm giá cho " + nameCourse + " !",
+               type: "warning",
+               showCancelButton: true,
+               confirmButtonColor: "#DD6B55",
+               confirmButtonText: "Có, tôi muốn xóa!",
+               closeOnConfirm: false
+            },
+            function () {
+               swal("Đã xóa!", "" + nameCourse + " .", "success");
+               $this.remove();
+            });
+
+      })
+   </script>
+
+
+   <!-- popup div  -->
+   <script>
+      //it won't stay away!
+      $('.cancel').on('click', function () {
+         $('.popup-container').addClass('hide');
+
+      });
+
+      $('.showpopup').on('click', function () {
+         $('.popup-container').removeClass('hide');
+      });
+
+      $(
+         $('.popup-container').addClass('hide')
+      )
+   </script>
+
+   <script src="/js/search_jquery.js"></script>
+
+   <script>
+      function myFunction1() {
+         var input, filter, table, tr, td, i, txtValue;
+         input = document.getElementById("myInput1");
+         filter = input.value.toUpperCase();
+         table = document.getElementById("myTable1");
+         tr = table.getElementsByTagName("tr");
+         for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+               txtValue = td.textContent || td.innerText;
+               if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  tr[i].style.display = "";
+               } else {
+                  tr[i].style.display = "none";
+               }
+            }
+         }
+      }
+
+      function myFunction2() {
+         var input, filter, table, tr, td, i, txtValue;
+         input = document.getElementById("myInput2");
+         filter = input.value.toUpperCase();
+         table = document.getElementById("myTable2");
+         tr = table.getElementsByTagName("tr");
+         for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+               txtValue = td.textContent || td.innerText;
+               if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  tr[i].style.display = "";
+               } else {
+                  tr[i].style.display = "none";
+               }
+            }
+         }
+      }
+
+      function myFunction3() {
+         var input, filter, table, tr, td, i, txtValue;
+         input = document.getElementById("myInput3");
+         filter = input.value.toUpperCase();
+         table = document.getElementById("myTable3");
+         tr = table.getElementsByTagName("tr");
+         for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+               txtValue = td.textContent || td.innerText;
+               if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  tr[i].style.display = "";
+               } else {
+                  tr[i].style.display = "none";
+               }
+            }
+         }
+      }
+   </script>
+
+
+   <!-- thống kê table  -->
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.js'></script>
+   <script
+      src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/editable/bootstrap-table-editable.js'>
+   </script>
+   <script
+      src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/export/bootstrap-table-export.js'>
+   </script>
+   <script src='https://rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js'></script>
+   <script
+      src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/filter-control/bootstrap-table-filter-control.js'>
+   </script>
+   <script>
+      //exporte les données sélectionnées
+      var $table = $('#table');
+      $(function () {
+         $('#toolbar').find('select').change(function () {
+            $table.bootstrapTable('refreshOptions', {
+               exportDataType: $(this).val()
+            });
+         });
+      })
+
+      var trBoldBlue = $("table");
+
+      $(trBoldBlue).on("click", "tr", function () {
+         $(this).toggleClass("bold-blue");
+      });
+   </script>
+
+
+</body>
+
+</html>

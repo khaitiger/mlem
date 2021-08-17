@@ -1,0 +1,284 @@
+<link href="/vendor/unicons-2.0.1/css/unicons.css" rel='stylesheet'>
+<link href="/css/vertical-responsive-menu.min.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet">
+<link href="/css/responsive.css" rel="stylesheet">
+<link href="/css/night-mode.css" rel="stylesheet">
+<link href="/css/slideshow.css" rel="stylesheet">
+
+<link href="/vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+
+
+<!-- Thanh header -->
+<header class="header clearfix">
+    <button type="button" id="toggleMenu" class="toggle_menu">
+        <i class='uil uil-bars'></i>
+    </button>
+    <button id="collapse_menu" class="collapse_menu">
+        <i class="uil uil-bars collapse_menu--icon "></i>
+        <span class="collapse_menu--label"></span>
+    </button>
+    <div class="main_logo" id="logo">
+        <a href="/">
+            <img src="/images/fav.png" width="30px" alt="">
+            <span class="font-text"> MlemMlem</span>
+        </a>
+    </div>
+
+    <div class="" style="width: 40%;text-align: center;">
+        <!-- <div class="ui search" >
+            <div class="ui left icon input swdh10" style="width: 100%;">
+                <input class="prompt srch10" type="text" placeholder="Tìm kiếm bài viết, khóa học..">
+                <i class='uil uil-search-alt icon icon1'></i>
+            </div>
+        </div> -->
+        <div class="ui fluid category search" id="searchHeader">
+            <div class="ui icon input" style="width: 90%;">
+                <input class="prompt" type="text" placeholder="Tìm kiếm khóa học hoặc bài viết...">
+                <i class="search icon"></i>
+            </div>
+            <div class="results abc" style="overflow: auto;max-height: 300px;min-width: 300px;"></div>
+        </div>
+    </div>
+
+    <div class="header_right">
+        <ul>
+            <li></li>
+            <!-- <li>
+                <a href="create_new_course.html" class="upload_btn" title="Create New Course">Quản lý</a>
+            </li> -->
+            <!-- Thanh thông báo -->
+            <li class="ui dropdown">
+                <a href="#" onclick="messenger()" class="option_links" title="Messages"><i class='uil uil-envelope-alt'></i><span
+                        class="noti_count" id="messenger">N</span></a>
+                <div class="menu dropdown_mn" style="max-height: 300px; overflow: auto;">
+                    <a class="channel_my item" th:each="ls : ${listStudent}" th:href="@{course_detail_view/{id}(id=${ls.course.id})}" >
+                        <div class="profile_link">
+                           <img src="/images/fav.png" alt="">
+                 
+                            <div class="pd_content">
+                                <h6 >Bot Mlem</h6>
+                                <p>Hi! <span style="color: green" th:text="${ls.student.fullName}"></span>,Bạn mua khóa học<span style="color: red" th:text="${ls.course.name}"></span>! <br> 
+                                <span class="nm_time" th:text="${ls.joinDate}"></span>
+                            </div>
+                        </div>
+                    </a>
+                  
+                    <a class="vbm_btn" href="instructor_messages.html">Xem thêm <i class='uil uil-arrow-right'></i></a>
+                </div>
+            </li>
+            <!-- Thanh thông báo -->
+            <li class="ui dropdown">
+                <a href="#" onclick="Notifications()" class="option_links" title="Notifications"><i class='uil uil-bell'></i><span
+                        class="noti_count" id="notifications">3</span></a>
+                <div class="menu dropdown_mn" style="max-height: 300px; overflow: auto;">
+                    <a href="#" class="channel_my item">
+                        <div class="profile_link">
+                            <img src="https://scontent-xsp1-3.xx.fbcdn.net/v/t1.6435-9/84936096_2512771385601054_1300734367466782720_n.jpg?_nc_cat=107&ccb=1-3&_nc_sid=e3f864&_nc_ohc=NecjfV8lA7gAX_GA3E-&_nc_ht=scontent-xsp1-3.xx&oh=45c52513138bcd2ec5e0690e17299d01&oe=60D03B82" alt="">
+                            <div class="pd_content">
+                                <h6>Võ Đại Hiếu</h6>
+                                <p>Đã bình luận bài viết của bạn <strong>Công thức trà sữa</strong>.</p>
+                                <span class="nm_time">2 phút trước</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="channel_my item">
+                        <div class="profile_link">
+                            <img src="https://scontent-xsp1-3.xx.fbcdn.net/v/t1.6435-9/84936096_2512771385601054_1300734367466782720_n.jpg?_nc_cat=107&ccb=1-3&_nc_sid=e3f864&_nc_ohc=NecjfV8lA7gAX_GA3E-&_nc_ht=scontent-xsp1-3.xx&oh=45c52513138bcd2ec5e0690e17299d01&oe=60D03B82" alt="">
+                            <div class="pd_content">
+                                <h6>Võ Đại Hiếu</h6>
+                                <p>Đã bình luận bài viết của bạn <strong>Công thức trà sữa</strong>.</p>
+                                <span class="nm_time">2 phút trước</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="channel_my item">
+                        <div class="profile_link">
+                            <img src="https://scontent-xsp1-3.xx.fbcdn.net/v/t1.6435-9/150927493_2779239449007254_5786842695374926531_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=9IxPlfxvAxUAX_wlQG8&_nc_ht=scontent-xsp1-3.xx&oh=c9dafd391ae854cb861c3cd5c8e552af&oe=60CF443A" alt="">
+                            <div class="pd_content">
+                                <h6>Phan Văn Khải</h6>
+                                <p>Đã bình luận bài viết của bạn <strong>Công thức trà sữa</strong>.</p>
+                                <span class="nm_time">12 phút trước</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="channel_my item">
+                        <div class="profile_link">
+                            <img src="https://scontent-xsp1-3.xx.fbcdn.net/v/t1.18169-9/12299200_513550162147117_3244148462894724537_n.jpg?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=SksWVkbfJKgAX8GXhIq&_nc_ht=scontent-xsp1-3.xx&oh=31c9d0b930457f28d0c0fd04410df19d&oe=60CEB236" alt="">
+                            <div class="pd_content">
+                                <h6>Trần Thị Minh Trang</h6>
+                                <p>Đã bình luận bài viết của bạn <strong>Công thức trà sữa</strong>.</p>
+                                <span class="nm_time">12 phút trước</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="vbm_btn" href="instructor_notifications.html">Xem thêm <i
+                            class='uil uil-arrow-right'></i></a>
+                </div>
+            </li>
+            <!-- Thanh thông tin người dùng -->
+            <li class="ui"   th:unless="${user!=null}">
+                <a href="/login" class="opts_account" title="Account">
+                    <img src="images/hd_dp.jpg" alt=""> Đăng nhập                </a>
+            </li>
+         <li class="ui dropdown" th:if="${user!=null}">
+
+                <a href="#" class="opts_account" title="Account">
+                     <img  th:src="${user.avatar}"alt="">
+                </a>
+                <div class="menu dropdown_account">
+                    <div class="channel_my">
+                        <div class="profile_link">
+                         <img  th:src="${user.avatar}"alt="">
+                            <div class="pd_content">
+                                <div class="rhte85">
+                                    <input type="hidden" id="userId" th:value="${user.id}" />
+                                    <h6 th:text="${user.fullName}"></h6>
+                                    <div class="mef78" title="Verify">
+                                        <i class='uil uil-check-circle'></i>
+                                    </div>
+                                </div>
+                                 <span><a th:text="${user.email}"
+                                        class="__cf_email__"
+                                       ></a></span>
+                                    </div>
+                        </div>
+                        <a href="/profileAccount" class="dp_link_12">Chỉnh sửa thông tin cá nhân </a>
+                    </div>
+                    <div class="night_mode_switch__btn">
+                        <a href="#" id="night-mode" class="btn-night-mode">
+                            <i class="uil uil-moon"></i> Chế độ ban đêm
+                            <menu type="context"></menu>
+                            <span class="btn-night-mode-switch">
+                                <span class="uk-switch-button"></span>
+                            </span>
+                        </a>
+                    </div>
+                    <a th:if="${user.role.id} == 1" href="/admin/analyics" class="item channel_item">Bảng điều khiển Mlem(Dành cho admin)</a>
+                    <a th:if="${user.role.id} == 2" href="/teacher/managercourse" class="item channel_item">Quản lý khóa học(Dành cho Teacher) </a>
+                    <a href="help.html" class="item channel_item">Giúp đỡ</a>
+                    <a href="feedback.html" class="item channel_item">Phản hồi</a>
+                    <a href="/logout" class="item channel_item">Đăng xuất</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</header>
+
+
+<script src='http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/semantic.min.js"></script>
+
+<script>
+    function messenger() {
+
+        $("#messenger").text("0");
+    }
+
+    function Notifications() {
+
+        $("#notifications").text("0");
+    }
+</script>
+<script>
+    var categoryContent = [
+        // {
+        //     category:' ',
+        //     title: 'Bún tươi xào thịt trứng cao cấp',
+        //     description: 'Bún tươi xào thịt trứng cao cấp',
+        //     url: "#",
+        //     image: '',
+        //     price: ' <a href="course_detail_view.html" class="fcrse_img" > <img src="https://img.freepik.com/free-photo/stir-fried-fresh-rice-flour-noodles-with-mixed-meat-egg_1339-5383.jpg?size=626&ext=jpg" alt=""> <div class="course-overlay"> <div class="badge_seller">Bestseller</div> <div class="crse_reviews"> <i class="uil uil-star"></i>4.5 </div> <span class="play_btn1"><i class="uil uil-play"></i></span> <div class="crse_timer"> 25 giờ </div> </div> </a> <div class="fcrse_content"> <div class="eps_dots more_dropdown"> </div>  </div>'
+
+        // }
+        // ,
+        {
+            category: "cao cấp",
+            title: "Khóa học món chay",
+            description: "Khóa học giúp cải thiện...  ",
+            url: "#",
+            image: "https://freepikpsd.com/media/2019/10/cafe-food-png-5-1-Transparent-Images.png",
+            price: "<span style='color:gray;'><i class='far fa-eye'></i>15tr</span>"
+
+        }, {
+            category: "cao cấp",
+            title: "Khóa học tăng cân",
+            description: "Khóa học giúp cải thiện...  ",
+            url: "#",
+            image: "https://freepikpsd.com/media/2019/10/cafe-food-png-5-1-Transparent-Images.png",
+            price: "<span style='color:gray;'><i class='far fa-eye'></i>15tr</span>"
+
+        }, {
+            category: "cao cấp",
+            title: "Khóa học giảm cân",
+            description: "Khóa học giúp cải thiện...  ",
+            url: "#",
+            image: "https://freepikpsd.com/media/2019/10/cafe-food-png-5-1-Transparent-Images.png",
+            price: "<span style='color:gray;'><i class='far fa-eye'></i>15tr</span>"
+
+        }, {
+            category: "cao cấp",
+            title: "Khóa học món kóa học món kiên",
+            description: "Khóa học giúp cải thiện...Khóa học giúp cải thiện Khóa học giúp cải thiện...Khóa học giúp cải thiện ",
+            url: "#",
+            image: "https://freepikpsd.com/media/2019/10/cafe-food-png-5-1-Transparent-Images.png",
+            price: "<span style='color:gray;'><i class='far fa-eye'></i>15tr</span>"
+
+        }, {
+            category: "trung cấp",
+            title: "Khóa học giảm cân",
+            description: "Khóa học giúp cải thiện...  ",
+            url: "#",
+            image: "https://freepikpsd.com/media/2019/10/cafe-food-png-5-1-Transparent-Images.png",
+            price: "<span style='color:gray;'><i class='far fa-eye'></i>15tr</span>"
+
+        }, {
+            category: "cao cấp",
+            title: "Khóa học món kóa học món kiên",
+            description: "Khóa học giúp cải thiện...Khóa học giúp cải thiện Khóa học giúp cải thiện...Khóhóa học giúp cải thiện...Khóa học giúp cải thiện Khóa học giúp cải thiện...Khóaa học giúp cải thiện ",
+            url: "#",
+            image: "https://img.freepik.com/free-photo/stir-fried-fresh-rice-flour-noodles-with-mixed-meat-egg_1339-5383.jpg?size=626&ext=jpg",
+            price: "<span style='color:gray;'><i class='far fa-eye'></i>15tr</span>"
+
+        }
+    ];
+
+
+
+    $('#searchHeader').search({
+        // Set source property to get categories data.
+        source: categoryContent,
+        type: "category",
+        duration: 50,
+        showNoResults: true,
+        maxResults: 5,
+        searchFields: [
+            'title',
+            'category'
+        ], // Only searching title, not description.
+        fields: {
+            title: 'title',
+            // image: '',
+            price: ''
+        },
+        onSearchQuery: function(query) {
+            $('.ui.search').addClass("error");
+        },
+        // onSearchQuery: function (query) {
+        //     $('.ui.search').removeClass("loading");
+        // },
+        // isLoading: false,
+
+    });
+</script>
+
+<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="/js/vertical-responsive-menu.min.js"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/vendor/semantic/semantic.min.js"></script>
+<script src="/js/custom.js"></script>
+<script src="/js/night-mode.js"></script>
+<script src="/js/slideshow.js"></script>

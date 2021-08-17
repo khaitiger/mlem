@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+    <meta name="description" content="Gambolthemes">
+    <meta name="author" content="Gambolthemes">
+    <title>LiveSteam</title>
+
+    <link rel="icon" type="image/png" href="/images/fav.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,500" rel='stylesheet'>
+    <link href="/vendor/unicons-2.0.1/css/unicons.css" rel='stylesheet'>
+    <link href="/css/vertical-responsive-menu.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
+    <link href="/css/night-mode.css" rel="stylesheet">
+    <link href="/css/slideshow.css" rel="stylesheet">
+
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="/vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/vendor/semantic/semantic.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+    <!-- Thanh header -->
+    <div id="header_html"></div>
+
+    <!-- thanh menu  -->
+    <div id="menu_user_html"></div>
+
+    <!-- Thanh main -->
+    <div class="wrapper">
+        <div class="sa4d25">
+            <div class="container-fluid">
+                <div class="row justify-content-md-center">
+                    <div class="col-lg-8 col-md-10">
+                        <div class="section3125 stream_tabs">
+                            <ul class="nav nav-tabs slive_tabs justify-content-center" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="add-streaming-tab" data-toggle="tab" href="#add-straming" role="tab" aria-controls="add-straming" aria-selected="true">Tạo live</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="setting-tab" data-toggle="tab" href="#setting" role="tab" aria-controls="setting" aria-selected="false">Cài đặt</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="add-straming" role="tabpanel">
+                                    <div class="add_stream_content">
+                                        <h4 class="strm_title">Kết nối luồng trực tiếp của bạn với API Trực tiếp</h4>
+                                        <div class="sf475">Sử dụng đường link chia sẻ từ Youtube. <a href="#">Đọc
+                                                thêm</a></div>
+                                        <div class="stm_key">
+                                        </div>
+                                        <div class="live_form">
+                                            <div class="group-form">
+                                                <label>Link URL*</label>
+                                                <input class="_dlor1" id="urlStream" type="text" data-testid="server_url" placeholder="Stream URL" value="">
+                                                <!-- <button class="_6tf7s" type="submit" value="1">Copy</button> -->
+                                            </div>
+                                            <!-- <div class="group-form">
+                                                <label>Persistent stream key*</label>
+                                                <input class="_dlor1" type="text" data-testid="server_url"
+                                                    placeholder="Stream URL" disabled=""
+                                                    value="592030151361629?s_bl=1&s_ps=1&s_sw=065&s_vt=api-s&a=AbzB7xYk7XdnKpBf">
+                                                <button class="_6tf7s" type="submit" value="1">Copy</button>
+                                            </div> -->
+                                            <button class="_145d1" onclick="geturl()"><i class='uil uil-video'></i>Go
+                                                Live</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="setting" role="tabpanel">
+                                    <div class="add_stream_content">
+                                        <h4 class="strm_title1">Cài đặt Phát trực tiếp</h4>
+                                        <div class="ui toggle checkbox _1457s2">
+                                            <input class="myCheckbox" type="checkbox" name="stream_ss1">
+                                            <label> Xuất bản video này dưới dạng video trực tiếp liên tục</label>
+                                        </div>
+                                        <div class="ui toggle checkbox _1457s2">
+                                            <input class="myCheckbox" type="checkbox" name="stream_ss2">
+                                            <label>Cho phép nhúng </label>
+                                        </div>
+                                        <div class="ui toggle checkbox _1457s2">
+                                            <input class="myCheckbox" type="checkbox" name="stream_ss3">
+                                            <label>Hủy xuất bản sau khi video trực tiếp kết thúc</label>
+                                        </div>
+                                        <div class="ui toggle checkbox _1457s2">
+                                            <input class="myCheckbox" type="checkbox" name="stream_ss4" checked>
+                                            <label>Cho phép người xem tua lại</label>
+                                        </div>
+                                        <div class="ui toggle checkbox _1457s2">
+                                            <input class="myCheckbox" type="checkbox" name="stream_ss5" checked>
+                                            <label>Kết thúc phát khi luồng kết thúc</label>
+                                        </div>
+                                        <div class="ui toggle checkbox _1457s2">
+                                            <input class="myCheckbox" type="checkbox" name="stream_ss6">
+                                            <label>Xuất bản dưới dạng chương trình phát sóng thử nghiệm</label>
+                                        </div>
+                                        <div class="ui toggle checkbox _1457s2">
+                                            <input class="myCheckbox" type="checkbox" name="stream_ss7">
+                                            <label>Tắt bình luận trực tiếp</label>
+                                        </div>
+                                        <button class="_145d1">Lưu &amp; Go Live</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer_html"></div>
+    </div>
+
+    <div id="chatbox_html"></div>
+
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/js/vertical-responsive-menu.min.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/OwlCarousel/owl.carousel.js"></script>
+    <script src="/vendor/semantic/semantic.min.js"></script>
+    <script src="/js/custom.js"></script>
+    <script src="/js/night-mode.js"></script>
+    <script src="/js/slideshow.js"></script>
+    <script src="/js/TimelineMax.min.js"></script>
+    <script src="/js/TweenMax.min.js"></script>
+
+    <script src='/js/modernizr.min.js'></script>
+
+    <script src="/js/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(function() {
+            $('#chatbox_html').load('./chatbox.html');
+            $('#menu_user_html').load('./menu_user.html', function() {
+                $(".liveStream").addClass("active");
+            });
+            $('#header_html').load('./header.html');
+            $('#footer_html').load('./footer.html');
+
+        })
+
+        $("label").click(function() {
+            var $this = $(this).parent().find("input[type=checkbox]");
+            if ($this.is(":checked")) {
+                $this.prop("checked", false)
+            } else if ($this.is(":not(:checked)")) {
+                $this.prop("checked", true)
+            }
+
+        });
+
+        // $( "input[type=checkbox]" ).on( "click", function(){
+        //     alert(this)
+        // } );
+    </script>
+    <script>
+        function geturl() {
+            var getInput = $('#urlStream').val();
+            // "https://www.youtube.com/embed/eZEeYvmXIio";
+            localStorage.setItem("storageName", getInput);
+            $(location).attr('href', './live_output.html');
+        }
+    </script>
+
+
+
+</body>
+
+</html>

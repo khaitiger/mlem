@@ -1,0 +1,431 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from gambolthemes.net/html-items/cursus_demo_f12/create_new_course.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 May 2021 03:49:46 GMT -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+    <meta name="description" content="Gambolthemes">
+    <meta name="author" content="Gambolthemes">
+    <title>Tạo Khóa Học</title>
+
+    <link href="css/sweetalert.css" rel="stylesheet" />
+    <script src="/js/sweetalert.min.js"></script>
+
+    <link rel="icon" type="image/png" href="images/fav.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,500" rel='stylesheet'>
+    <link href='vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
+    <link href="css/vertical-responsive-menu1.min.css" rel="stylesheet">
+    <link href="css/instructor-dashboard.css" rel="stylesheet">
+    <link href="css/instructor-responsive.css" rel="stylesheet">
+    <link href="css/night-mode.css" rel="stylesheet">
+    <link href="css/jquery-steps.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="vendor/semantic/semantic.min.css">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/chosen.jquery.min.js"></script>
+    <link href="css/chosen.min.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+    <!-- Thanh header -->
+    <div id="header_html"></div>
+
+    <!-- Thanh menu -->
+    <nav class="vertical_nav">
+        <div class="left_section menu_left" id="js-menu">
+            <div class="left_section">
+                <ul>
+                    <li class="menu--item">
+                        <a href="instructor_dashboard.html" class="menu--link" title="Dashboard">
+                            <i class="uil uil-apps menu--icon"></i>
+                            <span class="menu--label">Bảng điểu khiển</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="course_edit_view.html" class="menu--link" title="Courses">
+                            <i class='uil uil-book-alt menu--icon'></i>
+                            <span class="menu--label">Khóa học</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="instructor_analyics.html" class="menu--link" title="Analyics">
+                            <i class='uil uil-analysis menu--icon'></i>
+                            <span class="menu--label">Phân tích</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="create_new_course.html" class="menu--link " title="Create Course">
+                            <i class='uil uil-plus-circle menu--icon'></i>
+                            <span class="menu--label">Tạo khóa học</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="instructor_messages.html" class="menu--link" title="Messages">
+                            <i class='uil uil-comments menu--icon'></i>
+                            <span class="menu--label">Tin nhắn</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="instructor_notifications.html" class="menu--link active" title="Notifications">
+                            <i class='uil uil-bell menu--icon'></i>
+                            <span class="menu--label">Thông báo</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="instructor_my_certificates.html" class="menu--link" title="My Certificates">
+                            <i class='uil uil-award menu--icon'></i>
+                            <span class="menu--label">Chứng chỉ</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="instructor_all_reviews.html" class="menu--link" title="Reviews">
+                            <i class='uil uil-star menu--icon'></i>
+                            <span class="menu--label">Nhận xét</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="instructor_earning.html" class="menu--link" title="Earning">
+                            <i class='uil uil-dollar-sign menu--icon'></i>
+                            <span class="menu--label">Thu nhập</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="instructor_payout.html" class="menu--link" title="Payout">
+                            <i class='uil uil-wallet menu--icon'></i>
+                            <span class="menu--label">Thanh toán</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="instructor_statements.html" class="menu--link" title="Statements">
+                            <i class='uil uil-file-alt menu--icon'></i>
+                            <span class="menu--label">Tài liệu</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="instructor_verification.html" class="menu--link" title="Verification">
+                            <i class='uil uil-check-circle menu--icon'></i>
+                            <span class="menu--label">Chính sách</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="left_section pt-2">
+                <ul>
+                    <li class="menu--item">
+                        <a href="setting.html" class="menu--link" title="Setting">
+                            <i class='uil uil-cog menu--icon'></i>
+                            <span class="menu--label">Cài đặt</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="feedback.html" class="menu--link" title="Send Feedback">
+                            <i class='uil uil-comment-alt-exclamation menu--icon'></i>
+                            <span class="menu--label">Phản hồi</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Thanh main -->
+
+    <div class="wrapper">
+        <div class="sa4d25">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="st_title"><i class="uil uil-bell"></i> Thông báo</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+
+                        <div class="all_msg_bg">
+                            <div class="channel_my item all__noti5">
+                                <div class="profile_link">
+                                    <img src="/images/left-imgs/img-1.jpg" alt="">
+                                    <div class="pd_content">
+                                        <h6>Trường Nguyễn</h6>
+                                        <p class="noti__text5">Đã thích khóa học trong Video <strong> Nấu món
+                                                chay</strong>.</p>
+                                        <span class="nm_time">2 phút trước</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="channel_my item all__noti5">
+                                <div class="profile_link">
+                                    <img src="/images/left-imgs/img-2.jpg" alt="">
+                                    <div class="pd_content">
+                                        <h6>Trang Nguyễn</h6>
+                                        <p class="noti__text5">Đã comment trong Video <strong> Làm nước tương </strong>.
+                                        </p>
+                                        <span class="nm_time">12 phút trước</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="channel_my item all__noti5">
+                                <div class="profile_link">
+                                    <img class="imgchef" src="/images/fav.png" alt="">
+                                    <div class="pd_content">
+                                        <p class="noti__text5"> Khóa học món chay của bạn đã hoàn thành.</p>
+                                        <span class="nm_time">20 phút trước</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="channel_my item all__noti5">
+                                <div class="profile_link">
+                                    <img class="imgchef" src="/images/fav.png" alt="">
+                                    <div class="pd_content">
+                                        <p class="noti__text5"> Khóa học món chay của bạn đã được cấp <a href="#"
+                                                class="crse_bl">Chứng Chỉ</a>.</p>
+                                        <span class="nm_time">20 min ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script data-cfasync="" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/js/vertical-responsive-menu.min.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="/vendor/OwlCarousel/owl.carousel.js"></script> -->
+    <script src="/vendor/semantic/semantic.min.js"></script>
+    <script src="/js/custom.js"></script>
+    <script src="/js/night-mode.js"></script>
+    <script src="/js/jquery-steps.min.js"></script>
+    <script>
+        $('#add-course-tab').steps({
+            onFinish: function () {
+                alert('Wizard Completed');
+            }
+        });
+
+        var i = 2;
+
+        function themchuongbai() {
+            swal({
+                    title: "Nhập tiêu đề Chương mới !",
+                    text: "<span style='color:#F8BB86'>Không được để trống.<span>",
+                    html: true,
+                    type: "input",
+                    showCancelButton: true,
+                    closeOnConfirm: false,
+                    animation: "slide-from-top",
+                    inputPlaceholder: "Tên chương mới"
+                },
+                function (inputValue) {
+                    // inputValue = inputValue.toUpperCase();
+                    if (inputValue === false) return false;
+
+                    if (inputValue.trim() === "") {
+                        swal.showInputError("Bạn cần nhập tiêu đề chương mới" + "!");
+                        return false
+                    }
+
+                    swal("", "Thêm Thành Công!", "success");
+
+                    jQuery("#themchuong").append(
+                        '<div class="course__form col-lg-11 col-md-11"> <div class="row"> <div class="col-lg-12 col-md-12"> <div class="view_info10"> <div class="row"> <div class="col-lg-12 col-md-12"> <div class="ui search focus mt-30 lbel25"> <label>Tiêu đề*</label> <div class="ui left icon input swdh19 mota"> <input class="prompt srch_explore first" type="text" placeholder="Nhập tên tiêu đề khóa học." name="title" data-purpose="edit-course-title" maxlength="60" value="' +
+                        inputValue +
+                        '" > </div> </div> </div> <div class="col-lg-12 col-md-12"> <div class="course_des_textarea mt-30 lbel25"> <label>Mô tả*</label> <div class="course_des_bg"> <ul class="course_des_ttle"> <li><a href="#"><i class="uil uil-bold"></i></a> </li> <li><a href="#"><i class="uil uil-italic"></i></a> </li> <li><a href="#"><i class="uil uil-list-ul"></i></a> </li> <li><a href="#"><i class="uil uil-left-to-right-text-direction"></i></a> </li> <li><a href="#"><i class="uil uil-right-to-left-text-direction"></i></a> </li> <li><a href="#"><i class="uil uil-list-ui-alt"></i></a> </li> <li><a href="#"><i class="uil uil-link"></i></a> </li> <li><a href="#"><i class="uil uil-text-size"></i></a> </li> <li><a href="#"><i class="uil uil-text"></i></a> </li> </ul> <div class="textarea_dt"> <div class="ui form swdh339"> <div class="field"> <textarea rows="5" name="description" id="id_part_description" placeholder="Nhập mô tả chương khóa học vào đây."></textarea> </div> </div> </div> </div> <button class="save_content_btn" style="float: right;margin-top: 10px;" onclick="xoaChuong(this)" type=""> Xóa</button> </div> </div> </div> </div> </div> </div> </div>'
+                    )
+                    i++;
+                });
+        }
+
+
+        function xoaChuong(dlt) {
+            swal({
+                    title: "Bạn có chắc không?",
+                    text: "Nếu bạn xóa bạn sẽ không nhìn thấy chương đã tạo!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Có, Tôi muốn xóa!",
+                    cancelButtonText: "Không, Thoát!",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        $(dlt).parent().parent().parent().parent().parent().parent().parent().remove();
+                        swal("Deleted!", "Bạn đã xóa thành công.", "success");
+                    } else {
+
+                    }
+                });
+        }
+    </script>
+
+
+    <!-- Đoạn script về hide / show js  -->
+    <!-- <script>
+
+		
+		function checkthemchuong(x) { 
+			$(".ex-content-" + x).toggle();
+			console.log("count = " + x);
+		};
+		
+	</script> -->
+
+
+    <script>
+        var check = false;
+
+        // review video  
+        function GFG_Fun() {
+            var up = document.getElementById("GFG_UP1");
+            var url = up.value;
+            var startsWith = url.trim().startsWith("https://www.youtube.com/");
+            if (startsWith) {
+                var id = url.split("v=")[1].substring(0, 11);
+
+                if (check === false) {
+                    var player = new YT.Player('player', {
+                        height: '100%',
+                        width: '100%',
+                        videoId: id
+                    });
+                    check = true;
+                } else {
+                    // document.getElementById("video").style.display = "none";
+                    // document.getElementById("youtube").style.display = "block";
+
+                    var e = document.getElementsByTagName('iframe')[0];
+
+                    var d = document.createElement('div');
+                    d.id = "player";
+                    d.style.height = "230px";
+                    d.innerHTML = e.innerHTML;
+
+                    e.parentNode.replaceChild(d, e);
+                    var player = new YT.Player('player', {
+                        height: '100%',
+                        width: '100%',
+                        videoId: id
+                    });
+                }
+            } else {
+                swal({
+                    title: "Oops...!",
+                    text: "Phải nhập link từ Youtube (https://www.youtube.com/...).",
+                    type: "error"
+
+                });
+            }
+            // "Oops...", "Phải nhập link từ Youtube (https://www.youtube.com/...)",
+            //         "error"
+
+        }
+
+        // review ảnh 
+        function preview() {
+            frame.src = URL.createObjectURL(event.target.files[0]);
+
+        }
+
+        // read size video 
+        var infos = document.getElementById('infos');
+        infos.textContent = "";
+        var fileInput = document.getElementById("videoage");
+        fileInput.addEventListener("change", function () {
+            var sizevideo = (fileInput.files[0].size / 1024 / 1024).toFixed(2);
+            if (sizevideo > 500) {
+                // alert("File không đạt vì: dung lượng tối thiểu");
+
+            }
+            var name = document.getElementById("videoage");
+            infos.textContent = "\n" + sizevideo + "MB" +
+                "\n" + (name.files[0].name);
+
+        });
+
+        jQuery(document).ready(function ($) {
+
+
+            // document.getElementById("video").style.display = "block";
+            // Click button to activate hidden file input
+            $('.fileuploader-btn').on('click', function () {
+
+                $('.fileuploader').click();
+
+            });
+
+            // Click above calls the open dialog box
+            // Once something is selected the change function will run
+            $('.fileuploader').change(function () {
+
+                // document.getElementById("youtube").style.display = "none";
+                // document.getElementById("video").hidden = false;
+
+
+                // Create new FileReader as a variable
+                var reader = new FileReader();
+
+                // var sai = false;
+                // Onload Function will run after video has loaded
+                reader.onload = function (file) {
+
+                    var fileContent = file.target.result;
+                    $('.reviewvideo').append(
+                        '<iframe id="player" style="display:none"> </iframe>' +
+                        '<video  src="' + fileContent +
+                        '" width="100%" height="100%" controls></video></div>');
+
+                }
+
+                // Get the selected video from Dialog
+                reader.readAsDataURL(this.files[0]);
+
+            });
+
+        });
+
+        // choise multiple option
+
+
+
+        // check url or video
+        function myFunction() {
+            // document.getElementById("filevideo").disabled = true;
+        }
+    </script>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        $(".chosen-select").chosen({
+            no_results_text: "Oops, nothing found!"
+        })
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $('#header_html').load('header.html');
+        })
+    </script>
+</body>
+
+</html>

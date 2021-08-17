@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+    <meta name="description" content="Gambolthemes">
+    <meta name="author" content="Gambolthemes">
+    <title>Cursus - Checkout</title>
+
+    <link rel="icon" type="image/png" href="images/fav.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,500" rel='stylesheet'>
+    <link href='vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
+    <link href="css/vertical-responsive-menu.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/night-mode.css" rel="stylesheet">
+
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="vendor/semantic/semantic.min.css">
+    <style>
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+    <!-- Thanh header -->
+   
+
+
+    <div class="wrapper _bg4586 _new89">
+        <div class="_215b15">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="title125">
+                            <div class="titleleft">
+                                <div class="ttl121">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Thanh toán</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="title126">
+                            <h2>Thanh toán</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb4d25">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="membership_chk_bg">
+                            <div class="checkout_title">
+                                <h4>Chọn phương thức thanh toán</h4>
+                                <img src="images/line.svg" alt="">
+                            </div>
+                            <div class="checkout-tabs">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a href="#payapl-method-tab" id="payapl-tab" class="nav-link active" data-toggle="tab"><i class="uil uil-paypal check_icon5"></i>Paypal</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#bank-method-tab" id="momo-tab" class="nav-link" data-toggle="tab"><i class="uil uil-university check_icon5"></i>MOMO</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#credit-method-tab" id="atm-tab" class="nav-link " data-toggle="tab"><i class="uil uil-card-atm check_icon5"></i>ATM</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade " id="credit-method-tab" role="tabpanel" aria-labelledby="atm-tab">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="ui search focus mt-30 lbel25">
+                                                    <label>Tên chủ sở hữu</label>
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        <input class="prompt srch_explore" type="text" name="holder[name]" value="" id="id_holdername" required="" maxlength="64" placeholder="Nhập tên chủ sở hữu">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="ui search focus mt-30 lbel25">
+                                                    <label>Số thẻ</label>
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        <input class="prompt srch_explore" type="text" name="card[number]" maxlength="16" placeholder="Số thể #">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="lbel25 mt-30">
+                                                    <label>Tháng bắt đầu</label>
+                                                    <select class="ui hj145 dropdown cntry152 prompt srch_explore" name="card[expire-month]">
+                                                            <option value="">Chọn tháng</option>
+                                                            <option value="1">Tháng 1</option>
+                                                            <option value="2">Tháng 2</option>
+                                                            <option value="3">Tháng 3</option>
+                                                            <option value="4">Tháng 4</option>
+                                                            <option value="5">Tháng 5</option>
+                                                            <option value="6">Tháng 6</option>
+                                                            <option value="7">Tháng 7</option>
+                                                            <option value="8">Tháng 8</option>
+                                                            <option value="9">Tháng 9</option>
+                                                            <option value="10">Tháng 10</option>
+                                                            <option value="11">Tháng 11</option>
+                                                            <option value="12">Tháng 12</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="ui search focus mt-30 lbel25">
+                                                    <label>Năm bắt đầu </label>
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        <input class="prompt srch_explore" type="text" name="card[expire-year]" maxlength="4" placeholder="Năm bắt đàu">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="ui search focus mt-30 lbel25">
+                                                    <label>Năm hết hạn</label>
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        <input class="prompt srch_explore" type="text" name="card[cvc]" maxlength="3" placeholder="Năm hết hạn">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="chckout_order_dt">
+                                            <div class="checkout_title">
+                                                <h4>Chi tiết đơn hàng</h4>
+                                                <img src="images/line.svg" alt="">
+                                            </div>
+                                            <div class="order_dt_section">
+                                             <div class="order_title" th:if="${genC.sale}==0" >
+                                                <h4 th:text="${genC.name}"></h4>
+                                                <div class="order_price" th:text="${genC.price}"></div>
+                                            </div>
+                                            <div class="order_title" th:if="${genC.sale}>0" >
+                                                <h4 th:text="${genC.name}"></h4>
+                                                <div class="order_price" th:text="${genC.price}-${genC.sale}*${genC.price}/100">$49</div>
+                                            </div>
+                                            <div class="order_title" th:if="${genC.sale}==0" >
+                                                <h3>Tổng</h3>
+                                                <div class="order_price" th:text="${genC.price}"></div>
+                                            </div>
+                                            <div class="order_title" th:if="${genC.sale}>0" >
+                                                <h3>Tổng</h3>
+                                                <div class="order_price" th:text="${genC.price}-${genC.sale}*${genC.price}/100">$49</div>
+                                            </div>
+                                                <button class="chckot_btn" type="submit">Xác nhận thanh toán</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <div class="tab-pane fade" id="bank-method-tab" role="tabpanel" aria-labelledby="momo-tab">
+                                    <p class="t-body">Sau khi thanh toán qua thanh toán an toàn MOMO, chúng tôi sẽ gửi cho bạn một liên kết để tải xuống các tệp của bạn.</p>
+                                    <div class="media h-mt2">
+                                        <div class="media__item -align-center">
+                                            <p class="t2-body h-m0">Thanh toán MOMO</p>
+                                        </div>
+                                        <div class="media__body">
+                                            <ul id="paypal-gateway" class="financial-institutes">
+                                                <li class="financial-institutes__logo">
+                                                    <img alt="momo" title="momo" src="data:image/png;base64,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">
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="chckout_order_dt">
+                                        <div class="checkout_title">
+                                            <h4>Chi tiết đơn hàng</h4>
+                                            <img src="images/line.svg" alt="">
+                                        </div>
+                                        <div class="order_dt_section">
+                                            <div class="order_title" th:if="${genC.sale}==0" >
+                                                <h4 th:text="${genC.name}"></h4>
+                                                <div class="order_price" th:text="${genC.price}"></div>
+                                            </div>
+                                            <div class="order_title" th:if="${genC.sale}>0" >
+                                                <h4 th:text="${genC.name}"></h4>
+                                                <div class="order_price" th:text="${genC.price}-${genC.sale}*${genC.price}/100">$49</div>
+                                            </div>
+                                            <div class="order_title" th:if="${genC.sale}==0" >
+                                                <h3>Tổng</h3>
+                                                <div class="order_price" th:text="${genC.price}"></div>
+                                            </div>
+                                            <div class="order_title" th:if="${genC.sale}>0" >
+                                                <h3>Tổng</h3>
+                                                <div class="order_price" th:text="${genC.price}-${genC.sale}*${genC.price}/100">$49</div>
+                                            </div>
+                                            <button class="chckot_btn" type="submit">Xác nhận thanh toán</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade show active" id="payapl-method-tab" role="tabpanel" aria-labelledby="payapl-tab">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p class="t-body">Sau khi thanh toán qua thanh toán an toàn PayPal, chúng tôi sẽ gửi cho bạn một liên kết để tải xuống các tệp của bạn.</p>
+                                            <div class="media h-mt2">
+                                                <div class="media__item -align-center">
+                                                    <p class="t2-body h-m0">PayPal chấp nhận</p>
+                                                </div>
+                                                <div class="media__body">
+                                                    <ul id="paypal-gateway" class="financial-institutes">
+                                                        <li class="financial-institutes__logo">
+                                                            <img alt="Visa" title="Visa" src="images/membership/pyicon-1.svg">
+                                                        </li>
+                                                        <li class="financial-institutes__logo">
+                                                            <img alt="MasterCard" title="MasterCard" src="images/membership/pyicon-2.svg">
+                                                        </li>
+                                                        <li class="financial-institutes__logo">
+                                                            <img alt="American Express" title="American Express" src="images/membership/pyicon-3.svg">
+                                                        </li>
+                                                        <li class="financial-institutes__logo">
+                                                            <img alt="Discover" title="Discover" src="images/membership/pyicon-4.svg">
+                                                        </li>
+                                                        <li class="financial-institutes__logo">
+                                                            <img alt="China UnionPay" title="China UnionPay" src="images/membership/pyicon-5.svg">
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="chckout_order_dt">
+                                            <div class="checkout_title">
+                                                <h4>Chi tiết đơn hàng</h4>
+                                                <img src="images/line.svg" alt="">
+                                            </div>
+                                            <div class="order_dt_section">
+                                                <div class="order_title" th:if="${genC.sale}==0" >
+                                                    <h4 th:text="${genC.name}"></h4>
+                                                    <div class="order_price" ><span th:text="${genC.price}"></span><span>$</span></div>
+                                                </div>
+                                                <div class="order_title" th:if="${genC.sale}>0" >
+                                                    <h4 th:text="${genC.name}"></h4>
+                                                    <div class="order_price" ><span th:text="${genC.price}-${genC.sale}*${genC.price}/100"></span><span>$</span></div>
+                                                </div>
+                                                <div class="order_title">
+                                                    <div class="row">
+                                                        <div class="col-75">
+                                                            <div class="container">
+                                                                <form method="POST"  action="/pay">
+                                                                    <div class="col-50">
+                                                                       
+                                                         					
+                                                                         <label for="price" hidden="">Total</label>
+                                                                        <input type="text" id="price" name="price"  th:if="${genC.sale}==0" th:value="${genC.price}" readonly hidden="">
+                                                                         <input type="text" id="price" name="price" th:if="${genC.sale}>0" th:value="${genC.price}-${genC.sale}*${genC.price}/100" readonly hidden="">
+                                                                        <label for="currency" hidden="">Currency</label>
+                                                                        <input type="text" id="currency" hidden="" name="currency" placeholder="Enter Currency" value="USD" readonly>
+                                                                        <label for="method" hidden="">Payment Method</label>
+                                                                        <input type="text" hidden="" id="method" name="method" placeholder="Payment Method" readonly value="paypal">
+                                                                        <label for="intent" hidden="">Intent</label>
+                                                                        <input type="text" id="intent" hidden="" name="intent" value="sale" readonly>
+                                                                        <label for="description" hidden="">ID Course</label>
+                                                                        <input type="text" hidden="" id="description" name="description" th:value="${genC.id}" readonly>
+                                                    
+                                                                    </div>
+                                                    
+                                                                    <input type="submit" value="Continue to checkout" class="btn">
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                       
+                                                    </div>
+                                                </div>
+                                             
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="membership_chk_bg rght1528">
+                            <div class="checkout_title">
+                                <h4>Tóm tắt đơn hàng</h4>
+                                <img src="images/line.svg" alt="">
+                            </div>
+                            <div class="order_dt_section">
+                            
+                                <div class="scr_text"><i class="uil uil-lock-alt"></i>Thanh toán an toàn</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/OwlCarousel/owl.carousel.js"></script>
+    <script src="vendor/semantic/semantic.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/night-mode.js"></script>
+</body>
+
+
+
+</html>

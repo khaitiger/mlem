@@ -1,0 +1,107 @@
+<head>
+    <style>
+        .card-body button {
+            border: none;
+            color: black;
+        }
+
+        .card-body button:hover {
+            box-shadow: inset -7px -7px 20px 0 rgba(255, 255, 255, 0.7),
+                inset 7px 7px 20px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        #ENchat{
+            display: none;
+        }
+    </style>
+    <link href="/css/chatbox.css" rel="stylesheet">
+
+</head>
+
+<script src="/js/chatbox.js"></script>
+<script src="/js/responses_chatbox.js"></script>
+
+<!--Live Chat-->
+<div class="fixed-live-chat position-fixed p-1">
+    <div class="live-chat position-relative">
+        <button type="button" class="chatbox" style="width: 50px;height: 50px;">
+
+            <i class="fas fa-comments" style="color: #fdcc0d;"></i>
+            <!-- <i class="fas fa-facebook-messenger pl-1"></i> -->
+        </button>
+
+        <!--dropdown-->
+        <div class="dropchat">
+            <div class="card border-0 shadow-lg">
+                <div class="card-header d-flex align-items-center justify-content-between bg-light">
+                    <h5 class="m-0">
+                        <img class="chat-avater" src="./img/logo.png" alt="">
+                        Nhắn tin cho chúng tôi!
+                    </h5>
+                    <button type="button" class="close"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="card-body bg-light" style="max-height: 270px;overflow: auto;">
+                    <h6 class="chat-timestamp" style="text-align: center;"></h6>
+                    <div class="list">
+                        <img class="chat-avater" src="./images/fav.png" alt="">
+                        <div class="chat-content">
+                            <p> Chúng tôi có thể giúp gì cho bạn !</p>
+                        </div>
+                    </div>
+                    <div class="list " id="chatbox">
+
+                    </div>
+                    <div id="VNchat" style="width: 105%;height: auto; margin-bottom: -15px;margin-top: 15px;">
+
+                        <button style="background-color: gainsboro;padding: 5px;border-radius: 8px;margin: 1px;"
+                            onclick="buttonSendText1('Tôi cần tư vấn về khóa học')"> Tôi cần tư vấn về Khóa học
+                        </button>
+                        <button style="background-color: gainsboro;padding: 5px;border-radius: 8px;margin: 1px; "
+                            onclick="buttonSendText1('Cơ bản')"> Cơ bản </button>
+                        <button style="background-color: gainsboro;padding: 5px;border-radius: 8px;margin: 1px; "
+                            onclick="buttonSendText1('Trung cấp')"> Trung cấp </button>
+                        <button style="background-color: gainsboro;padding: 5px;border-radius: 8px;margin: 1px; "
+                            onclick="buttonSendText1('Cao cấp')"> Cao cấp </button>
+                        <button style="background-color: gainsboro;padding: 5px;border-radius: 8px;margin: 1px; "
+                            onclick="buttonSendText1('Nội trợ')"> Nội trợ </button>
+                        <button style="background-color: gainsboro;padding: 5px;border-radius: 8px;margin: 1px; "
+                            onclick="buttonSendText1('Trang trí')"> Trang Trí </button>
+                        <button style="background-color: gainsboro;padding: 5px;border-radius: 8px;margin: 1px; "
+                            onclick="buttonSendText1('An toàn thực phẩm')"> An toàn thực phẩm </button>
+
+                    </div>
+                    <div id="ENchat" style="width: 105%;height: auto; margin-bottom: -15px;margin-top: 15px;">
+
+                        <button style="background-color: gainsboro;padding: 5px;border-radius: 8px;margin: 1px;"
+                            onclick="buttonSendText1('I need advice about the Course')">I need advice about the Course
+                        </button>
+                        <button style="background-color: gainsboro;padding: 5px;border-radius: 8px;margin: 1px; "
+                            onclick="buttonSendText1('Basic')"> Basic </button>
+                        <button style="background-color: gainsboro;padding: 5px;border-radius: 8px;margin: 1px; "
+                            onclick="buttonSendText1('Intermediate')"> Intermediate </button>
+                        <button style="background-color: gainsboro;padding: 5px;border-radius: 8px;margin: 1px; "
+                            onclick="buttonSendText1('Premium')"> Premium </button>
+                        <button style="background-color: gainsboro;padding: 5px;border-radius: 8px;margin: 1px; "
+                            onclick="buttonSendText1('Housewife')"> Housewife </button>
+                        <button style="background-color: gainsboro;padding: 5px;border-radius: 8px;margin: 1px; "
+                            onclick="buttonSendText1('Food Decoration')"> Food Decoration </button>
+                        <button style="background-color: gainsboro;padding: 5px;border-radius: 8px;margin: 1px; "
+                            onclick="buttonSendText1('Food safety')"> Food safety </button>
+
+                    </div>
+                </div>
+
+                <div class="card-footer border p-0">
+                    <form class="typer" style="background-color: wheat;">
+                        <input id="textInput" type="text" style="margin-right: 20%;" placeholder="Viết tin nhắn...">
+                        <span onclick="heartButton()" style="margin-right: 10%;color: red;" type="submit"
+                            class="fas fa-heart"></span>
+                        <span onclick="sendButton1()" style="margin-right: 1%;" type="submit"
+                            class="fas fa-paper-plane send"></span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//Live Chat-->

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, shrink-to-fit=9">
+	<meta name="description" content="Gambolthemes">
+	<meta name="author" content="Gambolthemes">
+	<title>Tạo Bài Test</title>
+
+	<link href="/css/sweetalert.css" rel="stylesheet" />
+	<script src="/js/sweetalert.min.js"></script>
+
+	<link rel="icon" type="image/png" href="images/fav.png">
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700,500" rel='stylesheet'>
+	<link href='vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
+	<link href="/css/vertical-responsive-menu.min.css" rel="stylesheet">
+	<link href="/css/style.css" rel="stylesheet">
+	<link href="/css/responsive.css" rel="stylesheet">
+	<link href="/css/night-mode.css" rel="stylesheet">
+
+	<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+	<link href="/vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+	<link href="/vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+	<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/vendor/semantic/semantic.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
+	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css'>
+
+	<style>
+		.form_submit {
+			position: relative;
+			top: 5px;
+			flex: 1 1 100px;
+			margin: 0;
+			cursor: pointer;
+			border: none;
+			padding: 12px;
+			border-radius: 10px;
+			background-color: #708DFD;
+			color: #FFFFFF;
+			box-shadow: 0 12px 7px -5px rgba(0, 0, 0, 0.35);
+			transition: box-shadow .2s, top .2s, background-color .2s, flex-basis .2s;
+		}
+
+		.form_submit:hover {
+			box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.35);
+			top: 0;
+		}
+
+		.form_submit:focus {
+			background-color: #4A65CE;
+			outline: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="header clearfix">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="back_link">
+						<a href="/manager_teacher.html" class="hde151">Trở về Quản Lý</a>
+						<!-- <a href="index.html" class="hde152">Back</a> -->
+					</div>
+					<div class="ml_item">
+						<div class="main_logo main_logo15" id="logo">
+							<a href="index.html">
+								<img src="/images/fav.png" width="30px" alt="">
+								<span class="font-text"> MlemMlem</span>
+							</a>
+
+						</div>
+					</div>
+					<div class="header_right pr-0">
+						<ul>
+							<li class="ui top right pointing dropdown">
+								<a href="#" class="opts_account">
+									<img src="/images/hd_dp.jpg" alt="">
+								</a>
+								<div class="menu dropdown_account" style="width: 250px;">
+									<div class="channel_my">
+										<div class="profile_link">
+											<img src="/images/hd_dp.jpg" alt="">
+											<div class="pd_content">
+												<div class="rhte85">
+													<h6>
+														Phan Văn Khải
+													</h6>
+													<div class="mef78" title="Verify">
+														<i class='uil uil-check-circle'></i>
+													</div>
+												</div>
+												<span><a href="https://gambolthemes.net/cdn-cgi/l/email-protection"
+														class="__cf_email__"
+														data-cfemail="aacdcbc7c8c5c6939e99eacdc7cbc3c684c9c5c7">[email&#160;protected]</a></span>
+											</div>
+										</div>
+										<a href="my_instructor_profile_view.html" class="dp_link_12"
+											style="text-align: center;">
+											Xem trang cá nhân
+										</a>
+									</div>
+									<div class="night_mode_switch__btn">
+										<a href="#" id="night-mode" class="btn-night-mode">
+											<i class="uil uil-moon"></i>
+											Chế độ ban đêm
+											<span class="btn-night-mode-switch">
+												<span class="uk-switch-button"></span>
+											</span>
+										</a>
+									</div>
+									<a href="instructor_dashboard.html" class="item channel_item">Bảng điều kiển
+										Mlem</a>
+									<a href="sign_in.html" class="item channel_item">Đăng xuất</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="wrapper _bg4586 _new89">
+		<div class="_215b15" style="height: 500px;">
+			<div class="container">
+				<div class="row " style="margin-top: 50px;">
+						<input type="hidden" id="courseId" th:value=${courseId} />
+						<div class="col-md-6">
+							<h5 id="input-text">Tên bài thi thử</h5>
+							<div class="form-group">
+								<div class="input-group ">
+									<input type="text" id="testName" size="100%"
+										class="form-control" placeholder='Điền tên bài thi...' />
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<h5 id="input-image">Ảnh bài thi thử</h5>
+							<div class="form-group">
+								<div class="input-group input-file">
+									<input type="file" multiple accept='image/*' id="imageTest"
+										class="form-control" placeholder='Choose a file...' />
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<h5 id="input-excel">File nội dung (Excel)</h5>
+							<div class="form-group">
+								<div class="input-group input-file2">
+									<input type="file" accept='.xlsx, .xls, .csv'
+										id="excel" class="form-control" placeholder='Choose a file...' />
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 text-left">
+							<button class="form_submit" id="btnClose" type="button"
+								style="background-color: gray;">Hủy</button>
+							<button id="btnSubmit" class="form_submit" type="button">Submit</button>
+						</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<script src='https://code.jquery.com/jquery-1.11.3.min.js'></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  
+	<script>
+		$("#btnClose").on('click', function () {
+			if ($('#excel').val().length != 0 || $('#nameTest').val().length != 0 || $('#image').val().length != 0)
+				swal({
+						title: "Bạn chắn không?",
+						text: "Bạn sẽ không thể khôi phục tệp này!",
+						type: "warning",
+						showCancelButton: true,
+						confirmButtonColor: "#DD6B55",
+						confirmButtonText: "Có, Tôi muốn xóa!",
+						closeOnConfirm: false
+					},
+					function () {
+						swal("Xóa Thành Công!", "Tệp của bạn đã bị xóa.", "success");
+						$('#excel').val('');
+						$('#nameTest').val('');
+						$('#image').val('');
+					});
+
+		});
+		$("#btnSubmit").on('click', function () {
+			if ($('#excel').val().length != 0 && $('#testName').val().length != 0) {
+				console.log('hello')
+				var formData = new FormData();
+				const courseId = document.getElementById('courseId').value
+				const testName = document.getElementById('testName').value
+				const image = document.getElementById('imageTest').files[0]
+				const excel = document.getElementById('excel').files[0]
+				formData.append("reapExcelDataFile", excel);
+				formData.append("imageTest", image);
+				formData.append("testName", testName);
+				formData.append("courseId", courseId);
+				
+				axios.post('http://localhost:8080/teacher/test/create', formData, {
+					headers: {
+						'Content-Type': 'multipart/form-data'
+					}
+				})
+					.then(res =>{
+						swal({
+							title: "Thành công!",
+							text: "Bài kiểm tra của bạn đã tạo thành công!",
+							type: "success",
+							confirmButtonText: "Chuyển tôi về lại Quản lý",
+							closeOnConfirm: false
+						})
+					})
+					.catch(err =>{
+							sweetAlert("Oops...", "Bạn tạo bài kiểm tra không thành công!", "error");
+					})
+			}
+
+
+		})
+
+		setInterval(function () {
+			if ($("#testName").val().length == 0) {
+				$("#input-text").css("color", "red")
+			} else {
+				$("#input-text").css("color", "green")
+			}
+			// if ($("#image").val().length == 0) {
+			// 	$("#input-image").css("color", "red")
+			// } else {
+			// 	$("#input-image").css("color", "green")
+			// }
+			if ($("#excel").val().length == 0) {
+				$("#input-excel").css("color", "red")
+			} else {
+				$("#input-excel").css("color", "green")
+			}
+		}, 500);
+	</script>
+
+	<script src="/js/jquery-3.3.1.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- <script src="/vendor/OwlCarousel/owl.carousel.js"></script> -->
+	<script src="/vendor/semantic/semantic.min.js"></script>
+	<script src="/js/custom.js"></script>
+	<script src="/js/night-mode.js"></script>
+</body>
+
+</html>

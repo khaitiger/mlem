@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+    <meta name="description" content="Gambolthemes">
+    <meta name="author" content="Gambolthemes">
+    <title>MlemMlem</title>
+
+    <link rel="icon" type="image/png" href="/images/fav.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,500" rel='stylesheet'>
+    <link href="/vendor/unicons-2.0.1/css/unicons.css" rel='stylesheet'>
+    <link href="/css/vertical-responsive-menu.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
+    <link href="/css/night-mode.css" rel="stylesheet">
+    <link href="/css/slideshow.css" rel="stylesheet">
+    <link href="/css/instructor-dashboard.css" rel="stylesheet">
+    <link href="/favicon.ico" rel="favicon">
+
+
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="/vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/vendor/semantic/semantic.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/certificate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css'>
+
+</head>
+
+<body>
+
+    <!-- Thanh header -->
+    <div id="header_html"></div>
+
+    <!-- thanh menu  -->
+    <div id="menu_user_html"></div>
+
+    <!-- Thanh main -->
+    <div class="wrapper">
+        <!-- <div class="blog-slider">
+            <div class="blog-slider__wrp swiper-wrapper">
+                <div class="blog-slider__item swiper-slide">
+                    <div class="blog-slider__img">
+                        <iframe src="./cert2.pdf" frameborder="0"></iframe>
+                    </div>
+                    <div class="blog-slider__content">
+                        <span class="blog-slider__code ">Khóa học cơ bản</span>
+                        <div class="blog-slider__title ">Khóa học ăn kiên</div>
+                        <div class="blog-slider__text ">
+                            <input type="text" value="Nguyễn Quang Hải Trường" id="">
+                        </div>
+
+                        <a href="./cert2.pdf " target="_blank " class="blog-slider__button ">Tải xuống chứng chỉ</a>
+                    </div>
+                </div>
+                <div class="blog-slider__item swiper-slide ">
+                    <div class="blog-slider__img ">
+                        <iframe src="./cert2.pdf " frameborder="0 "></iframe>
+                    </div>
+                    <div class="blog-slider__content ">
+                        <span class="blog-slider__code ">Ngày 20 tháng 6 năm 2020</span>
+                        <div class="blog-slider__title ">Khóa học ăn kiên</div>
+                        <div class="blog-slider__text ">Thông thường chúng ta ăn nhữ thường chúng ta ăn nhữ thường chúng ta ăn nhữ thường chúng ta ăn nhữ thường chúng ta ăn nhữ thường chúng ta ăn nhữ thường chúng ta ăn những món giàu chất đạm, béo, .. nhưng chúng ta chưa chắc rằng lượng
+                            tiêu thụ quá lớn làm cho cơ thể dư chất và sinh bệnh... </div>
+                        <a href="./cert3.pdf " target="_blank " class="blog-slider__button ">Xem chứng chỉ</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="blog-slider__pagination "></div>
+        </div> -->
+        <div class="faq1256">
+            <div class="container">
+                <div class="row justify-content-lg-center justify-content-md-center">
+                    <div class="col-lg-10 col-md-8">
+                        <div class="certi_form">
+                            <div class="sign_form" th:each="l : ${list}">
+                                <div class="fcrse_1">
+                                    <a style="height: 20px;" class="hf_img">
+                                        <img src="images/cert-specialization.png" style="width: 80px;" alt="">
+                                    </a>
+                                    <div class="hs_content">
+                                        <a href="" class="crse14s title900" th:text="${l.course.name}"></a>
+                                    </div>
+                                </div>
+                                <div class="category_cop">
+                                    <div class="panel-groupaccordion" id="accordiontest">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading" id="headingOne">
+                                                <div class="panel-title10">
+                                                    <a class="collapsed" data-toggle="collapse" data-target="#collapseOne" href="#" aria-expanded="false" aria-controls="collapseOne">Thông tin</a>
+                                                </div>
+                                            </div>
+                                            <div id="collapseOne" class="panel-collapse collapse" aria-labelledby="headingOne" data-parent="#accordiontest">
+
+                                                <label for="name">Người nhận chứng chỉ: </label> <label  th:text="${l.student.fullName}"></label> <br>
+                                                <label for="name">Khóa học: </label> <label  th:text="${l.course.name}"></label> <br>
+                                                 <label for="name">Ngày cấp: </label> <label  th:text="${l.Datepass}"></label> <br>
+                                                 <label for="name">Điểm thi: </label> <label th:text="${l.score}"></label><label>/100</label> <br>
+                                                <input required type="text" th:value="${l.student.fullName}" name="Name" autocomplete="name" hidden="" placeholder="Tên Học Viên" id="name" minlength="3" maxlength="25">
+                                                <input name="" id="nameCourse" hidden="" th:value="${l.course.name}">
+
+
+                                                <input required type="text" hidden=""  name="Name" autocomplete="name" th:value="${l.course.level.name}" id="typeCourse" minlength="3" maxlength="50">
+
+                                                <button class="login-btn" id="submitBtn" type="submit">Xem chứng chỉ</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer_html "></div>
+
+    </div>
+
+    <div id="chatbox_html "></div>
+
+    <script data-cfasync="false " src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js "></script>
+    <script src="/js/vertical-responsive-menu.min.js "></script>
+    <script src="/js/jquery-3.3.1.min.js "></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js "></script>
+    <script src="/vendor/OwlCarousel/owl.carousel.js "></script>
+    <script src="/vendor/semantic/semantic.min.js "></script>
+    <script src="/js/custom.js "></script>
+    <script src="/js/night-mode.js "></script>
+    <script src="/js/slideshow.js "></script>
+    <script src="/js/TimelineMax.min.js "></script>
+    <script src="/js/TweenMax.min.js "></script>
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'></script>
+
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js'></script>
+    <script>
+        $(document).ready(function() {
+            $('.nameC').text(function(i, oldText) {
+                var res = oldText.split(" ");
+                return res[0] + ' ' + res[res.length - 1];
+            });
+        });
+
+
+        var swiper = new Swiper('.blog-slider', {
+            spaceBetween: 30,
+            effect: 'fade',
+            loop: true,
+            mousewheel: {
+                invert: false,
+            },
+            // autoHeight: true,
+            pagination: {
+                el: '.blog-slider__pagination',
+                clickable: true,
+            }
+        });
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js " integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin=" anonymous "></script>
+    <script>
+        $(function() {
+            $('#chatbox_html').load('/chatbox');
+            $('#menu_user_html').load('/menu_user', function() {
+                $(".mycourse ").addClass("active ");
+                $(".chungchi ").addClass("active ");
+            });
+            $('#header_html').load('/header');
+            $('#footer_html').load('./footer.html');
+
+        })
+    </script>
+    <script src="https://unpkg.com/pdf-lib@1.4.0"></script>
+    <script src="./FileSaver.js"></script>
+    <script src="https://unpkg.com/@pdf-lib/fontkit@0.0.4"></script>
+    <script src="./cert.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+    <meta name="description" content="Gambolthemes">
+    <meta name="author" content="Gambolthemes">
+    <title>Trang Quản lý</title>
+
+    <link href="/css/sweetalert.css" rel="stylesheet" />
+    <script src="/js/sweetalert.min.js"></script>
+
+    <link rel="icon" type="/image/png" href="images/fav.png">
+
+    <link href='vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
+    <link href="/css/vertical-responsive-menu.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
+    <link href="/css/night-mode.css" rel="stylesheet">
+
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/vendor/semantic/semantic.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css'>
+    <link href='https://fonts.googleapis.com/icon?family=Material+Icons' , rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <style>
+        .no-margin-top {
+            margin-top: 0;
+        }
+
+        .no-margin-bottom {
+            margin-bottom: 0;
+        }
+
+        .no-padding {
+            padding: 0;
+        }
+
+        .no-height {
+            height: 0px;
+        }
+
+        #side-bar.material-icons {
+            padding-top: 2px;
+        }
+
+        span.badge.new {
+            font-style: normal;
+        }
+
+        span.badge.new:after {
+            content: "";
+        }
+
+        nav li .material-icons {
+            padding-top: 3px;
+        }
+
+        input[type=text]:disabled+label {
+            color: #9E9E9E;
+        }
+
+        input[type=search] {
+            margin-bottom: 0;
+        }
+
+        label,
+        .input-field label.active,
+        .input-field label,
+        span.badge.new {
+            font-size: 0.95rem;
+        }
+
+        #new_tag .no-margin-top label {
+            margin-left: 120px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header clearfix">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 mt-15">
+                    <div class="back_link">
+                        <a href="/" class="hde151">Trở về Trang chủ</a>
+                    </div>
+                    <div class="ml_item">
+                        <div class="main_logo main_logo15" id="logo">
+                            <a href="index.html">
+                                <img src="/images/fav.png" width="30px" alt="">
+                                <span class="font-text"> MlemMlem</span>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="header_right pr-0">
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="wrapper _bg4586 _new89">
+        <main>
+            <div class="row">
+                <div class="col s12">
+                    <div class="collection col s12 white">
+                        <div class="collection-item" style="min-height: 300px;">
+                            <ul class="collapsible" data-collapsible="expandable" th:each="listC : ${listTeachers}">
+                                
+                              
+                                <li>
+                                    <div class="collapsible-header truncate" th:text="${listC.course.name}">
+                                        <!-- <a
+                                            class="material-icons right collection-item waves-effect modal-trigger"
+                                            data-target="folder_context_menu">more_vert</a> -->
+                                            <i
+                                            class="material-icons green-text">folder</i></div>
+                                    <div class="collapsible-body row no-margin-bottom">
+                                        <div class="col s12">
+                                            <div class="collection-item">
+                                                <ul class="collapsible" data-collapsible="expandable">
+                                                    <li>
+                                                        <div class="collapsible-header truncate"> Chương 1: Cắt thai rau
+                                                            củ
+                                                            <a class="material-icons right collection-item waves-effect modal-trigger"
+                                                                data-target="folder_context_menu">more_vert</a><i
+                                                                class="material-icons grey-text">folder</i></div>
+                                                        <div class="collapsible-body row no-margin-bottom">
+                                                            <div class="col s12">
+                                                                <a class="material-icons left collection-item waves-effect"
+                                                                    href="#!">insert_drive_file</a>
+                                                                <a class="material-icons right collection-item waves-effect modal-trigger"
+                                                                    data-target="file_context_menu">more_vert</a>
+                                                                <a class="collection-item truncate waves-effect"
+                                                                    href="#!">Bài 1: Cầm dao đúng cách</a>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="collapsible-body row no-margin-bottom">
+                                                            <div class="col s12">
+                                                                <a class="material-icons left collection-item waves-effect"
+                                                                    href="#!">insert_drive_file</a>
+                                                                <a class="material-icons right collection-item waves-effect modal-trigger"
+                                                                    data-target="file_context_menu">more_vert</a>
+                                                                <a class="collection-item truncate waves-effect"
+                                                                    href="#!">Bài 2: Cắt, thái các rau củ quả</a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="collapsible-header truncate">Chương 2: Vệ sinh dụng
+                                                            cụ<a class="material-icons right collection-item waves-effect modal-trigger"
+                                                                data-target="folder_context_menu">more_vert</a><i
+                                                                class="material-icons grey-text text-darken-1">folder</i>
+                                                        </div>
+                                                        <div class="collapsible-body row no-margin-bottom">
+                                                            <div class="col s12"><a
+                                                                    class="material-icons left collection-item waves-effect"
+                                                                    href="#!">insert_drive_file</a><a
+                                                                    class="material-icons right collection-item waves-effect modal-trigger"
+                                                                    data-target="file_context_menu">more_vert</a><i
+                                                                    class="material-icons right collection-item blue-text"
+                                                                    href="#!">label</i><a
+                                                                    class="collection-item truncate waves-effect"
+                                                                    href="#!">Bài 1: Vệ sinh như thế nào là sạch? </a>
+                                                            </div>
+
+                                                            <div class="col s12"><a
+                                                                    class="material-icons left collection-item waves-effect"
+                                                                    href="#!">insert_drive_file</a><a
+                                                                    class="material-icons right collection-item waves-effect modal-trigger"
+                                                                    data-target="file_context_menu">more_vert</a><i
+                                                                    class="material-icons right collection-item blue-text"
+                                                                    href="#!">label</i><a
+                                                                    class="collection-item truncate waves-effect"
+                                                                    href="#!">Bài 2: Vệ sinh dao đúng cách. </a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="collapsible-header truncate">Chương 3: Bảo quản thức
+                                                            ăn<a class="material-icons right collection-item waves-effect modal-trigger"
+                                                                data-target="folder_context_menu">more_vert</a><i
+                                                                class="material-icons grey-text text-darken-2">folder</i>
+                                                        </div>
+                                                        <div class="collapsible-body row no-margin-bottom">
+                                                            <div class="col s12"><a
+                                                                    class="material-icons left collection-item waves-effect"
+                                                                    href="#!">insert_drive_file</a><a
+                                                                    class="material-icons right collection-item waves-effect modal-trigger"
+                                                                    data-target="file_context_menu">more_vert</a><a
+                                                                    class="collection-item truncate waves-effect"
+                                                                    href="#!">Bài 1: Cách giữ thực phẩm tươi lâu.</a>
+                                                            </div>
+                                                            <div class="col s12"><a
+                                                                    class="material-icons left collection-item waves-effect"
+                                                                    href="#!">insert_drive_file</a><a
+                                                                    class="material-icons right collection-item waves-effect modal-trigger"
+                                                                    data-target="file_context_menu">more_vert</a><a
+                                                                    class="collection-item truncate waves-effect"
+                                                                    href="#!">Bài 2: Cách bảo quản không cần tủ
+                                                                    lạnh.</a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="collapsible-header truncate">Chương 4: Trang trí món
+                                                            ăn<a class="material-icons right collection-item waves-effect modal-trigger"
+                                                                data-target="folder_context_menu">more_vert</a><i
+                                                                class="material-icons grey-text text-darken-3">folder</i>
+                                                        </div>
+                                                        <div class="collapsible-body row no-margin-bottom">
+                                                            <div class="col s12"><a
+                                                                    class="material-icons left collection-item waves-effect"
+                                                                    href="#!">insert_drive_file</a><a
+                                                                    class="material-icons right collection-item waves-effect modal-trigger"
+                                                                    data-target="file_context_menu">more_vert</a><i
+                                                                    class="material-icons right collection-item indigo-text"
+                                                                    href="#!">label</i><a
+                                                                    class="collection-item truncate waves-effect"
+                                                                    href="#!">Bài 1: Cách bầy món ăn cho đẹp mắt.</a>
+                                                            </div>
+
+                                                            <div class="col s12"><a
+                                                                    class="material-icons left collection-item waves-effect"
+                                                                    href="#!">insert_drive_file</a><a
+                                                                    class="material-icons right collection-item waves-effect modal-trigger"
+                                                                    data-target="file_context_menu">more_vert</a><i
+                                                                    class="material-icons right collection-item indigo-text"
+                                                                    href="#!">label</i><a
+                                                                    class="collection-item truncate waves-effect"
+                                                                    href="#!">Bài 2: Tạo bông hoa từ quả ớt.</a>
+                                                            </div>
+
+                                                            <div class="col s12"><a
+                                                                    class="material-icons left collection-item waves-effect"
+                                                                    href="#!">insert_drive_file</a><a
+                                                                    class="material-icons right collection-item waves-effect modal-trigger"
+                                                                    data-target="file_context_menu">more_vert</a><i
+                                                                    class="material-icons right collection-item indigo-text"
+                                                                    href="#!">label</i><a
+                                                                    class="collection-item truncate waves-effect"
+                                                                    href="#!">Bài 3: Cách bước để có món ăn bố cục
+                                                                    đẹp.</a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <a th:href="@{/teacher/test/create?courseId={id}(id=${listC.course.id})}"> <div class="collapsible-header truncate">Tạo bài thi<i
+                                                                class="material-icons grey-text text-darken-3">folder</i></a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                           
+                            </ul>
+                        </div>
+                        <a class="left collection-item">
+                            <img class="materialboxed" width="14"
+                                src="http://www.clker.com/cliparts/a/5/9/7/12071567031590994625kml_Document.svg.hi.png"
+                                data-caption="Root file 1 - Ideally, this would be the file Preview Panel that can navigate page by page via finger gesture &amp; other buttons/dropdown along the top edge. (still work in progress!)" /></a>
+                        <!-- <a class="material-icons right collection-item waves-effect modal-trigger"
+                            data-target="file_context_menu">more_vert
+                        </a> -->
+                        <i class="material-icons right collection-item orange-text" href="#!">label</i>
+                        <a class="collection-item truncate waves-effect" href="#!">File hướng dẫn cho giảng viên</a>
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- Modal: New folder-->
+            <div class="modal" id="new_folder">
+                <div class="modal-content">
+                    <div class="row">
+                        <h5>New folder</h5>
+                        <div class="divider"></div>
+                        <div class="divider"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 input-field"><i class="material-icons prefix">folder</i>
+                            <input id="folder_name_field" type="text" />
+                            <label for="folder_name_field">Name:</label>
+                        </div>
+                    </div>
+                    <div class="row no-margin-bottom">
+                        <div class="col s9 input-field"><i class="material-icons prefix">subdirectory_arrow_right</i>
+                            <input class="black-text" id="folder_destination_field" disabled="disabled" type="text"
+                                value="Home" />
+                            <label class="destination-field" for="folder_destination_field">Destination:</label>
+                        </div>
+                        <div class="section right"><a class="btn waves-effect">Change</a></div>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="modal-footer"><a class="modal-action waves-effect btn-flat hoverable waves-teal"
+                        href="#!">Create</a><a
+                        class="modal-action modal-close waves-effect btn-flat hoverable waves-red" href="#!">Cancel</a>
+                </div>
+            </div>
+            <!-- Modal: Upload-->
+            <div class="modal" id="upload">
+                <div class="modal-content">
+                    <div class="row">
+                        <h5>Upload</h5>
+                        <div class="divider"></div>
+                        <div class="divider"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 input-field file-field">
+                            <div class="btn right"><span>Select files</span>
+                                <input multiple="multiple" type="file" />
+                            </div>
+                            <div class="file-path-wrapper"><i class="material-icons prefix">file_upload</i>
+                                <input class="file-path" type="text"
+                                    placeholder="Select one or more files for upload:" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s9 input-field"><i class="material-icons prefix">subdirectory_arrow_right</i>
+                            <input class="black-text" id="folder_destination_field" disabled="disabled" type="text"
+                                value="Home" />
+                            <label class="destination-field" for="folder_destination_field">Destination:</label>
+                        </div>
+                        <div class="section right"><a class="btn waves-effect">Change</a></div>
+                    </div>
+                </div>
+                <div class="row no-margin-bottom no-height">
+                    <div class="col s12 progress no-margin-bottom">
+                        <div class="indeterminate"></div>
+                    </div>
+                </div>
+                <div class="modal-footer"><a class="modal-action waves-effect btn-flat waves-teal hoverable"
+                        href="#!">Upload</a><a
+                        class="modal-action modal-close waves-effect btn-flat waves-red hoverable"
+                        href="#!">Cancel</a><a class="modal-action waves-effect btn-flat left hoverable"
+                        href="#!">Manager</a><a class="modal-action waves-effect btn-flat left disabled"
+                        href="#!">Statistics</a><a class="modal-action waves-effect btn-flat left disabled"
+                        href="#!">Report</a></div>
+            </div>
+            <!-- Modal: Manage tags-->
+            <div class="modal modal-fixed-footer" id="manage_tags">
+                <div class="modal-content">
+                    <div class="row">
+                        <h5>Manage tags</h5>
+                        <div class="divider"></div>
+                        <div class="divider"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <nav class="white">
+                                <form>
+                                    <div class="input-field">
+                                        <input id="search" placeholder="Find tag" type="search" required="" />
+                                        <label for="search"><i class="material-icons black-text">search</i></label><i
+                                            class="material-icons">close</i>
+                                    </div>
+                                </form>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="row center-align">
+                        <div class="col s6">
+                            <div class="section">Select tags:
+                                <div class="switch tooltipped" href="#!" data-position="bottom" data-delay="0"
+                                    data-tooltip="Concept needs re-jiggin'">
+                                    <label>None
+                                        <input type="checkbox" /><span class="lever"></span>All
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <div class="section">Show nested tags:
+                                <div class="switch">
+                                    <label>No
+                                        <input type="checkbox" checked="checked" /><span class="lever"></span>Yes
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row no-margin-bottom">
+                        <table class="bordered highlight centered tooltipped" href="#!" data-position="left"
+                            data-delay="0" data-tooltip="Working on selecting rows">
+                            <thead>
+                                <tr>
+                                    <th class="left">Name</th>
+                                    <th>Label</th>
+                                    <th>Document</th>
+                                    <th>Note</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="left">R - Note tag</td>
+                                    <td><i class="material-icons red-text">label</i></td>
+                                    <td><i class="material-icons">indeterminate_check_box</i></td>
+                                    <td><i class="material-icons">check_box</i></td>
+                                </tr>
+                                <tr>
+                                    <td class="left">O - Document & Note tag</td>
+                                    <td><i class="material-icons orange-text">label</i></td>
+                                    <td><i class="material-icons">check_box</i></td>
+                                    <td><i class="material-icons">check_box</i></td>
+                                </tr>
+                                <tr>
+                                    <td class="left">Y - Document tag</td>
+                                    <td><i class="material-icons yellow-text">label</i></td>
+                                    <td><i class="material-icons">check_box</i></td>
+                                    <td><i class="material-icons">indeterminate_check_box</i></td>
+                                </tr>
+                                <tr>
+                                    <td class="left">G - Note tag</td>
+                                    <td><i class="material-icons green-text">label</i></td>
+                                    <td><i class="material-icons">indeterminate_check_box</i></td>
+                                    <td><i class="material-icons">check_box</i></td>
+                                </tr>
+                                <tr>
+                                    <td class="left">B - Document & Note tag</td>
+                                    <td><i class="material-icons blue-text">label</i></td>
+                                    <td><i class="material-icons">check_box</i></td>
+                                    <td><i class="material-icons">check_box</i></td>
+                                </tr>
+                                <tr>
+                                    <td class="left">I - Document tag</td>
+                                    <td><i class="material-icons indigo-text">label</i></td>
+                                    <td><i class="material-icons">check_box</i></td>
+                                    <td><i class="material-icons">indeterminate_check_box</i></td>
+                                </tr>
+                                <tr>
+                                    <td class="left">V - Note tag</td>
+                                    <td><i class="material-icons purple-text">label</i></td>
+                                    <td><i class="material-icons">indeterminate_check_box</i></td>
+                                    <td><i class="material-icons">check_box</i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer"><a class="modal-action modal-close waves-effect btn-flat waves-red hoverable"
+                        href="#!">Close</a><a class="modal-action waves-effect btn-flat left hoverable modal-trigger"
+                        data-target="new_tag">Add</a><a class="modal-action waves-effect btn-flat left disabled"
+                        href="#!">Edit</a><a class="modal-action waves-effect btn-flat left disabled"
+                        href="#!">Delete</a></div>
+            </div>
+            <!-- Modal: Filter document tags-->
+            <div class="modal modal-fixed-footer" id="filter_document_tags">
+                <div class="modal-content">
+                    <div class="row">
+                        <h5>Filter document tags</h5>
+                        <div class="divider"></div>
+                        <div class="divider"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <nav class="white">
+                                <form>
+                                    <div class="input-field">
+                                        <input id="search" placeholder="Find document tag" type="search" required="" />
+                                        <label for="search"><i class="material-icons black-text">search</i></label><i
+                                            class="material-icons">close</i>
+                                    </div>
+                                </form>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="row center">
+                        <div class="col s4">
+                            <div class="section">Select tags:
+                                <div class="switch tooltipped" href="#!" data-position="bottom" data-delay="0"
+                                    data-tooltip="Concept needs re-jiggin'">
+                                    <label>None
+                                        <input type="checkbox" /><span class="lever"></span>All
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s4">
+                            <div class="section">Show nested tags:
+                                <div class="switch">
+                                    <label>No
+                                        <input type="checkbox" checked="checked" /><span class="lever"></span>Yes
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s4">
+                            <div class="section">Show files without tags:
+                                <div class="switch">
+                                    <label>No
+                                        <input type="checkbox" /><span class="lever"></span>Yes
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row no-margin-bottom">
+                        <table class="bordered highlight centered tooltipped" href="#!" data-position="left"
+                            data-delay="0" data-tooltip="Working on selecting rows">
+                            <thead>
+                                <tr>
+                                    <th class="left">Name</th>
+                                    <th>Label</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="left">O - Document & Note tag</td>
+                                    <td><i class="material-icons orange-text">label</i></td>
+                                </tr>
+                                <tr>
+                                    <td class="left">Y - Document tag</td>
+                                    <td><i class="material-icons yellow-text">label</i></td>
+                                </tr>
+                                <tr>
+                                    <td class="left">B - Document & Note tag</td>
+                                    <td><i class="material-icons blue-text">label</i></td>
+                                </tr>
+                                <tr>
+                                    <td class="left">I - Document tag</td>
+                                    <td><i class="material-icons indigo-text">label</i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer"><a class="modal-action waves-effect btn-flat hoverable waves-teal"
+                        href="#!">Apply</a><a class="modal-action modal-close waves-effect btn-flat hoverable waves-red"
+                        href="#!">Close</a></div>
+            </div>
+            <!-- Modal: New tag-->
+            <div class="modal modal-fixed-footer" id="new_tag">
+                <div class="modal-content">
+                    <div class="row">
+                        <h5>New tag</h5>
+                        <div class="divider"></div>
+                        <div class="divider"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 input-field"><i class="material-icons prefix">label</i>
+                            <input id="folder_name_field" type="text" />
+                            <label for="folder_name_field">Name:</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s9 input-field"><i class="material-icons prefix">subdirectory_arrow_right</i>
+                            <input class="black-text" id="folder_destination_field" disabled="disabled" type="text"
+                                value="Top level" />
+                            <label class="destination-field" for="folder_destination_field">Nested:</label>
+                        </div>
+                        <div class="section right"><a class="btn waves-effect">Change</a></div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 input-field">
+                            <select>
+                                <option value="" selected="">None</option>
+                                <option value="1">1 (available)</option>
+                                <option value="2">2 (available)</option>
+                                <option value="3">3 (available)</option>
+                                <option value="4">etc (you get the idea...)</option>
+                            </select>
+                            <label>Shortcut key:</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 input-field tooltipped" href="#!" data-position="left" data-delay="0"
+                            data-tooltip="Needs better layout &amp; colour chart"><i
+                                class="material-icons prefix active">color_lens</i>
+                            <label>Label:</label>
+                            <p class="right no-margin-top">
+                                <input id="icon" name="label" type="radio" />
+                                <label for="icon">Icon<i class="material-icons right">insert_emoticon</i></label>
+                            </p>
+                            <p class="right no-margin-top">
+                                <input id="colour" checked="checked" name="label" type="radio" />
+                                <label for="colour">Colour<i class="material-icons right">colorize</i></label>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row no-margin-bottom">
+                        <div class="col s12 input-field"><i class="material-icons prefix active">check_box</i>
+                            <label>Applies to:</label>
+                            <p class="right no-margin-top">
+                                <input id="note" type="checkbox" checked="checked" />
+                                <label for="note">Note<i class="material-icons right">message</i></label>
+                            </p>
+                            <p class="right no-margin-top">
+                                <input id="document" type="checkbox" checked="checked" />
+                                <label for="document">Document<i class="material-icons right">description</i></label>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="modal-footer"><a class="modal-action waves-effect btn-flat hoverable waves-teal"
+                        href="#!">Create</a><a
+                        class="modal-action modal-close waves-effect btn-flat hoverable waves-red" href="#!">Cancel</a>
+                </div>
+            </div>
+            <!-- Modal: File context menu-->
+            <div class="modal bottom-sheet" id="file_context_menu">
+                <div class="modal-content">
+                    <div class="row">
+                        <h5>Bảng điều khiển</h5>
+                        <div class="divider"></div>
+                        <div class="divider"></div>
+                    </div>
+                    <div class="row center no-margin-bottom">
+                        <div class="col s4 section">
+                            <div class="row"><a class="btn-flat waves-effect hoverable">Sao chép<i
+                                        class="material-icons left">content_copy</i></a></div>
+                            <div class="row"><a class="btn-flat waves-effect hoverable">Di chuyển<i
+                                        class="material-icons left">subdirectory_arrow_right</i></a></div>
+                        </div>
+                        <div class="col s4 section">
+                            <div class="row"><a class="btn-flat waves-effect hoverable" href="/create_session_course.html">Sửa bài học<i
+                                class="material-icons left">file_download</i></a></div>
+                            <div class="row"><a class="btn-flat waves-effect hoverable">Xóa<i
+                                        class="material-icons left">delete</i></a></div>
+                            
+                            <div class="row no-margin-bottom"><a class="btn-flat waves-effect hoverable">Thông tin<i
+                                        class="material-icons left">info_outline</i></a></div>
+                        </div>
+                        <div class="col s4 section">
+                            <div class="row"><a class="btn-flat waves-effect hoverable">Đổi tên<i
+                                        class="material-icons left">description</i></a></div>
+                            <div class="row"><a class="btn-flat waves-effect hoverable">Tag<i
+                                        class="material-icons left">label_outline</i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal: Folder context menu-->
+            <div class="modal bottom-sheet" id="folder_context_menu">
+                <div class="modal-content">
+                    <div class="row">
+                        <h5>Thư mục</h5>
+                        <div class="divider"></div>
+                        <div class="divider"></div>
+                    </div>
+                    <div class="row center no-margin-bottom">
+                        <div class="col s4 section">
+                            <div class="row"><a class="btn-flat waves-effect hoverable">Di chuyển<i
+                                        class="material-icons left">subdirectory_arrow_right</i></a></div>
+                            <!-- <div class="row"><a class="btn-flat waves-effect hoverable">Sắp xếp lại<i
+                                        class="material-icons left">reorder</i></a></div> -->
+                            <div class="row"><a class="btn-flat waves-effect hoverable">Sắp xếp<i
+                                        class="material-icons left">sort</i></a></div>
+                        </div>
+                        <div class="col s4 section">
+                            <!-- <div class="row"><a class="btn-flat waves-effect hoverable">Xóa<i
+                                        class="material-icons left">delete</i></a></div> -->
+                            <!-- <div class="row"><a class="btn-flat waves-effect hoverable">Export<i
+                                        class="material-icons left">file_download</i></a></div> -->
+                            <!-- <div class="row"><a class="btn-flat waves-effect hoverable">Export CSV<i
+                                        class="material-icons left">file_download</i></a></div> -->
+                            <div class="row"><a class="btn-flat waves-effect hoverable" href="/create_session_course.html">Thêm bài học<i
+                                        class="material-icons left">folder_open</i></a></div>
+                            <div class="row no-margin-bottom"><a class="btn-flat waves-effect hoverable">Chi tiết<i
+                                        class="material-icons left">info_outline</i></a></div>
+                        </div>
+                        <div class="col s4 section">
+                            <div class="row"><a class="btn-flat waves-effect hoverable">Đặt tên<i
+                                        class="material-icons left">folder</i></a></div>
+                            <div class="row"><a class="btn-flat waves-effect hoverable">Gắn Tag<i
+                                        class="material-icons left">label_outline</i></a></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+    </script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="/vendor/OwlCarousel/owl.carousel.js"></script> -->
+    <script src="/vendor/semantic/semantic.min.js"></script>
+    <script src="/js/custom.js"></script>
+    <script src="/js/night-mode.js"></script>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js'></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.modal-trigger').leanModal();
+
+            $('.button-collapse').sideNav({
+                menuWidth: 380, // Default is 240
+                edge: 'left',
+                closeOnClick: true
+            });
+
+            $('.collapsible').collapsible();
+
+            $('.dropdown-button').dropdown({
+                inDuration: 300,
+                outDuration: 225,
+                constrain_width: true, // Does not change width of dropdown to that of the activator
+                hover: false, // Activate on hover
+                gutter: 0, // Spacing from edge
+                belowOrigin: true, // Displays dropdown below the button
+                alignment: 'right' // Displays dropdown with edge aligned to the left of button
+            })
+
+            $('select').material_select();
+
+            // Only used if initializing with jQuery
+            $('.materialboxed').materialbox();
+            $('.carousel').carousel();
+        });
+    </script>
+</body>
+
+</html>

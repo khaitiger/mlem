@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+
+<!-- Mirrored from gambolthemes.net/html-items/cursus_demo_f12/create_new_course.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 May 2021 03:49:46 GMT -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+    <meta name="description" content="Gambolthemes">
+    <meta name="author" content="Gambolthemes">
+    <title>Cursus - Create New Course</title>
+
+    <link rel="icon" type="image/png" href="images/fav.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,500" rel='stylesheet'>
+    <link href='vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
+    <link href="css/vertical-responsive-menu1.min.css" rel="stylesheet">
+    <link href="css/instructor-dashboard.css" rel="stylesheet">
+    <link href="css/instructor-responsive.css" rel="stylesheet">
+    <link href="css/night-mode.css" rel="stylesheet">
+    <link href="css/jquery-steps.css" rel="stylesheet">
+
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="vendor/semantic/semantic.min.css">
+</head>
+
+<body>
+    <div id="chatbox_html"></div>
+
+    <!-- Thanh header -->
+    <div id="header_html"></div>
+
+    <!-- thanh menu  -->
+    <div id="menu_user_html"></div>
+
+    <div class="wrapper">
+        <div class="sa4d25" style="margin-top: -4rem;">
+            <div class="container">
+                      <form action="/saveprofile" method="post">
+                <div class="col-12">
+                    <div class="course_tabs_1">
+                        <div class="tab-from-content">
+                            <div class="title-icon">
+
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <h1 class="st_title" style="padding: 1rem; font-size: x-large;"><i class='uil uil-cog'></i> Chỉnh sữa hồ sơ của tôi</h1>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <button style=" margin: auto; float: right; border-radius: 0%;" class="save_btn "><a href="" style="color: #F0F0F0;">XEM HỒ SƠ</a></button>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="course__form">
+                                <div class="general_info10">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="price_title" style="margin-top: 2rem;">
+                                                <h2>Giới thiệu</h2>
+                                                <br>
+                                                <h5>Hãy để cộng đồng Mlem gồm những người học và người hướng dẫn khác nhận ra bạn.</h5>
+                                            </div>
+                                        </div>
+                              
+                                        <div class="col-lg-8 col-md-6">
+                                            <div class="ui search focus mt-30 lbel25">
+                                                <label style="font-weight: bold;">Họ và tên*</label>
+                                                <div class="ui left icon input swdh19">
+                                                    <input class="prompt srch_explore" type="text"  th:value="${user.fullName}" name="fullName" maxlength="60" id="nameuser" value="">
+                                                    <div class="badge_num">60</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <div class="ui search focus mt-30">
+                                                <div class="ui left icon labeled input swdh11 swdh31">
+                                                    <div class="ui label lb12">
+                                                        Email:
+                                                    </div>
+                                                    <input class="prompt srch_explore" type="text" name="email" th:value="${user.email}" id="id_email" required="" maxlength="64" placeholder="yoursite.com" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="col-lg-12">
+                                            <div class="divider-1"></div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="price_title" style="margin-top: 2rem;">
+                                                <h2>Thông tin chi tiết về bạn</h2>
+                                                <br>
+                                                <h5>Giới thiệu bản thân với cộng đồng Mlem. Kết nối với những người học như bạn để phát triển mạng lưới của bạn..</h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="course_des_textarea mt-30 lbel25">
+                                                <label style="font-weight: bold;">Giới thiệu sơ lược về bản thân*</label>
+                                                <div class="course_des_bg">
+                                                    <ul class="course_des_ttle">
+                                                        <li><a href="#"><i class="uil uil-bold"></i></a></li>
+                                                        <li><a href="#"><i class="uil uil-italic"></i></a></li>
+                                                        <li><a href="#"><i class="uil uil-list-ul"></i></a></li>
+                                                        <li><a href="#"><i class="uil uil-left-to-right-text-direction"></i></a></li>
+                                                        <li><a href="#"><i class="uil uil-right-to-left-text-direction"></i></a></li>
+                                                        <li><a href="#"><i class="uil uil-list-ui-alt"></i></a></li>
+                                                        <li><a href="#"><i class="uil uil-link"></i></a></li>
+                                                        <li><a href="#"><i class="uil uil-text-size"></i></a></li>
+                                                        <li><a href="#"><i class="uil uil-text"></i></a></li>
+                                                    </ul>
+                                                    <div class="textarea_dt">
+                                                        <div class="ui form swdh339">
+                                                            <div class="field">
+                                                                <textarea th:value="${user.about}" rows="5" name="about" id="id_course_description" placeholder="Insert your course description"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6">
+                                            <div class="ui search focus mt-30 lbel25">
+                                                <label style="font-weight: bold;">Số điện thoại*</label>
+                                                <div class="ui left icon input swdh19">
+                                                    <input th:value="${user.phone}"  class="prompt srch_explore" type="text" placeholder="Nhập số điện thoại." name="phone" maxlength="10" id="phone" value="">
+                                                    <div class="badge_num">10</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-12">
+                                            <div class="mt-30 lbel25">
+                                                <label style="font-weight: bold;">Giới tính*</label>
+                                            </div>
+                                            <select name="gender" class="ui hj145 dropdown cntry152 prompt srch_explore">
+                                             
+                                                <option value="Nam" selected>Nam </option>
+                                                <option value="Nữ">Nữ</option>
+                                                <option value="Khác">Khác</option>
+                                                </select>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6">
+                                            <div class="ui search focus mt-20 lbel25">
+                                                <label class="timefrom" style="font-weight: bold;">Ngày tháng năm sinh*</label>
+                                                <div class="ui left icon input swdh19">
+                                                    <input  name="dob" id="timefrom"  class="prompt srch_explore datepicker-here" type="date" data-language="en" placeholder="dd/mm/yyyy">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="divider-1"></div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="price_title" style="margin-top: 2rem;">
+                                                <h2>Liên kết hồ sơ</h2>
+
+                                                <h5>Giúp chia sẽ thông tin nhiều hơn.</h5>
+                                            </div>
+                                        </div>
+                                        <div class="basic_form">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        
+                                                        <div class="col-lg-12">
+                                                            <div class="ui search focus mt-30">
+                                                                <div class="ui left icon labeled input swdh11 swdh31">
+                                                                    <div class="ui label lb12">
+                                                                        http://facebook.com/
+                                                                    </div>
+                                                                    <input class="prompt srch_explore"  type="text" name="linkFace"   maxlength="64" placeholder="Facebook Profile">
+                                                                </div>
+                                                                <div class="help-block">Thêm tên người dùng Facebook của bạn (ví dụ: johndoe). </div>
+                                                            </div>
+                                                        </div>
+                                                       
+                                                        <div class="col-lg-12">
+                                                            <div class="ui search focus mt-30">
+                                                                <div class="ui left icon labeled input swdh11 swdh31">
+                                                                    <div class="ui label lb12">
+                                                                        http://www.youtube.com/
+                                                                    </div>
+                                                                    <input class="prompt srch_explore" type="text" name="linkYoutube" id="id_youtube" maxlength="64" placeholder="Youtube Profile">
+                                                                </div>
+                                                                <div class="help-block">Thêm tên người dùng Youtube của bạn (ví dụ: johndoe). </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-footer step-tab-pager" style="margin-top: 1rem; margin-bottom: 3rem; margin-left: 3rem;">
+                    <button type="submit" class="btn btn-default steps_btn">Lưu thay đổi</button>
+                </div>
+               </form>
+            </div>
+        </div>
+        <div id="footer_html"></div>
+    </div>
+
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="js/vertical-responsive-menu.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/OwlCarousel/owl.carousel.js"></script>
+    <script src="vendor/semantic/semantic.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/night-mode.js"></script>
+    <script src="js/jquery-steps.min.js"></script>
+
+
+    <script>
+        $(function() {
+            $('#chatbox_html').load('/chatbox');
+            $('#menu_user_html').load('/menu_user', function() {
+                $(".sourseactive").addClass("active");
+            });
+            $('#header_html').load('/header');
+
+            $('#footer_html').load('./footer.html');
+
+        })
+    </script>
+
+</body>
+
+<!-- Mirrored from gambolthemes.net/html-items/cursus_demo_f12/create_new_course.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 May 2021 03:49:54 GMT -->
+
+</html>

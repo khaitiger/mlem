@@ -1,0 +1,1877 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+
+<!-- Mirrored from gambolthemes.net/html-items/cursus_demo_f12/course_detail_view.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 May 2021 03:50:12 GMT -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+    <meta name="description" content="Gambolthemes">
+    <meta name="author" content="Gambolthemes">
+    <title>Cursus - Course Detail View</title>
+
+    <link rel="icon" type="image/png" href="/images/fav.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,500" rel='stylesheet'>
+    <link href='/vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
+    <link href="/css/vertical-responsive-menu.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
+    <link href="/css/night-mode.css" rel="stylesheet">
+  <link href="/css/ratingstar.css" rel="stylesheet">
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="/vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/vendor/semantic/semantic.min.css">
+</head>
+
+<body>
+
+    <div class="modal vd_mdl fade" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+                <div class="modal-body">
+                    <iframe src="https://www.youtube.com/embed/Ohe_JzKksvA" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+    <div id="chatbox_html"></div>
+
+    <!-- Thanh header -->
+    <div id="header_html"></div>
+
+    <!-- thanh menu  -->
+    <div id="menu_user_html"></div>
+
+    <!-- Thanh main -->
+    <div class="wrapper _bg4586">
+        <!-- Thanh tiêu đê khoá học -->
+        <div class="_215b01">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section3125">
+                            <div class="row justify-content-center">
+                                <div class="col-xl-4 col-lg-5 col-md-6">
+                                    <div class="preview_video">
+                                        <a href="#" class="fcrse_img" data-toggle="modal" data-target="#videoModal">
+                                            <img th:src="${generalC.image}" alt="">
+                                            <div class="course-overlay">
+                                                 <div class="badge_seller" th:if="${generalC.sale}>0">Bestseller <span th:text="${generalC.sale}"></span><span>%</span></div>
+                                                <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                                <span class="_215b02">Giới thiệu khoá học</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="_215b10">
+                                        <a href="#" class="_215b11">
+                                            <span><i class="uil uil-heart"></i></span>Lưu
+                                        </a>
+                                        <a href="#" class="_215b12">
+                                            <span><i class="uil uil-windsock"></i></span>Báo cáo lạm dụng
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xl-8 col-lg-7 col-md-6">
+                                    <div class="_215b03">
+                                        <h2 th:text="${generalC.name}"></h2>
+                                        <span class="_215b04" th:text="${generalC.level.name}"></span>
+                                    </div>
+                         
+                                    <div class="_215b06">
+                                        <div class="_215b07">
+                                            <span><i class='uil uil-comment'></i></span> Việt Nam
+                                        </div>
+                                        <div class="_215b08">
+                                            <span><i class='uil uil-closed-captioning'></i></span>
+                                            <span>Phụ đề Tiếng Việt</span>
+                                        </div>
+                                    </div>
+                                    <div class="_215b05">
+                                        Cập nhật lần cuối <span th:text="${generalC.createDate}"></span>
+                                    </div>
+                                    <div class="_215b05" th:if="${generalC.sale}>0">
+                                        <h3>Giá Sale: <span style="color:red ; font-size:30px" th:text="${generalC.price}-${generalC.price}*${generalC.sale}/100"></span> <span style="color:red ; font-size:30px" >$ </span><span style="text-decoration-line:line-through " th:text="${generalC.price}"></span> <span>$<span></h3>
+                                    </div>
+                                       <div class="_215b05" th:if="${generalC.sale}==0">
+                                        
+                                        <h3>Giá: <span th:text="${generalC.price}"></span>$</h3>
+                                    </div>
+                                    <ul class="_215b31">
+                                       <li th:if="${check==false}"><a href="/lockCourse"><button class="btn_adcart" >Xem thử</button></a></li>
+                                        <li th:if="${check==false}">
+                                        
+                                        <form action="/paypal"
+												method="POST">
+
+												<input type="hidden" name="id" th:value="${generalC.id}"/>
+												<button class="btn_buy" type="submit">Mua Ngay</button>
+											</form>
+                                       </li>
+                                        <li th:if="${check==true}">
+                                      <a th:href="@{/Course/{id}(id=${generalC.id})}" >  <button class="btn_buy" type="submit">Học Ngay</button></a>
+                                        </li>
+                                    </ul>
+       
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Thanh giới thiệu giảng viên -->
+        <div class="_215b15 _byt1458">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="user_dt5">
+                            <div class="user_dt_left">
+ 
+                            </div>
+                            <div class="user_dt_right">
+                                <ul>
+                                    <li>
+                                        <a href="#" class="lkcm152"><i class="uil uil-eye"></i><span>1452</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="lkcm152"><i class="uil uil-thumbs-up"></i><span>100</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="lkcm152"><i class="uil uil-thumbs-down"></i><span>20</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="lkcm152"><i class="uil uil-share-alt"></i><span>9</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course_tabs">
+                            <nav>
+                                <div class="nav nav-tabs tab_crse justify-content-center" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-selected="true">Thông tin khoá học</a>
+                                    <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="false">Nội dung khoá học</a>
+                                    <a class="nav-item nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="false">Đánh giá</a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Thanh list giới thiệu -->
+        <div class="_215b17">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="course_tab_content">
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-about" role="tabpanel">
+                                    <div class="_htg451">
+                                        <div class="_htg452">
+                                            <h3>Yêu cầu</h3>
+                                            <ul>
+                                                <li><span class="_5f7g11">Đã có căn bản về đầu bếp</span></li>
+                                                <li><span class="_5f7g11">Ham học hỏi và yêu nghề</span></li>
+                                                <li><span class="_5f7g11">Đam mê học tập</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="_htg452 mt-35">
+                                            <h3>Miêu tả khoá học</h3>
+                                            <span class="_abc123">Khoá học món chay</span>
+                                            <p>Giúp người dùng chế biến và làm món chay ngon hơn<strong>giúp người dùng
+                                                    sau khi học xong có thể mở quán chay</strong>.
+                                                <ul class="_abc124">
+                                                    <li><span class="_5f7g11"><strong>Món chay khai vị </strong></span>
+                                                    </li>
+                                                    <li><span class="_5f7g11"><strong>Món chay Soup</strong></span></li>
+                                                    <li><span class="_5f7g11"><strong>Món chay chính</strong></span>
+                                                    </li>
+                                                    <li><span class="_5f7g11"><strong>Món chay tráng
+                                                                miệng</strong></span></li>
+                                                    <li><span class="_5f7g11"><strong>An toàn thực phẩm</strong></span>
+                                                    </li>
+                                                    <li><span class="_5f7g11"><strong>Đạo đức đầu bếp</strong></span>
+                                                    </li>
+                                                </ul>
+                                        </div>
+                                        <div class="_htg452 mt-35">
+                                            <h3>Khóa học này dành cho ai :</h3>
+                                            <ul class="_abc124">
+                                                <li><span class="_5f7g11">Dành cho nhà nội trợ</span></li>
+                                                <li><span class="_5f7g11">Những người muốn làm nhà hàng quán ăn</span>
+                                                </li>
+                                                <li><span class="_5f7g11">Những người đam mê ẩm thực</span></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="_htgdrt mt-35">
+                                            <h3>Những gì bạn sẽ học </h3>
+                                            <div class="_scd123">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <ul class="_htg452 _abcd145">
+
+                                                            <li>
+                                                                <div class="_5f7g15"><i class="fas fa-check-circle"></i><span>Kỹ năng
+                                                                        nấu món chay.</span></div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="_5f7g15"><i class="fas fa-check-circle"></i><span>Kỹ năng
+                                                                        chế biến các loại món chay.</span></div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="_5f7g15"><i class="fas fa-check-circle"></i><span>Vệ sinh an
+                                                                        toàn thực phẩm và đạo đức nghề nghiệp.</span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <ul class="_htg452 _abcd145">
+
+                                                            <li>
+                                                                <div class="_5f7g15"><i class="fas fa-check-circle"></i><span>Kỹ năng
+                                                                        bảo quản.</span></div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="_5f7g15"><i class="fas fa-check-circle"></i><span>Chế biến
+                                                                        nguyện liệu.</span></div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-courses" role="tabpanel">
+                                    <div class="crse_content">
+                                        <h3>Nội dung khoá học</h3>
+                                        <div class="_112456">
+                                            <ul class="accordion-expand-holder">
+                                                <li><span class="accordion-expand-all _d1452">Mở rộng</span></li>
+                                                <li><span class="_fgr123"> 30 bài học</span></li>
+                                                <li><span class="_fgr123">47:06:29</span></li>
+                                            </ul>
+                                        </div>
+                                        <div id="accordion" class="ui-accordion ui-widget ui-helper-reset">
+                                            <a href="javascript:void(0)" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                                                <div class="section-header-left">
+                                                    <span class="section-title-wrapper">
+                                                        <i class='uil uil-presentation-play crse_icon'></i>
+                                                        <span class="section-title-text">An toàn thực phẩm</span>
+                                                    </span>
+                                                </div>
+                                                <div class="section-header-right">
+                                                    <span class="num-items-in-section">5 bài học</span>
+                                                    <span class="section-header-length">22:08</span>
+                                                </div>
+                                            </a>
+                                            <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Giới thiệu về an toàn thực phẩm</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">00:12</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Bạn hiều gì về an toàn thực phẩm</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">01:42</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">An toàn thực phẩm gồm những gì?</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">00:51</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Khoá học đem lại.</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <a href="#" class="preview-text">Preview</a>
+                                                        <span class="content-summary">07:48</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Bài kiểm tra</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">00:11</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="javascript:void(0)" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                                                <div class="section-header-left">
+                                                    <span class="section-title-wrapper">
+                                                        <i class='uil uil-presentation-play crse_icon'></i>
+                                                        <span class="section-title-text">Đạo đức kinh doanh</span>
+                                                    </span>
+                                                </div>
+                                                <div class="section-header-right">
+                                                    <span class="num-items-in-section">6 lectures</span>
+                                                    <span class="section-header-length">27:26</span>
+                                                </div>
+                                            </a>
+                                            <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Unit Objectives</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <a href="#" class="preview-text">Preview</a>
+                                                        <span class="content-summary">01.40</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Note about Setting Up Front-End Developer Environment
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">00:30</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Setting Up Front-End Developer Environment
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">03:11</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Note about Introduction to the Web</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">00:11</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Introduction to the Web</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">10.08</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">The Front End Holy Trinity</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <a href="#" class="preview-text">Preview</a>
+                                                        <span class="content-summary">11:46</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="javascript:void(0)" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                                                <div class="section-header-left">
+                                                    <span class="section-title-wrapper">
+                                                        <i class='uil uil-presentation-play crse_icon'></i>
+                                                        <span class="section-title-text">Món chay khai vị</span>
+                                                    </span>
+                                                </div>
+                                                <div class="section-header-right">
+                                                    <span class="num-items-in-section">13 lectures</span>
+                                                    <span class="section-header-length">58:55</span>
+                                                </div>
+                                            </a>
+                                            <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Unit Objectives</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">01.38</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">HTML Basicsng Up Front-End Developer Environment
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">05:53</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Note about Introduction to MDN</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">00:19</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Introduction to MDN</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">01:51</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">HTML Boilerplate and Comments</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">09:42</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Basic Tags</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">08:23</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">HTML Lists</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">04:32</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">HTML Lists Assignment</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">01:23</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">HTML Lists Assignment: SOLUTION</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">05:59</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Divs and Spans</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">05:23</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">HTML Attributes</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">09:00</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Recreate Webpage Assignment</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">01:00</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Recreate Webpage Assignment: SOLUTION
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">03:56</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="javascript:void(0)" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                                                <div class="section-header-left">
+                                                    <span class="section-title-wrapper">
+                                                        <i class='uil uil-presentation-play crse_icon'></i>
+                                                        <span class="section-title-text">Món chay hầm</span>
+                                                    </span>
+                                                </div>
+                                                <div class="section-header-right">
+                                                    <span class="num-items-in-section">13 lectures</span>
+                                                    <span class="section-header-length">01.12:29</span>
+                                                </div>
+                                            </a>
+                                            <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Unit Objectives</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">01.19</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">HTML Tables</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">06:03</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Tables Exercise</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">01:18</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Introduction to Forms</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">06:19</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Playing with Inputs</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">03:04</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">The Form Tag</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">06:36</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Labels</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">03:32</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Form Validations</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">03:43</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Dropdowns and Radio Buttons</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">11:19</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Form Exercise</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">07:23</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="javascript:void(0)" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                                                <div class="section-header-left">
+                                                    <span class="section-title-wrapper">
+                                                        <i class='uil uil-presentation-play crse_icon'></i>
+                                                        <span class="section-title-text">Món chay kho</span>
+                                                    </span>
+                                                </div>
+                                                <div class="section-header-right">
+                                                    <span class="num-items-in-section">15 lectures</span>
+                                                    <span class="section-header-length">01.40:15</span>
+                                                </div>
+                                            </a>
+                                            <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Unit Objectives</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">02.28</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">CSS Basics</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">05:25</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Our First Stylesheet</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">10:18</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Note about CSS Colors and Background and Border (next 2 lectures)</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">00:20</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">CSS Colors</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">14:35</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Background and Border</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">06:58</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Note about Selectors Basics Todo List
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">00:32</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Selectors Basics Todo List</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">10:43</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Introduction to Chrome Inspector</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">05:43</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">More Advanced Selectors</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">09:23</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Note about Specificity and the Cascade
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">00:23</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Specificity and the Cascade</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">10:38</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Note about Selectors Practice Exercise
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">00:22</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Selectors Practice Exercise</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">04:28</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Selectors Practice Exercise: SOLUTION
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">16:48</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="javascript:void(0)" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                                                <div class="section-header-left">
+                                                    <span class="section-title-wrapper">
+                                                        <i class='uil uil-presentation-play crse_icon'></i>
+                                                        <span class="section-title-text">Món chay chính</span>
+                                                    </span>
+                                                </div>
+                                                <div class="section-header-right">
+                                                    <span class="num-items-in-section">16 lectures</span>
+                                                    <span class="section-header-length">01.26:40</span>
+                                                </div>
+                                            </a>
+                                            <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Unit Objectives</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">01.40</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Text and Fonts</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">09:55</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">More Text and Fonts</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">04:42</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Note about Google Fonts</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">00:22</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Using Google Fonts</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">04:35</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Introduction to the Box Model</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">11:58</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Creating a Tic Tac Toe Board</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">01:41</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Creating a Tic Tac Toe Board: SOLUTION
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">07:43</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Note about Image Gallery Code Along Pt. 1
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">00:20</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Image Gallery Code Along Pt. 1</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">08:20</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Note about changes to Google Fonts</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">00:40</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Image Gallery Code Along Pt. 2</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">05:46</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">CSS Blog From Scratch Exercise Intro
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <a href="#" class="preview-text">Preview</a>
+                                                        <span class="content-summary">03:23</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">CSS Blog From Scratch Exercise SOLUTION Pt. 1</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">08:38</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">CSS Blog From Scratch Exercise SOLUTION Pt. 2</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">08:12</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">CSS Blog From Scratch Exercise SOLUTION Pt. 3</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">07:28</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="javascript:void(0)" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                                                <div class="section-header-left">
+                                                    <span class="section-title-wrapper">
+                                                        <i class='uil uil-presentation-play crse_icon'></i>
+                                                        <span class="section-title-text">Món chay tráng miệng</span>
+                                                    </span>
+                                                </div>
+                                                <div class="section-header-right">
+                                                    <span class="num-items-in-section">16 lectures</span>
+                                                    <span class="section-header-length">01.59:54</span>
+                                                </div>
+                                            </a>
+                                            <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Unit Objectives</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">02.28</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Note about Bootstrap versions</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">00:44</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">What is Bootstrap?</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">08:02</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Adding Bootstrap to a Project</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">09:15</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Forms and Inputs</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">14:00</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Nav Bars</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">15:44</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Note about The Grid System</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">00:11</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">The Grid System</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">08:43</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Grid System Pt. 2</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">11:43</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Note about Bootstrap Image Gallery Pt. 1
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">00:55</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Bootstrap Image Gallery Pt. 1</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">14:20</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Note about Font Awesome</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">00:16</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Bootstrap Image Gallery Pt. 2</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">09:46</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Creating a Startup Landing Page Code Along
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">14:23</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Creating a Startup Landing Page Code Along Pt. 2</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">10:30</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Note about making bootstrap responsive on mobile devices</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">00:14</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="javascript:void(0)" class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+                                                <div class="section-header-left">
+                                                    <span class="section-title-wrapper">
+                                                        <i class='uil uil-presentation-play crse_icon'></i>
+                                                        <span class="section-title-text">Kiểm tra cuối kỳ</span>
+                                                    </span>
+                                                </div>
+                                                <div class="section-header-right">
+                                                    <span class="num-items-in-section">11 lectures</span>
+                                                    <span class="section-header-length">01.16:28
+                                                    </span>
+                                                </div>
+                                            </a>
+                                            <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">A History of Bootstrap 4</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">04.40</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">The Bootstrap 4 Documentation</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">02:24</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Changes from Bootstrap 3 to 4</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">07:52</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Bootstrap 4 Code/Solutions Download</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">00:41</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Getting Started With Bootstrap 4</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">05:15</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Bootstrap 4 Colors and Backgrounds</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">05:59</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Typography</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">11:12</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">New Fancy Spacing Utilities</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">12:28</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Responsive Breakpoints</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">10:55</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Bootstrap4 Navbars</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">08:20</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">The New Display Utility</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">07:26</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Bootstrap 4: Flexbox and Layout</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">10:14</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Flexbox Utilities Part 2</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">07:23</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Navs and Flexbox</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">09:56</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">The Bootstrap 4 Grid</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">08:56</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">PATTERN PROJECT Part 1</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">12:06</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">PATTERN PROJECT Part 2</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">11:30</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">The Grid + Flexbox</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">11:44</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-play-circle icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Museum of Candy Project Part 1</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">05:36</span>
+                                                    </div>
+                                                </div>
+                                                <div class="lecture-container">
+                                                    <div class="left-content">
+                                                        <i class='uil uil-file icon_142'></i>
+                                                        <div class="top">
+                                                            <div class="title">Note about Museum of Candy Project Part 2
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details">
+                                                        <span class="content-summary">00:12</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <a class="btn1458" href="#">2 Bài học tiếp</a>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-reviews" role="tabpanel">
+                              
+                                  <button   th:if="${check==true}" class="btn_adcart" style="border-radius:0% ; float: right;" data-toggle="modal" data-target="#exampleModal"> <i class='uil uil-pen'></i>Viết bài đánh giá</button>
+                                 
+                                    <!-- thanh đánh giá -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="background-color: #FFB71A;">
+                                                    <h2 class="modal-title" id="exampleModalLabel">Bài đánh giá của <span th:text="${user.fullName}"></span></h2>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                </div>
+                                             <div class="modal-body">
+                                                    <P>Đây là những bài đánh giá công khai và có thể chỉnh sửa. Mọi người có thể xem được ảnh và tên Tài khoản Mlem của bạn. Nhà phát triển có thể xem được thông tin về quốc gia và thiết bị của bạn (chẳng hạn
+                                                        như ngôn ngữ, kiểu máy và phiên bản hệ điều hành).</P>
+                                                    <form action="#" th:action="@{/savevote}" th:object="${vote}"  method="post">
+                                                        <div id="full-stars-example-two" style="margin-left: 30%;">
+                                                            <ul class="ratings">
+                                                                <li value="5" class="star"></li>
+  																<li value="4" class="star"></li>
+  																<li value="3" class="star"></li>
+  																<li value="2" class="star"></li>
+  																<li value="1" class="star"></li>
+                                                              </ul>
+                                                              <input  th:field="*{numVote}" type="hidden" id="vote" />
+                                                        </div>
+                                                        
+                                                        <div class="form-group">
+                                                            <label style="font-size: medium; font-weight: bold;" for="message-text" class="col-form-label">Đánh giá:</label>
+                                                            <textarea th:field="*{cmtReview}"  class="form-control" id="message-text" rows="5" placeholder="Viết cảm nghĩ của bạn về khoá học vào đây..."></textarea>
+                                                      	
+                                                      		<input type="hidden" th:field="*{course}"></input>
+                                                        </div>
+                                                  	 <button type="button" class="btn_buy" style="background-color: gray; border-radius: 10%;" data-dismiss="modal">Huỷ</button>
+                                                    <button type="submit" class="btn_adcart" style=" border-radius: 10%;">Gửi</button>
+                                             </form>
+                                                </div>
+                                            
+                                                  
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="student_reviews">
+                                        <div class="row">
+                                            <div class="col-lg-5">
+                                                <div class="reviews_left">
+                                                    <h3>Đánh giá của học viên</h3>
+                                                    <div class="total_rating">
+                                                        <div class="_rate001"><span th:text="${averageStar}"></span></div>
+                                                        <div class="rating-box" th:if="${averageStar<1}">
+                                                            <span class="rating-star half-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                        </div>
+                                                        <div class="rating-box" th:if="${averageStar==1}">
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                        </div>
+                                                          <div class="rating-box" th:if="${averageStar<2 && averageStar>1}">
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star half-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                        </div>
+                                                         <div class="rating-box" th:if="${averageStar==2}">
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                        </div>
+                                                          <div class="rating-box" th:if="${averageStar<3 && averageStar>2}">
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star half-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                        </div>
+                                                          <div class="rating-box" th:if="${averageStar==3}">
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                        </div>
+                                                        <div class="rating-box" th:if="${averageStar<4 && averageStar>3}">
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star half-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                        </div>
+                                                          <div class="rating-box" th:if="${averageStar==4}">
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                        </div>
+                                                           <div class="rating-box" th:if="${averageStar<5 && averageStar>4}">
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star half-star"></span>
+                                                        </div>
+                                                          <div class="rating-box" th:if="${averageStar==5}">
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                        </div>
+                                                        <div class="_rate002">Course Rating (<span  th:text="${totalStar}"></span><span> votes)</span></div>
+                                                    </div>
+                                                    <div class="_rate003">
+                                                        <div class="_rate004">
+                                                 
+                                                            <div class="rating-box">
+                                                                <span class="rating-star full-star"></span>
+                                                                <span class="rating-star full-star"></span>
+                                                                <span class="rating-star full-star"></span>
+                                                                <span class="rating-star full-star"></span>
+                                                                <span class="rating-star full-star"></span>
+                                                            </div>
+                                                            <div class="_rate002"><span th:text="${vote5Percent}"></span><span>%</span></div>
+                                                        </div>
+                                                        <div class="_rate004">
+                                                        
+                                                            <div class="rating-box">
+                                                                <span class="rating-star full-star"></span>
+                                                                <span class="rating-star full-star"></span>
+                                                                <span class="rating-star full-star"></span>
+                                                                <span class="rating-star full-star"></span>
+                                                                <span class="rating-star empty-star"></span>
+                                                            </div>
+                                                       <div class="_rate002"><span th:text="${vote4Percent}"></span><span>%</span></div>
+                                                        </div>
+                                                        <div class="_rate004">
+                                                         
+                                                            <div class="rating-box">
+                                                                <span class="rating-star full-star"></span>
+                                                                <span class="rating-star full-star"></span>
+                                                                <span class="rating-star full-star"></span>
+                                                                <span class="rating-star empty-star"></span>
+                                                                <span class="rating-star empty-star"></span>
+                                                            </div>
+                                                              <div class="_rate002"><span th:text="${vote3Percent}"></span><span>%</span></div>
+                                                        </div>
+                                                        <div class="_rate004">
+                                                         
+                                                            <div class="rating-box">
+                                                                <span class="rating-star full-star"></span>
+                                                                <span class="rating-star full-star"></span>
+                                                                <span class="rating-star empty-star"></span>
+                                                                <span class="rating-star empty-star"></span>
+                                                                <span class="rating-star empty-star"></span>
+                                                            </div>
+                                                           <div class="_rate002"><span th:text="${vote2Percent}"></span><span>%</span></div>
+                                                        </div>
+                                                        <div class="_rate004">
+                                              
+                                                            <div class="rating-box">
+                                                                <span class="rating-star full-star"></span>
+                                                                <span class="rating-star empty-star"></span>
+                                                                <span class="rating-star empty-star"></span>
+                                                                <span class="rating-star empty-star"></span>
+                                                                <span class="rating-star empty-star"></span>
+                                                            </div>
+                                                           <div class="_rate002"><span th:text="${vote1Percent}"></span><span>%</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-7">
+                                                <div class="review_right">
+                                                    <div class="review_right_heading">
+                                                        <h3>Reviews</h3>
+                                                        <div class="review_search">
+                                                            <input class="rv_srch" type="text" placeholder="Search reviews...">
+                                                            <button class="rvsrch_btn"><i class='uil uil-search'></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="review_all120">
+                                                    <div class="review_item" th:each="vc:${voteCourse}">
+                                                        <div class="review_usr_dt">
+                                                            <img th:src="${vc.student.avatar}" alt="">
+                                                            <div class="rv1458">
+                                                                <h4 class="tutor_name1" th:text="${vc.student.fullName}"></h4>
+                                                                <span class="time_145" th:text="${vc.dateReview}"></span>
+                                                            </div>
+                                                            </div>
+                                                         
+                                                           <div class="rating-box mt-20" th:if="${vc.numVote==1}">
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                        </div>
+                                                           <div class="rating-box mt-20" th:if="${vc.numVote==2}">
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                        </div>
+                                                     
+                                                           <div class="rating-box mt-20" th:if="${vc.numVote==3}">
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                        </div>
+                                                        <div class="rating-box mt-20" th:if="${vc.numVote==4}">
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                        </div>
+                                                          <div class="rating-box mt-20" th:if="${vc.numVote==5}">
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                        </div>
+                                                        <p class="rvds10" th:text="${vc.cmtReview}"></p>
+                                                       
+                                                    </div>
+                                                
+                                                    <div class="review_item">
+                                                        <a href="#" class="more_reviews">See More Reviews</a>
+                                                    </div>
+                                                       </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Thanh footer -->
+        <footer class="footer mt-30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="item_f1">
+                            <a href="about_us.html">Giới thiệu</a>
+                            <a href="our_blog.html">Blog</a>
+                            <a href="career.html">Nghề nghiệp</a>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="item_f1">
+                            <a href="help.html">Trợ giúp</a>
+                            <a href="coming_soon.html">Quảng cáo</a>
+                            <a href="coming_soon.html">Nhà phát triển</a>
+                            <a href="contact_us.html">Liên hệ</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="item_f1">
+                            <a href="terms_of_use.html">Bản quyền</a>
+                            <a href="terms_of_use.html">Điều kiện</a>
+                            <a href="terms_of_use.html">Chính sách bảo mật</a>
+                            <a href="sitemap.html">Sơ đồ</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="item_f3">
+                            <a href="#" class="btn1542">Liên hệ Mlem</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="footer_bottm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="fotb_left">
+                                        <li>
+                                            <a href="index-2.html">
+                                                <div class="footer_logo">
+                                                    <img src="images/logo1.svg" alt="">
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <p>© 2020 <strong>Mlem</strong>. All Rights Reserved.</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="edu_social_links">
+                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                        <a href="#"><i class="fab fa-youtube"></i></a>
+                                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/js/vertical-responsive-menu.min.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/OwlCarousel/owl.carousel.js"></script>
+    <script src="/vendor/semantic/semantic.min.js"></script>
+    <script src="/js/custom.js"></script>
+    <script src="/js/night-mode.js"></script>
+        <script>
+        $(function() {
+            $('#chatbox_html').load('/chatbox');
+            $('#menu_user_html').load('/menu_user', function() {
+                $(".sourseactive").addClass("active");
+            });
+            $('#header_html').load('/header');
+
+        })
+    </script>
+    <script>
+    $(function (){
+    	  var star = '.star',
+    	      selected = '.selected';
+    	  $(star).on('click', function(){
+    	    $(selected).each(function(){
+    	      $(this).removeClass('selected');
+    	    });
+    	    $(this).addClass('selected');
+    	     $("#vote").val( $(this).val());
+    	  });
+    	 
+    	});
+</script>
+</body>
+
+<!-- Mirrored from gambolthemes.net/html-items/cursus_demo_f12/course_detail_view.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 May 2021 03:50:12 GMT -->
+
+</html>

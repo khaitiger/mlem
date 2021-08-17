@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo bài đăng</title>
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+
+    <style>
+        .gg-container {
+            --main-color: #000;
+            --secondary-color: #111;
+            --txt-color: #fff;
+            --img-bg-color: rgba(240, 240, 240, 0.9);
+            --backdrop-color: rgba(240, 240, 240, 0.9);
+            --gap-length: 2px;
+            --row-height: 200px;
+            --column-width: 220px
+        }
+
+        .gg-container *[data-theme="dark"] {
+            --main-color: #ddd;
+            --secondary-color: #eee;
+            --txt-color: #111;
+            --img-bg-color: rgba(20, 20, 20, 0.9);
+            --backdrop-color: rgba(30, 30, 30, 0.9)
+        }
+
+        .gg-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(var(--column-width), 1fr));
+            grid-auto-rows: var(--row-height);
+            grid-gap: var(--gap-length);
+            margin: 20px 0
+        }
+
+        .gg-box img {
+            object-fit: cover;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            background: var(--img-bg-color)
+        }
+
+        .gg-box img:hover {
+            opacity: .98
+        }
+
+        #gg-screen {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: var(--backdrop-color);
+            z-index: 9999;
+            text-align: center
+        }
+
+        #gg-screen .gg-image {
+            height: 100%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center
+        }
+
+        #gg-screen .gg-image img {
+            max-width: 100%;
+            max-height: 100%;
+            margin: 0 auto
+        }
+
+        .gg-btn {
+            width: 35px;
+            height: 35px;
+            background: var(--main-color);
+            color: var(--txt-color);
+            text-align: center;
+            line-height: 35px;
+            cursor: pointer;
+            -moz-transition: all .4s ease;
+            -o-transition: all .4s ease;
+            -webkit-transition: all .4s ease;
+            transition: all .4s ease;
+            font-size: 20px;
+            box-sizing: border-box;
+            padding-left: 2px;
+            position: fixed;
+            bottom: 10px
+        }
+
+        .gg-btn:hover {
+            background: var(--secondary-color)
+        }
+
+        .gg-close {
+            top: 10px
+        }
+
+        .gg-close,
+        .gg-next {
+            right: 10px
+        }
+
+        .gg-prev {
+            right: 50px
+        }
+
+        .gg-prev,
+        .gg-next {
+            bottom: 10px
+        }
+
+        @media(min-width:478px) {
+            .gg-box img:nth-child(2n):not(:last-of-type) {
+                grid-row-end: span 2
+            }
+
+            [data-layout="horizontal"] img:nth-child(2n):not(:last-of-type) {
+                grid-column-end: span 2;
+                grid-row-end: span 1
+            }
+
+            [data-layout="square"] img:nth-child(2n):not(:last-of-type) {
+                grid-row-end: span 1;
+                grid-column-end: span 1
+            }
+        }
+
+        @media(max-width:768px) {
+            .gg-box {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                grid-auto-rows: calc(var(--row-height) - 15vh);
+                margin: 10px 0
+            }
+        }
+
+        @media(max-width:450px) {
+            .gg-box {
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr))
+            }
+        }
+    </style>
+
+
+    <link href="/css/sweetalert.css" rel="stylesheet" />
+    <script src="/js/sweetalert.min.js"></script>
+
+    <link rel="icon" type="image/png" href="images/fav.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,500" rel='stylesheet'>
+    <link href='/vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
+    <link href="/css/vertical-responsive-menu1.min.css" rel="stylesheet">
+    <link href="/css/instructor-dashboard.css" rel="stylesheet">
+    <link href="/css/instructor-responsive.css" rel="stylesheet">
+    <link href="/css/night-mode.css" rel="stylesheet">
+    <link href="/css/jquery-steps.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="/vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="vendor/semantic/semantic.min.css">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/chosen.jquery.min.js"></script>
+    <link href="/css/chosen.min.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+    <!-- Thanh header -->
+    <div id="header_html"></div>
+
+    <!-- thanh menu  -->
+    <div id="menu_user_html"></div>
+
+    <!-- Main-course -->
+
+    <div class="wrapper">
+        <div class="sa4d25">
+            <div class="container-fluid">
+                <div class="row">
+                    <body class="antialiased sans-serif bg-gray-200 ">
+                        <div x-data="app()" x-cloak>
+                
+                            <div class="container mx-auto px-4 py-10">
+                                <div class="md:flex -mx-4">
+                                    <div class="md:w-3/5 px-4">
+                                        <div class="bg-white rounded-lg shadow p-6 mb-8">
+                                            <div class="flex w-full">
+                                                <div class="flex-shrink-0 mr-5">
+                                                    <div
+                                                        class="cursor-pointer font-bold w-12 h-12 bg-gray-300 flex items-center justify-center rounded-full">
+                                                        <span id="changeName"
+                                                            class="uppercase text-gray-700"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <textarea x-model="tweetText"
+                                                        class="mb-2 bg-gray-200 focus:outline-none focus:shadow-outline focus:bg-white border border-transparent rounded-lg py-2 px-4 block w-full appearance-none leading-normal placeholder-gray-700"
+                                                        :class="{'border border-red-500': tweetIsOutOfRange() && tweetText.length != 0 }"
+                                                        rows="3" placeholder="Chia sẻ công thức vào đây..."></textarea>
+                
+                                                    <div class="relative w-auto mb-2 border rounded-lg relative bg-gray-100 mb-4 shadow-inset overflow-hidden"
+                                                        x-show="images.length > 0">
+                                                        <div class="gg-container">
+                                                            <div class="gg-box square-gallery" style="margin: 0">
+                                                                <template x-for="image in images">
+                                                                    <img class="object-cover w-full" :src="image" />
+                                                                </template>
+                                                            </div>
+                                                        </div>
+                                                        <div @click="images = []; document.getElementById('fileInput').value = ''"
+                                                            class="shadow cursor-pointer absolute top-0 right-0 p-2 mr-2 mt-2 rounded-full bg-gray-600">
+                                                            <svg class="h-6 w-6 text-gray-100" fill="none" viewBox="0 0 24 24"
+                                                                stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                                    d="M6 18L18 6M6 6l12 12" />
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                
+                                                    <input multiple name="photo" id="fileInput" accept="image/*" class="hidden"
+                                                        type="file" @change="let files = document.getElementById('fileInput').files; 
+                                                        for (var i = 0; i < files.length; i++) {
+                                                                var reader = new FileReader();
+                                                                reader.onload = (e) => images.push(e.target.result);
+                                                                reader.readAsDataURL(files[i]);
+                                                        }
+                                                    ">
+                
+                                                    <div class="flex justify-between items-center">
+                                                        <div>
+                                                            <label for="fileInput" type="button"
+                                                                class="-ml-2 cursor-pointer inine-flex justify-between items-center focus:outline-none p-2 rounded-full text-gray-500 bg-white hover:bg-gray-200">
+                                                                <svg class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24"
+                                                                    stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width="2"
+                                                                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                                                </svg>
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <span
+                                                                :class="{ 'text-red-600': charactersRemaining() <= 20 && charactersRemaining() > 10, 'text-red-400': charactersRemaining() <= 10 }"
+                                                                class="mr-3 text-sm text-gray-600"
+                                                                x-text="charactersRemaining()"></span>
+                
+                                                            <button @click="saveTweet()"
+                                                                :disabled="(tweetText == '') || tweetIsOutOfRange()"
+                                                                :class="{'cursor-not-allowed opacity-50': (tweetText == '') || tweetIsOutOfRange()}"
+                                                                type="button"
+                                                                class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">
+                                                                Đăng</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                
+                                        </div>
+                
+                                        <ul class="bg-white rounded-lg shadow mb-8">
+                                            <template x-for="(tweet, tweetIndex) in tweets" :key="tweetIndex">
+                                                <div>
+                                                    <li class="px-6 py-5"
+                                                        :class="{'border-b border-gray-200': (tweetIndex + 1) != tweets.length }">
+                                                        <div class="flex w-full">
+                                                            <div class="flex-shrink-0 mr-5">
+                                                                <div
+                                                                    class="cursor-pointer font-bold w-12 h-12 bg-gray-300 flex items-center justify-center rounded-full">
+                                                                    <span x-text="generateAvatarFromName(tweet.name)"
+                                                                        class="uppercase text-gray-700"></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex-1">
+                                                                <div>
+                                                                    <strong class="font-bold text-gray-800 mr-2"
+                                                                        x-text="tweet.name"></strong>
+                                                                    <span x-text="tweet.username" class="text-gray-600"></span>
+                                                                    <span class="mx-1 text-gray-500">&bull;</span>
+                                                                    <span class="text-gray-600" x-text="formatDate(tweet.date)"></span>
+                                                                </div>
+                
+                                                                <div class="mb-4">
+                                                                    <p x-text="tweet.tweet" class="text-gray-700"></p>
+                                                                </div>
+                
+                                                                <div class="relative w-auto mb-2 border rounded-lg relative bg-gray-100 mb-4 shadow-inset overflow-hidden"
+                                                                    x-show="tweet.tweet_images.length > 0">
+                
+                                                                    <div class="gg-container">
+                                                                        <div class="gg-box square-gallery" style="margin: 0">
+                                                                            <template x-for="image in tweet.tweet_images">
+                                                                                <img class="object-cover w-full" :src="image" />
+                                                                            </template>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                
+                                                                <div class="flex items-center w-full">
+                                                                    <div class="w-1/4 flex items-center">
+                                                                        <div
+                                                                            class="cursor-pointer hover:bg-gray-200 inline-flex p-2 rounded-full duration-200 transition-all ease-in-out">
+                                                                            <svg class="h-6 w-6 text-gray-500" fill="none"
+                                                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                                    stroke-width="2"
+                                                                                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                                                            </svg>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="w-1/4 flex items-center">
+                                                                        <div @click="retweet(tweetIndex, tweet.retweets)"
+                                                                            class="cursor-pointer hover:bg-gray-200 inline-flex p-2 rounded-full duration-200 transition-all ease-in-out">
+                                                                            <svg class="h-6 w-6"
+                                                                                :class="{'text-gray-500': tweet.hasBeenRetweeted == false, 'text-green-500': tweet.hasBeenRetweeted == true }"
+                                                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                                    stroke-width="2"
+                                                                                    d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div x-text="tweet.retweets"
+                                                                            class="ml-1 leading-none inline-flex"
+                                                                            :class="{'text-gray-600': tweet.hasBeenRetweeted == false, 'text-green-600': tweet.hasBeenRetweeted == true}">
+                                                                        </div>
+                                                                    </div>
+                
+                                                                    <div class="w-1/4 flex items-center">
+                                                                        <div @click="likeTweet(tweetIndex)"
+                                                                            class="cursor-pointer hover:bg-gray-200 inline-flex p-2 rounded-full duration-200 transition-all ease-in-out">
+                                                                            <svg x-show="tweet.hasBeenLiked == false"
+                                                                                class="h-6 w-6 text-gray-500" fill="none"
+                                                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                                    stroke-width="2"
+                                                                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                                                            </svg>
+                
+                                                                            <svg x-show="tweet.hasBeenLiked == true"
+                                                                                class="h-6 w-6 text-red-500" viewBox="0 0 20 20"
+                                                                                fill="currentColor">
+                                                                                <path fill-rule="evenodd"
+                                                                                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                                                                    clip-rule="evenodd" /></svg>
+                                                                        </div>
+                                                                        <div x-text="tweet.likes"
+                                                                            class="ml-1 text-gray-600 leading-none inline-flex"
+                                                                            :class="{'text-gray-600': tweet.hasBeenLiked == false, 'text-red-600': tweet.hasBeenLiked == true}">
+                                                                        </div>
+                                                                    </div>
+                
+                                                                    <div class="w-1/4 flex items-center">
+                                                                        <div
+                                                                            class="cursor-pointer hover:bg-gray-200 inline-flex p-2 rounded-full duration-200 transition-all ease-in-out">
+                                                                            <svg class="h-6 w-6 text-gray-500" fill="none"
+                                                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                                    stroke-width="2"
+                                                                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                                                                            </svg>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </div>
+                                            </template>
+                                        </ul>
+                                    </div>
+                				
+                                    <div class="md:w-2/5 px-4">
+                                        <ul class="bg-white rounded-lg shadow mb-8">
+                                            <li class="px-6 py-3 border-b border-gray-200">
+                                                <div class="font-bold text-gray-800">Đề xuất người dùng</div>
+                                            </li>
+                                            <template x-for="(followersSuggestion, followersSuggestionIndex) in followersSuggestions"
+                                                :key="followersSuggestionIndex">
+                                                <li class="px-6 py-3"
+                                                    :class="{'border-b border-gray-200': (followersSuggestionIndex + 1) != followersSuggestions.length }">
+                                                    <div class="flex w-full">
+                                                        <div class="flex-shrink-0 mr-5">
+                                                            <div
+                                                                class="cursor-pointer font-bold w-12 h-12 bg-gray-300 flex items-center justify-center rounded-full">
+                                                                <span x-text="generateAvatarFromName(followersSuggestion.name)"
+                                                                    class="uppercase text-gray-700"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex-1 flex flex-row justify-between items-center">
+                                                            <div>
+                                                                <p x-text="followersSuggestion.name" class="text-gray-700"></p>
+                                                                <p x-text="followersSuggestion.username" class="text-gray-500"></p>
+                                                            </div>
+                                                            <div>
+                                                                <button @click="follow(followersSuggestion.username)"
+                                                                    class="focus:outline-none py-1 px-4 rounded-full shadow-sm text-center text-blue-600 bg-white hover:bg-blue-100 font-medium border border-blue-200">Follow</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </template>
+                                        </ul>
+                
+                                        <ul class="bg-white rounded-lg shadow mb-8">
+                                            <li class="px-6 py-3 border-b border-gray-200">
+                                                <div class="font-bold text-gray-800">Đang theo dõi</div>
+                                            </li>
+                                            <template x-for="(following, followingIndex) in followings" :key="followingIndex">
+                                                <li class="px-6 py-3"
+                                                    :class="{'border-b border-gray-200': (followingIndex + 1) != followings.length }">
+                                                    <div class="flex w-full">
+                                                        <div class="flex-shrink-0 mr-5">
+                                                            <div
+                                                                class="cursor-pointer font-bold w-12 h-12 bg-gray-300 flex items-center justify-center rounded-full">
+                                                                <span x-text="generateAvatarFromName(following.name)"
+                                                                    class="uppercase text-gray-700"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex-1 flex flex-row justify-between items-center">
+                                                            <div>
+                                                                <p x-text="following.name" class="text-gray-700"></p>
+                                                                <p x-text="following.username" class="text-gray-500"></p>
+                                                            </div>
+                                                            <div>
+                                                                <button @click="unfollow(following.username)"
+                                                                    class="focus:outline-none py-1 px-4 rounded-full shadow-sm text-center text-blue-600 bg-white hover:bg-blue-100 font-medium border border-blue-200">Unfollow</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                		<h1 id="username" th:text="${user.fullName}" hidden=""></h1>
+                        <script>
+                        var changeName = $('#username').text();
+                        var Cname = changeName.split(" ")[0].slice(0, 1) + '' + changeName.split(" ")[1].slice(0, 1);
+                        $('#changeName').text(Cname);
+                            const MAX_TWEET_LENGTH = 500;
+                            const MONTH_NAMES = ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8',
+                                'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'
+                            ];
+                
+                            function app() {
+                                return {
+                                    tweetText: '',
+                                    images: [],
+                
+                                    tweets: [{
+                                            name: "Nguyễn Quang Hải Trường",
+                                            username: "@HaiTruong",
+                                            tweet: 'Bước 1: Cho đường vào nồi, đổ ít nước rồi bắc lên bếp đun với lửa nhỏ. Khi thấy đường sôi chảy, bốc khói và ngả màu cánh gián thì cho vào chút nước cốt chanh, lắc đều. Trút nhanh caramel vào khuôn bánh, tráng nhẹ cho tạo một lớp mỏng dưới đáy khuôn. Bước 2: Trứng gà tách lấy lòng đỏ cho vào tô, đánh tan. Cho sữa đặc và sữa tươi vào nồi, bắc lên bếp đun lửa nhỏ cho hơi nóng ấm rồi tắt bếp. Đổ từ từ sữa vào trứng, vừa đổ vừa khuấy nhẹ theo một chiều để hỗn hợp hòa quyện. Bước 3: Lọc hỗn hợp qua rây vài lần cho mịn. Khi caramel trong khuôn đã khô cứng lại thì đổ hỗn hợp trứng sữa vào. Bước 4: Đặt khuôn bánh vào nồi hấp cách thủy. Bắc lên bếp hấp với lửa nhỏ từ 30 – 40 phút. Bánh chín lấy ra để nguội rồi cất vào ngăn mát tủ lạnh khoảng 4 tiếng là dùng được.',
+                                            retweets: 12,
+                                            likes: 50,
+                                            date: "2020-04-06 12:00:00",
+                                            tweet_images: [
+                                                "https://cdn.daotaobeptruong.vn/wp-content/uploads/2020/11/banh-flan.jpg","https://cdn.daotaobeptruong.vn/wp-content/uploads/2020/11/cong-thuc-banh-flan.jpg","data:image/jpeg;base64,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"
+                                            ],
+                                            hasBeenLiked: false,
+                                            hasBeenRetweeted: false
+                                        },
+                                        {
+                                            name: "Nguyễn Quốc Tuấn",
+                                            username: "@TuanNguyen",
+                                            tweet: "Sườn, đuôi và thịt bò sau khi ngâm xong thì đổ hết nước ngâm đi, cho vào nồi. Tiếp theo, đổ nước lạnh ngập thịt và đun trên lửa to đến khi sôi. Khi nước sôi, hạ lửa nhỏ xuống, đun thêm 2 phút nữa rồi bỏ bớt nước luộc, rửa lại cho sạch vụn thịt và bọt bẩn. Sau đó cho đuôi, sườn và thịt bò vào nồi, đổ thêm 5 bát nước lạnh to vào, đun sôi và hớt bọt. Cho túi đựng hoa hồi, hạt mùi, thảo quả, quế, gừng, hành hương, rễ mùi, mía vào nồi nước hầm và nêm một ít hạt nêm hoặc muối vào. Hầm sườn, đuôi và thịt bò trong khoảng 2 giờ trên lửa nhỏ. Nếu dùng nồi áp suất thì thời gian hầm có thể rút ngắn lại. Khi bò bắp đã chín thì vớt ra, ngâm trong nước đun sôi để nguội rồi thái lát mỏng, tránh để hầm quá lâu trong nồi vì thịt sẽ bị mềm và nát. Khi sườn và đuôi bò đã mềm nhừ, nêm nếm gia vị cho vừa ăn. Nên nêm nhạt một chút để khi ăn cho thêm nước mắm. Trụng tô và bánh phở qua nước sôi để món ăn ngon hơn. Cuối cùng, sắp bánh phở, thịt và các loại rau vào bát, đun nước dùng cho thật sôi rồi chan vào bát và thưởng thức.",
+                                            retweets: 10,
+                                            likes: 100,
+                                            date: "2020-04-02",
+                                            tweet_images: ["https://i0.wp.com/naungon.net/wp-content/uploads/2019/07/cach-nau-mon-pho-bo-ha-noi-ngon-chuan-vi.jpg?fit=800%2C500&ssl=1","https://image.thanhnien.vn/1024/uploaded/giangvu/2020_06_16/1_kqkc.jpg","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM5_G7QP9Jsg3Zpzgieni3tDEUww9cM09A7cu3W2PM-B8gECXa0mCekGvezVMLp-SaEuo&usqp=CAU"],
+                                            hasBeenLiked: false,
+                                            hasBeenRetweeted: false
+                                        }
+                                        ,
+                                        {
+                                            name: "Nguyễn Quốc Huy",
+                                            username: "@QuocHuy",
+                                            tweet: "Đổ sữa đặc ra thau lớn. Bạn có thể dùng ca nhựa. Dùng lon đựng sữa đặc vừa rồi đong thêm 1 lon nước sôi và 2 lon nước đun sôi để nguội vào thau sữa đặc. Khuấy đều cho sữa đặc tan hoàn toàn rồi cho sữa chua men cái vào (nếu bạn cho sữa chua men cái vào quá sớm, gặp nước sôi sẽ làm hỏng men). Cho hỗn hợp sữa vào hũ đựng và đậy nắp lại rồi đem đi ủ.",
+                                            retweets: 10,
+                                            likes: 100,
+                                            date: "2020-04-02",
+                                            tweet_images: ["https://www.vinamilk.com.vn/sua-dac-vinamilk/sua-dac-ong-tho/uploads/cache/thumbnail/2020-12/800/1447313909_373856.jpg","https://cdn.dayphache.edu.vn/wp-content/uploads/2020/10/cong-thuc-sua-chua-bi-do.jpg","https://www.bartender.edu.vn/wp-content/uploads/2021/03/sua-chua-nep-cam-hap-dan.jpg"],
+                                            hasBeenLiked: false,
+                                            hasBeenRetweeted: false
+                                        },
+                                        {
+                                            name: "Nguyễn Gia Bảo",
+                                            username: "@BaoGia",
+                                            tweet: "Bước 1: Sơ chế nguyên liệu Chặt gà thành miếng nhỏ vừa ăn, bóp qua với rượu, gừng và muối hạt để khử mùi tanh. Rửa gà lại cho sạch với nước pha một chút nước cốt chanh rồi dùng nĩa hoặc mũi dao nhọn xóc vào thịt gà để gia vị dễ ngấm. Ớt, tỏi, gừng, sả và hành tím bóc vỏ, rửa sạch và băm nhỏ. Ướp gà với hạt nêm, tiêu và 1/3 phần hành, tỏi, ớt, gừng, sả đã băm. Ướp khoảng 15-20 phút. Bước 2: Chiên thịt gà Cho gà vào lò vi sóng quay nóng 2 lần, mỗi lần 2 phút để gà chín sơ. Áo gà qua với bột chiên giòn rồi mang đi chiên vàng bề mặt. Vớt gà ra để ráo dầu. Bước 3: Pha sốt mắm Cho phần hành, tỏi, ớt, gừng và sả băm lần lượt vào chảo, phi thơm vàng với 2 thìa canh dầu chiên gà. Thêm mắm, đường, tương ớt và nước vào đun đến khi sôi thì tắt bếp rồi cho mật ong vào khuấy đều. Bước 4: Hoàn thành: Cho gà vào đảo xóc với sốt mắm cho thấm đều và bày ra thưởng thức.",
+                                            retweets: 10,
+                                            likes: 100,
+                                            date: "2020-04-02",
+                                            tweet_images: ["https://cdn.tgdd.vn/2021/03/CookProduct/1-1200x676-63.jpg"],
+                                            hasBeenLiked: false,
+                                            hasBeenRetweeted: false
+                                        },
+                                        {
+                                            name: "Trần Văn Khoa",
+                                            username: "@KhoaVan",
+                                            tweet: "Ướp thịt ít nhất từ 30 phút đến 1 tiếng với nước mắm ngon, đường, ít muối và hạt tiêu, hành, tỏi cho thịt thật thấm gia vị. Ướp thịt kho tàu với gia vị Đảo thịt cho thật săn lại rồi mới đổ nước dừa vào ngập thịt. Ban đầu vặn lửa lớn cho sôi và vớt bỏ bọt. Sau đó, vặn lửa liu riu để thịt mềm dần và nước dừa chuyển thành màu vàng cánh gián. Để nước thịt trong và đẹp, không nên đậy nắp trong khi nấu. Khi thịt hơi mềm cho trứng cút (trứng gà hoặc trứng vịt) luộc chín, đã bóc vỏ vào kho chung. Trứng không nên bỏ vào sớm kho lâu sẽ bị chai cứng, đổi màu nâu không ngon. Nêm nếm lại cho vừa ăn, thường nước thịt đã có vị ngọt tự nhiên của nước dừa nên chỉ thêm một tí nước mắm là nồi thịt đã đậm đà.",
+                                            retweets: 10,
+                                            likes: 100,
+                                            date: "2020-04-02",
+                                            tweet_images: ["https://i.ytimg.com/vi/Q5V0uEkdTPg/maxresdefault.jpg","https://giadinh.tv/wp-content/uploads/2016/11/thit-kho-tau-e1480250954404.jpg","https://s1.media.ngoisao.vn/resize_580/news/2020/04/24/kho-thit-lon967-2-ngoisao.vn-w640-h430.jpg"],
+                                            hasBeenLiked: false,
+                                            hasBeenRetweeted: false
+                                        },
+                                        {
+                                            name: "Trần Quốc Việt",
+                                            username: "@QuocViet",
+                                            tweet: "Trứng ngâm tương: Nguyên liệu Trứng gà: 10 quả Nước tương (xì dầu): 200ml Nước lọc: 250ml Hành tây: 1/2 củ Tỏi: 1 củ Hành tím: 3 củ Hành lá: 5 nhánh Ớt tươi: 10 quả Mè rang: 10g Gia vị: đường, muối, rượu trắng, giấm ăn",
+                                            retweets: 10,
+                                            likes: 100,
+                                            date: "2020-04-02",
+                                            tweet_images: ["http://blog.hoangviettourist.com/wp-content/uploads/2020/10/00-2.jpg","https://res.klook.com/image/upload/v1596017279/blog/y56vi6tivhfdeneh2ax6.jpg","data:image/jpeg;base64,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"],
+                                            hasBeenLiked: false,
+                                            hasBeenRetweeted: false
+                                        }
+                                        ,
+                                        {
+                                            name: "Trần Văn Khoa",
+                                            username: "@VanKhoa",
+                                            tweet: "Nguyên liệu Xà lách tươi: 200g Cà chua chín, dưa chuột mỗi loại 1 quả. Trứng gà ta: 1 quả Giá đỗ: 100g Hành tây: 1 củ vừa hoặc ½ củ to Các loại gia vị trộn rau: dầu giấm, dầu olive, đường, tiêu, tỏi, ớt, muối.",
+                                            retweets: 10,
+                                            likes: 100,
+                                            date: "2020-04-02",
+                                            tweet_images: ["https://www.thatlangon.com/wp-content/uploads/2020/05/salad-1-1-e1589019780961.jpg","https://cdn.tgdd.vn/Files/2020/05/29/1259220/cach-lam-salad-rau-cu-thap-cam-giam-can-thom-ngon--760x367.jpg","https://www.monngon.tv/wp-content/uploads/2020/09/516417622e5c6493b3a0367288d2f393-salad-rau-cu-qua-s.jpg"],
+                                            hasBeenLiked: false,
+                                            hasBeenRetweeted: false
+                                        }
+                                    ],
+                
+                                    followersSuggestions: [{
+                                            name: "Võ Đại Hiếu",
+                                            username: "@Hieuvo"
+                                        },
+                                        {
+                                            name: "Nguyễn Trang",
+                                            username: "@Trang123"
+                                        },
+                                        {
+                                            name: "Tuấn Anh",
+                                            username: "@AnhTuan"
+                                        }
+                                    ],
+                
+                                    followings: [{
+                                            name: "Hải Trường",
+                                            username: "@HaiTruong"
+                                        },
+                                        {
+                                            name: "Hải Hưng",
+                                            username: "@HungHai"
+                                        }
+                                    ],
+                
+                                    follow(username) {
+                                        let getIndexOfSuggestion = this.followersSuggestions.findIndex(f => f.username === username);
+                                        this.followings.push(this.followersSuggestions[getIndexOfSuggestion]);
+                
+                                        // remove from Followers Suggestions array
+                                        this.followersSuggestions.splice(getIndexOfSuggestion, 1);
+                                    },
+                
+                                    unfollow(username) {
+                                        let getIndexOfFollower = this.followings.findIndex(f => f.username === username);
+                                        this.followersSuggestions.push(this.followings[getIndexOfFollower]);
+                
+                                        // remove from followings array
+                                        this.followings.splice(getIndexOfFollower, 1);
+                                    },
+                
+                                    saveTweet() {
+                                    	
+                                        this.tweets.unshift({
+                                            name: $('#username').text(),
+                                            username: "@"+$('#username').text(),
+                                            tweet: this.tweetText,
+                                            retweets: 0,
+                                            likes: 0,
+                                            date: new Date(),
+                                            tweet_images: this.images,
+                                            hasBeenLiked: false,
+                                            hasBeenRetweeted: false
+                                        });
+                
+                                        this.images = [];
+                                        this.tweetText = '';
+                                    },
+                
+                                    retweet(index) {
+                                        this.tweets[index].hasBeenRetweeted ? this.tweets[index].retweets-- : this.tweets[index]
+                                            .retweets++;
+                                        this.tweets[index].hasBeenRetweeted = !this.tweets[index].hasBeenRetweeted;
+                                    },
+                
+                                    likeTweet(index) {
+                                        this.tweets[index].hasBeenLiked ? this.tweets[index].likes-- : this.tweets[index].likes++;
+                                        this.tweets[index].hasBeenLiked = !this.tweets[index].hasBeenLiked;
+                                    },
+                
+                                    charactersRemaining() {
+                                        return MAX_TWEET_LENGTH - this.tweetText.length;
+                                    },
+                
+                                    tweetIsOutOfRange() {
+                                        return (MAX_TWEET_LENGTH - this.tweetText.length) == MAX_TWEET_LENGTH || (MAX_TWEET_LENGTH -
+                                            this
+                                            .tweetText.length) < 0;
+                                    },
+                
+                                    generateAvatarFromName(name) {
+                                        return name.split(" ")[0].slice(0, 1) + '' + name.split(" ")[1].slice(0, 1);
+                                    },
+                
+                                    formatDate(date) {
+                                        if (!date) {
+                                            return null;
+                                        }
+                
+                                        const DAY_IN_MS = 86400000; // 24 * 60 * 60 * 1000
+                                        const today = new Date();
+                                        const yesterday = new Date(today - DAY_IN_MS);
+                                        const d = new Date(date);
+                                        const day = d.getDate();
+                                        const month = MONTH_NAMES[d.getMonth()];
+                
+                                        const seconds = Math.round((today - d) / 1000);
+                                        const minutes = Math.round(seconds / 60);
+                                        const hours = Math.round(minutes / 60);
+                
+                                        const isToday = today.toDateString() === d.toDateString();
+                                        // const isYesterday = yesterday.toDateString() === date.toDateString();
+                                        // const isThisYear = today.getFullYear() === date.getFullYear();
+                
+                                        if (isToday) {
+                                            if (seconds < 5) {
+                                                return 'mới đây';
+                                            } else if (seconds < 60) {
+                                                return `${ seconds }s`;
+                                            } else if (minutes < 60) {
+                                                return `${ minutes }m`;
+                                            } else {
+                                                return `${ hours }h`;
+                                            }
+                                        } else {
+                                            return "Ngày " + day + " " + month;
+                                        }
+                                    }
+                                }
+                            }
+                        </script>
+                    </body>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+
+
+    <div id="chatbox_html"></div>
+
+    <script>
+        $(".object-cover").click(function () {
+            alert($(this).prop("tagName").toLowerCase())
+        })
+    </script>
+
+    <script>
+        const root = document.querySelector("body, html");
+        const container = document.querySelector(".gg-container");
+        const images = document.querySelectorAll(".gg-box > img");
+        const l = images.length;
+        for (var i = 0; i < l; i++) {
+            images[i].addEventListener("click", function (h) {
+                var f = this;
+                const c = f.parentElement,
+                    a = document.createElement("div");
+                a.id = "gg-screen";
+                container.prepend(a);
+                if (c.hasAttribute("data-theme")) {
+                    a.setAttribute("data-theme", "dark")
+                }
+                var p = f.src;
+                root.style.overflow = "hidden";
+                a.innerHTML =
+                    '<div class="gg-image"></div><div class="gg-close gg-btn">&times</div><div class="gg-next gg-btn">&rarr;</div><div class="gg-prev gg-btn">&larr;</div>';
+                const k = images[0].src,
+                    q = images[l - 1].src;
+                const o = document.querySelector(".gg-image"),
+                    e = document.querySelector(".gg-prev"),
+                    b = document.querySelector(".gg-next"),
+                    r = document.querySelector(".gg-close");
+                o.innerHTML = '<img src="' + p + '">';
+                if (l > 1) {
+                    if (p == k) {
+                        e.hidden = true;
+                        var n = false;
+                        var g = f.nextElementSibling
+                    } else {
+                        if (p == q) {
+                            b.hidden = true;
+                            var g = false;
+                            var n = f.previousElementSibling
+                        } else {
+                            var n = f.previousElementSibling;
+                            var g = f.nextElementSibling
+                        }
+                    }
+                } else {
+                    e.hidden = true;
+                    b.hidden = true
+                }
+                a.addEventListener("click", function (s) {
+                    if (s.target == this || s.target == r) {
+                        m()
+                    }
+                });
+                root.addEventListener("keydown", function (s) {
+                    if (s.keyCode == 37 || s.keyCode == 38) {
+                        d()
+                    }
+                    if (s.keyCode == 39 || s.keyCode == 40) {
+                        j()
+                    }
+                    if (s.keyCode == 27) {
+                        m()
+                    }
+                });
+                e.addEventListener("click", d);
+                b.addEventListener("click", j);
+
+                function d() {
+                    n = f.previousElementSibling;
+                    o.innerHTML = '<img src="' + n.src + '">';
+                    f = f.previousElementSibling;
+                    var s = document.querySelector(".gg-image > img").src;
+                    b.hidden = false;
+                    e.hidden = s === k
+                }
+
+                function j() {
+                    g = f.nextElementSibling;
+                    o.innerHTML = '<img src="' + g.src + '">';
+                    f = f.nextElementSibling;
+                    var s = document.querySelector(".gg-image > img").src;
+                    e.hidden = false;
+                    b.hidden = s === q
+                }
+
+                function m() {
+                    root.style.overflow = "auto";
+                    a.remove()
+                }
+            })
+        }
+
+        function gridGallery(a) {
+            if (a.selector) {
+                selector = document.querySelector(a.selector)
+            }
+            if (a.darkMode) {
+                selector.setAttribute("data-theme", "dark")
+            }
+            if (a.layout == "horizontal" || a.layout == "square") {
+                selector.setAttribute("data-layout", a.layout)
+            }
+            if (a.gaplength) {
+                selector.style.setProperty("--gap-length", a.gaplength + "px")
+            }
+            if (a.rowHeight) {
+                selector.style.setProperty("--row-height", a.rowHeight + "px")
+            }
+            if (a.columnWidth) {
+                selector.style.setProperty("--column-width", a.columnWidth + "px")
+            }
+        };
+    </script>
+
+
+    <script data-cfasync="" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/js/vertical-responsive-menu.min.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="/vendor/OwlCarousel/owl.carousel.js"></script> -->
+    <script src="/vendor/semantic/semantic.min.js"></script>
+    <script src="/js/custom.js"></script>
+    <script src="/js/night-mode.js"></script>
+    <script src="/js/jquery-steps.min.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $('#chatbox_html').load('/chatbox');
+            $('#menu_user_html').load('/menu_user', function () {
+                $(".postactive").addClass("active");
+            });
+            $('#header_html').load('/header');
+
+        })
+    </script>
+</body>
+
+</html>

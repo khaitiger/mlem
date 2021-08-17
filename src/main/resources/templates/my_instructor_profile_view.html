@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from gambolthemes.net/html-items/cursus_demo_f12/my_instructor_profile_view.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 May 2021 03:49:56 GMT -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+    <meta name="description" content="Gambolthemes">
+    <meta name="author" content="Gambolthemes">
+    <title>Mlem-Mlem</title>
+
+    <link rel="icon" type="image/png" href="images/fav.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,500" rel='stylesheet'>
+    <link href='vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
+    <link href="css/vertical-responsive-menu.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/night-mode.css" rel="stylesheet">
+    <link href="css/instructor-dashboard.css" rel="stylesheet">
+    <link href="css/instructor-responsive.css" rel="stylesheet">
+    <link href="css/datepicker.min.css" rel="stylesheet">
+    <link href="/css/instructor-dashboard.css" rel="stylesheet">
+    <link href="/css/instructor-responsive.css" rel="stylesheet">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/chosen.jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+    <link href="/css/chosen.min.css" rel="stylesheet" />
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="vendor/semantic/semantic.min.css">
+</head>
+
+
+<body>
+
+    <div id="chatbox_html"></div>
+
+    <!-- Thanh header -->
+    <div id="header_html"></div>
+
+    <!-- thanh menu  -->
+    <div id="menu_user_html"></div>
+
+
+    <div class="wrapper _bg4586">
+        <div class="_216b01" style="height: 15rem;">
+            <div class="container-fluid">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-10">
+                        <div class="section3125 rpt145">
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <a href="#" class="_216b22">
+                                        <span><i class="uil uil-cog"></i></span>Cài đặt
+                                    </a>
+                                    <div class="dp_dt150">
+                                        <div class="img148" style="border-radius: 0;">
+                                            <img th:src="${user.avatar}" id="output" alt="">
+                                        </div>
+                                        <div class="prfledt1">
+                                            <h2 th:text="${user.fullName}"></h2>
+                                            <span>Học viên</span>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-5">
+                                    <a href="/editprofile" class="_216b12">
+                                        <span><i class="uil uil-cog"></i></span>Chỉnh sữa thông tin cá nhân
+                                    </a>
+
+                                    <div class="rgt-145">
+                                        <ul class="tutor_social_links">
+                                            <li><a th:href="${user.linkFace}" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a th:href="${user.linkYoutube}" class="yu"><i class="fab fa-youtube"></i></a></li>
+                                        </ul>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="_215b15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="course_tabs">
+                            <nav>
+                                <div class="nav nav-tabs tab_crse" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-selected="true">Giới thiệu</a>
+                                    <a class="nav-item nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="false">Đánh giá của tôi</a>
+                                    <a class="nav-item nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="false">Bài đăng của tôi</a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="_215b17">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="course_tab_content">
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-about" role="tabpanel">
+                                    <div class="_htg451">
+                                        <div class="_htg452">
+                                            <h3>Một số điều về tôi</h3>
+                                            <p th:text="${user.about}"> </p></div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-reviews" role="tabpanel">
+                                    <div class="student_reviews">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="review_right">
+                                                    <div class="review_right_heading">
+                                                        <h3>Đánh giá của tôi</h3>
+                                                    </div>
+                                                </div>
+
+                                                <div class="review_all120">
+                                                    <div class="review_item" th:each="vote : ${votStudent}">
+                                                        <div class="review_item" style="padding-top: 0rem;">
+                                                            <a href="#" class="more_reviews">
+                                                                <h3 th:text="${vote.course.name}"></h3>
+                                                            </a>
+                                                        </div>
+                                                        <div class="review_usr_dt" style="margin-top: 1rem;">
+                                                            <img th:src="${user.avatar}" alt="">
+                                                            <div class="rv1458">
+                                                                <h4 class="tutor_name1" th:text="${vote.student.fullName}"></h4>
+                                                                <span class="time_145" th:text="${vote.dateReview}"></span>
+                                                            </div>
+                                                        </div>
+                                                      <div class="rating-box mt-20" th:if="${vote.numVote==1}">
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                        </div>
+                                                           <div class="rating-box mt-20" th:if="${vote.numVote==2}">
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                        </div>
+                                                     
+                                                           <div class="rating-box mt-20" th:if="${vote.numVote==3}">
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                        </div>
+                                                        <div class="rating-box mt-20" th:if="${vote.numVote==4}">
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star empty-star"></span>
+                                                        </div>
+                                                          <div class="rating-box mt-20" th:if="${vote.numVote==5}">
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                            <span class="rating-star full-star"></span>
+                                                        </div>
+                                                        <p class="rvds10" th:text="${vote.cmtReview}"></p>
+
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer_html"></div>
+    </div>
+
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="js/vertical-responsive-menu.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/OwlCarousel/owl.carousel.js"></script>
+    <script src="vendor/semantic/semantic.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/night-mode.js"></script>
+    <script src="js/datepicker.min.js"></script>
+    <script src="js/i18n/datepicker.en.js"></script>
+    <script>
+        $(function() {
+            $('#chatbox_html').load('/chatbox');
+            $('#menu_user_html').load('/menu_user', function() {
+                $(".sourseactive").addClass("active");
+            });
+            $('#header_html').load('/header');
+            $('#footer_html').load('./footer.html');
+
+        })
+    </script>
+    <script>
+        function preview() {
+            frame.src = URL.createObjectURL(event.target.files[0]);
+
+        }
+    </script>
+    <script>
+        $(function() {
+            $("#datepicker").datepicker();
+        });
+    </script>
+
+</body>
+
+<!-- Mirrored from gambolthemes.net/html-items/cursus_demo_f12/my_instructor_profile_view.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 May 2021 03:49:56 GMT -->
+
+</html>
