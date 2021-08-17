@@ -13,4 +13,7 @@ ListTeacherRepository listTeacherRepository;
  public List<ListTeacher> getCoursebyTeacher(int idTeacher){
 	 return listTeacherRepository.getCoursebyTeacher(idTeacher);
  }
+ public ListTeacher createListTeacher(ListTeacher listTeacher) {
+	 return listTeacherRepository.save(listTeacher);
+ }
 }

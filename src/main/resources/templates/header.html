@@ -70,50 +70,20 @@
             <!-- Thanh thông báo -->
             <li class="ui dropdown">
                 <a href="#" onclick="Notifications()" class="option_links" title="Notifications"><i class='uil uil-bell'></i><span
-                        class="noti_count" id="notifications">3</span></a>
+                        class="noti_count" id="notifications">N</span></a>
                 <div class="menu dropdown_mn" style="max-height: 300px; overflow: auto;">
-                    <a href="#" class="channel_my item">
+                    <a href="/teacher/managercourse" class="channel_my item" th:each="lst : ${listTeacher}">
                         <div class="profile_link">
-                            <img src="https://scontent-xsp1-3.xx.fbcdn.net/v/t1.6435-9/84936096_2512771385601054_1300734367466782720_n.jpg?_nc_cat=107&ccb=1-3&_nc_sid=e3f864&_nc_ohc=NecjfV8lA7gAX_GA3E-&_nc_ht=scontent-xsp1-3.xx&oh=45c52513138bcd2ec5e0690e17299d01&oe=60D03B82" alt="">
+                        <img src="/images/fav.png" alt="">
                             <div class="pd_content">
-                                <h6>Võ Đại Hiếu</h6>
-                                <p>Đã bình luận bài viết của bạn <strong>Công thức trà sữa</strong>.</p>
-                                <span class="nm_time">2 phút trước</span>
+                               <h6 >Bot Mlem</h6>
+                               <p>Hi! <span style="color: green" th:text="${lst.teacher.fullName}"></span>,Bạn đã trở thành giáo viên của khóa học<span style="color: red" th:text="${lst.course.name}"></span>! <br> 
+                                <span class="nm_time" th:text="${lst.joinDate}"></span>
                             </div>
                         </div>
                     </a>
-                    <a href="#" class="channel_my item">
-                        <div class="profile_link">
-                            <img src="https://scontent-xsp1-3.xx.fbcdn.net/v/t1.6435-9/84936096_2512771385601054_1300734367466782720_n.jpg?_nc_cat=107&ccb=1-3&_nc_sid=e3f864&_nc_ohc=NecjfV8lA7gAX_GA3E-&_nc_ht=scontent-xsp1-3.xx&oh=45c52513138bcd2ec5e0690e17299d01&oe=60D03B82" alt="">
-                            <div class="pd_content">
-                                <h6>Võ Đại Hiếu</h6>
-                                <p>Đã bình luận bài viết của bạn <strong>Công thức trà sữa</strong>.</p>
-                                <span class="nm_time">2 phút trước</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="#" class="channel_my item">
-                        <div class="profile_link">
-                            <img src="https://scontent-xsp1-3.xx.fbcdn.net/v/t1.6435-9/150927493_2779239449007254_5786842695374926531_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=9IxPlfxvAxUAX_wlQG8&_nc_ht=scontent-xsp1-3.xx&oh=c9dafd391ae854cb861c3cd5c8e552af&oe=60CF443A" alt="">
-                            <div class="pd_content">
-                                <h6>Phan Văn Khải</h6>
-                                <p>Đã bình luận bài viết của bạn <strong>Công thức trà sữa</strong>.</p>
-                                <span class="nm_time">12 phút trước</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="channel_my item">
-                        <div class="profile_link">
-                            <img src="https://scontent-xsp1-3.xx.fbcdn.net/v/t1.18169-9/12299200_513550162147117_3244148462894724537_n.jpg?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=SksWVkbfJKgAX8GXhIq&_nc_ht=scontent-xsp1-3.xx&oh=31c9d0b930457f28d0c0fd04410df19d&oe=60CEB236" alt="">
-                            <div class="pd_content">
-                                <h6>Trần Thị Minh Trang</h6>
-                                <p>Đã bình luận bài viết của bạn <strong>Công thức trà sữa</strong>.</p>
-                                <span class="nm_time">12 phút trước</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="vbm_btn" href="instructor_notifications.html">Xem thêm <i
+                  	
+                    <a class="vbm_btn" href="#">Xem thêm <i
                             class='uil uil-arrow-right'></i></a>
                 </div>
             </li>

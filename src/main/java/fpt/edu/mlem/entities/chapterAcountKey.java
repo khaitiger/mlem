@@ -1,12 +1,16 @@
 package fpt.edu.mlem.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
+@NoArgsConstructor
+@AllArgsConstructor
 @Embeddable
 @Data
 public class chapterAcountKey implements Serializable  {
@@ -15,9 +19,10 @@ public class chapterAcountKey implements Serializable  {
 
 	@Column(name = "teacher_id")
 	
-	int studentId;
+	int teacherId;
 
-	@Column(name = "id")
-	int id;
+	@Column(name = "course_id")
+	int courseId;
+	
 	
 }

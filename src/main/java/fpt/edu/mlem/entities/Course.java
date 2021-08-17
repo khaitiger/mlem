@@ -14,7 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -25,10 +24,12 @@ import lombok.NoArgsConstructor;
 
 
 
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Course {
 	@Id
@@ -49,10 +50,7 @@ public class Course {
 	private String endSale;
 	@ManyToOne
 	private Level level;
-	@OneToMany(mappedBy = "course")
-	@EqualsAndHashCode.Exclude
-	Set<Test> testSet = new HashSet<>();
-	
+
 	@ManyToMany
 	private Set<Category> categories = new HashSet<Category>();
 	

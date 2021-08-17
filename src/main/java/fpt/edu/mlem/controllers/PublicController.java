@@ -7,7 +7,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import fpt.edu.mlem.entities.Account;
 import fpt.edu.mlem.entities.Course;
 import fpt.edu.mlem.entities.ListStudent;
+import fpt.edu.mlem.entities.ListTeacher;
 import fpt.edu.mlem.entities.Vote;
 import fpt.edu.mlem.services.AccountService;
 import fpt.edu.mlem.services.CourseService;
 import fpt.edu.mlem.services.ListStudentService;
+import fpt.edu.mlem.services.ListTeacherService;
 import fpt.edu.mlem.services.VoteService;
 
 
@@ -116,11 +117,13 @@ public class PublicController {
 		} 
 		else {
 			Account user = userService.getAccount(userCookie);
-	
+			
 			model.addAttribute("user", user);
 			System.out.print(user);
 			List<ListStudent> listStudent = studentService.GetBotMail(user);
 			model.addAttribute("listStudent", listStudent);
+			List<ListTeacher> listTeacher = teacherService.getCoursebyTeacher(user.getId());
+			model.addAttribute("listTeacher", listTeacher);
 		}
 		
 	 return "header";
@@ -381,4 +384,6 @@ public class PublicController {
 	AccountService accountService;
 	@Autowired
 	VoteService voteSer;
+	@Autowired
+	ListTeacherService teacherService;
 }

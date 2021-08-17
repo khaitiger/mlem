@@ -5,6 +5,7 @@ package fpt.edu.mlem.services;
 
 
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -46,6 +47,9 @@ public class AccountService {
 		}
 
 	}
+	public void updateEnable(int id) {
+		repo.updateEnable(id);
+	}
 	public Account getUserByEmailAndProvider(String email,Provider provider) {
 		return repo.getUserByEmail(email, provider);
 	}
@@ -70,6 +74,15 @@ public class AccountService {
 	}
 	public void updateProfile(int id, String fullName , String phone , String dob , String gender , String about,String linkFace , String linkYoutube) {
 		repo.updateProfile(id, fullName, phone, dob, gender, about, linkFace, linkYoutube);
+	}
+	public List<Account> listAll(){
+		return repo.findAll();
+	}
+	public List<Account> getUserByRole(int idRole){
+		return repo.getUserByRole(idRole);
+	}
+	public List<Account> getUserByEnable(Boolean enable){
+		return repo.getUserByEnable(enable);
 	}
 //	public void saveUpdate(Account account) {
 //		repo.save(account);

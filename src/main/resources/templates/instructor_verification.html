@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+    <meta name="description" content="Gambolthemes">
+    <meta name="author" content="Gambolthemes">
+    <title>Xác nhận</title>
+
+    <link rel="icon" type="image/png" href="/images/fav.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,500" rel='stylesheet'>
+    <link href='/vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
+    <link href="/css/vertical-responsive-menu1.min.css" rel="stylesheet">
+    <link href="/css/instructor-dashboard.css" rel="stylesheet">
+    <link href="/css/instructor-responsive.css" rel="stylesheet">
+    <link href="/css/night-mode.css" rel="stylesheet">
+
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="/vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/vendor/semantic/semantic.min.css">
+</head>
+
+<body>
+
+    <!-- Thanh header -->
+    <div id="header_html"></div>
+
+    <!-- Thanh menu -->
+    <div id="menu_mana"></div>
+
+    <!-- Thanh main -->
+
+    <div class="wrapper" >
+        <div class="sa4d25">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="st_title"><i class="uil uil-check-circle"></i> Xác nhận</h2>
+                    </div>
+                </div>
+                <div class="row justify-content-xl-center justify-content-lg-center justify-content-md-center">
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="verification_content">
+                            <img src="images1/verified-account.svg" alt="">
+                            <h4>Cấp phép bởi Mlem Mlem</h4>
+                            <p>Trung tâm chúng tôi vẫn cập nhật những Giảng viên giàu kinh nghiệm, và có kỹ năng tốt
+                                chuyên nghành. Để trở thành Giảng viên "Vui lòng thêm thông tin bên dưới"
+                                <br> Thông báo: chỉ dành cho Quản trị viên.
+                            </p>
+                            <ul class="alert_verification">
+                                <li>
+                                    <div class="required_group">
+                                        <div class="edututs_required_img">
+                                            <i class="uil uil-dashboard"></i>
+                                        </div>
+                                        <div class="edututs_required">
+                                            <span><strong>14 Giảng viên</strong></span>
+                                            <span>500 bài học</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="required_group">
+                                        <div class="edututs_required_img">
+                                            <i class="uil uil-dashboard"></i>
+                                        </div>
+                                        <div class="edututs_required">
+                                            <span><strong>10 khóa học nổi bật</strong></span>
+                                            <span>1,500 đã đăng ký</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="apply_verify_text"><i class="uil uil-check-circle"></i>Chúng tôi sẽ gửi email
+                                cho bạn khi bạn đủ điều kiện đăng ký</div>
+                            
+                        </div>
+                    </div>
+
+                    <div class=" col-xl-6 col-lg-6 col-md-6">
+                        <h2>Xác nhận thông tin</h2>
+                        
+                        <form action="/admin/saveverification" method="post">
+                            
+                            <div class="ui search focus mt-50 lbel25">
+                                <label>ID người dùng</label>
+                                <div class="ui left icon input swdh19">
+                                    <input class="prompt srch_explore" type="text" placeholder="Mã ID"
+                                        name="id" maxlength="60" id="full[name]" value="">
+                                </div>
+                            </div>
+                            <div class="ui search focus mt-20 lbel25">
+                                <label>Cấp Quyền</label>
+                                <div class="ui left icon input swdh19">
+
+                                    <select
+                                    class="ui hj145 dropdown  "  name="roleId">
+                                    <option selected="selected" value="2">Giảng viên</option>
+                                    <!-- <option value="3">Quản lý</option> -->
+                                </select>
+                                    <!-- <input class="prompt srch_explore" type="text" placeholder="Tên đầy đủ"
+                                        name="fullname" maxlength="60" id="full[name]" value=""> -->
+                                </div>
+                            </div>
+                            <button class="verify_submit_btn" type="submit">Xác nhận bây giờ</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+        </script>
+        <script src="/js/vertical-responsive-menu.min.js"></script>
+        <script src="/js/jquery-3.3.1.min.js"></script>
+        <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/vendor/OwlCarousel/owl.carousel.js"></script>
+        <script src="/vendor/semantic/semantic.min.js"></script>
+        <script src="/js/custom1.js"></script>
+        <script src="/js/night-mode.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script>
+            $(function () {
+                $('#header_html').load('/header');
+                $('#menu_mana').load('/menu_mana', function () {
+                    $(".Verification").addClass("active");
+                });
+            })
+        </script>
+        
+</body>
+
+</html>

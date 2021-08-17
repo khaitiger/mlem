@@ -438,7 +438,7 @@
                                     <tr>
                                        <th class="text-center" scope="col">ID</th>
                                        <th class="cell-ta">Tên khóa học</th>
-                                       <th class="text-center" scope="col">Thao tác</th>
+                                       <th class="text-center" scope="col">Chọn giáo viên</th>
                                        <th class="text-center">Thể loại</th>
                                        <th class="text-center">Giá</th>
                                        <th class="text-center">Ngày cập nhập</th>
@@ -450,18 +450,27 @@
                                     <tr th:each="cPro : ${liProcessing}">
                                        <td class="text-center idcourse" th:text="${cPro.id}"></td>
                                        <td class="cell-ta" th:text="${cPro.name}"></td>
-                                       <td class="text-center showpopup"><a href="#">Xem</a></td>
+                                       <td >
+                                       <form action="/admin/saveaddteacher" id="addTeacher" method="post">
+                                       	<input type="text" name="idCourse" th:value="${cPro.id}" hidden="">
+                                          <select
+                                   		   name="idTeacher" >
+                                    	<option  th:each="listT : ${listTearcher}" th:text="${listT.fullName}" th:value="${listT.role.id}"></option>
+                              
+                               				 </select>
+                               				 </form>
+                                       </td>
+                                 
                                        <td class="text-center" th:text="${cPro.level.name}"></td>
                                        <td class="text-center"><span th:text="${cPro.price}"></span><span>$</span></td>
                                        <td class="text-center" th:text="${cPro.createDate}"></td>
                                        <td class="text-center"><b class="course_active" th:text="${cPro.status}"></b>
                                        </td>
-                                       <td class="text-center more_dropdown">
-                                          <a href="#" title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a>
-                                          <div class="dropdown-content">
-                                             <span><i class='uil uil-book-alt'></i>Hoạt động</span>
-                                             <span><i class="uil uil-download-alt"></i>Tạm dừng</span>
-                                          </div>
+                                       <td>
+                                           <label class="switch">Thêm giáo viên
+                                                <input type="checkbox" class="addTeachers" placeholder="Thêm giáo viên">
+                                                <div class="slider"></div>
+                                            </label>
                                        </td>
                                     </tr>
                                    
@@ -486,7 +495,7 @@
                                     <div class="panel-body adcrse_body">
                                        <div class="row">
                                           <div class="col-lg-8">
-                                           <form  action="/manager/savesale" method="post">
+                                           <form  action="/admin/savesale" method="post">
                                              <div class="discount_form">
                                              
                                                 <div class="row">
@@ -805,7 +814,11 @@
          });
       })
    </script>
-
+ <script>
+        $(".addTeachers").click(function(){
+            $("#addTeacher").submit();
+        })
+    </script>
    <script>
       $("span").click(function () {
          var idcourse = $(this).parent().parent().parent().find($(".idcourse")).text()

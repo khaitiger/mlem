@@ -1,0 +1,391 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+    <meta name="description" content="Gambolthemes">
+    <meta name="author" content="Gambolthemes">
+    <title>Thành viên</title>
+
+    <link rel="icon" type="image/png" href="/images/fav.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,500" rel='stylesheet'>
+    <link href='/vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
+    <link href="/css/vertical-responsive-menu1.min.css" rel="stylesheet">
+    <link href="/css/instructor-dashboard.css" rel="stylesheet">
+    <link href="/css/instructor-responsive.css" rel="stylesheet">
+    <link href="/css/night-mode.css" rel="stylesheet">
+
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="/vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/vendor/semantic/semantic.min.css">
+
+    <style>
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+            border-radius: 3px;
+            color: #666;
+            display: table;
+            font-size: 13px;
+            max-width: 100%;
+            overflow-x: auto;
+            position: relative;
+            width: 100%;
+        }
+
+        table td,
+        table th {
+            border-top: 1px solid #eee;
+            display: table-cell;
+            padding: 12px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        table th {
+            border-bottom: 2px solid #eee;
+            vertical-align: middle;
+        }
+
+        .item-cell {
+            padding: 2px 12px;
+            /* use for cells containing buttons, sliders, etc. */
+        }
+
+        .form-control {
+            margin: 0.5rem 0;
+            position: relative;
+        }
+
+        input,
+        select,
+        textarea {
+            background: #fff none repeat scroll 0 0;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            color: #666;
+            display: block;
+            font-size: 13px;
+            line-height: 1.25;
+            max-width: 100%;
+            padding: 6px 12px;
+            position: relative;
+            width: 100%;
+        }
+
+        input::-moz-placeholder,
+        select::-moz-placeholder,
+        textarea::-moz-placeholder {
+            color: #999;
+            opacity: 1;
+        }
+
+        
+        input:focus,
+        textarea:focus {
+            border: 1px solid #0066a4;
+            outline: medium none;
+        }
+
+        input:disabled,
+        textarea:disabled,
+        select:disabled {
+            background-color: #eee;
+            color: #999;
+            cursor: not-allowed;
+            opacity: 1;
+        }
+
+        .inline input,
+        .inline select,
+        .inline textarea {
+            display: inline-block;
+            width: auto;
+        }
+
+        /********** Search Bar **********/
+        input[type="search"] {
+            border-width: 2px;
+            display: inline-block;
+            padding-left: 2.5em;
+            transition: width 0.4s ease-in-out 0s;
+            width: 150px;
+        }
+
+        input[type="search"]:focus {
+            width: 60%;
+        }
+
+        label[for="search"] {
+            bottom: 6px;
+            color: #999;
+            left: 1em;
+            position: absolute;
+            z-index: 1;
+        }
+
+        [contenteditable]:hover {
+            background-color: #f8f8f8;
+            cursor: cell;
+        }
+
+        [contenteditable]:focus {
+            background-color: #f8f8f8;
+        }
+
+
+        /********** Checkbox Sliders **********/
+        .switch {
+            display: inline-block;
+            height: 2em;
+            position: relative;
+            vertical-align: middle;
+            width: 3.5em;
+        }
+
+        .switch input {
+            display: none;
+            margin: 0;
+        }
+
+        .slider {
+            background-color: #ccc;
+            border-radius: 1em;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: all 0.4s ease 0s;
+        }
+
+        .slider::before {
+            background-color: white;
+            border-radius: 0.7em;
+            bottom: 4px;
+            content: "";
+            height: 1.4em;
+            left: 4px;
+            position: absolute;
+            transition: all 0.4s ease 0s;
+            width: 1.4em;
+        }
+
+        input:checked+.slider {
+            background-color: #ee7421;
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(1.5em);
+            -ms-transform: translateX(1.5em);
+            transform: translateX(1.5em);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Thanh header -->
+    <div id="header_html"></div>
+
+    <!-- Thanh menu -->
+    <div id="menu_mana"></div>
+
+    <!-- Thanh main -->
+
+    <div class="wrapper">
+        <div class="sa4d25">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="st_title"><i class="uil uil-file-alt"></i> Thành viên</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-10 col-md-10">
+                        <div class="top_countries mt-30 ">
+                            <!-- <div class="top_countries_title">
+                                <h2>Thành viên</h2>
+                            </div> -->
+                            <div class="statement_content">
+                                <h3 class="tt-body">Tất cả các tài khoản hiện có.</h3>
+                                <table class="statement-summary__table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <p class="t-heading">Tất cả</p>
+                                            </th>
+                                            <th>
+                                                <p class="t-heading">Người dùng</p>
+                                            </th>
+                                            <th>
+                                                <p class="t-heading">Giảng viên</p>
+                                            </th>
+                                            <th>
+                                                <p class="t-heading">Bị Khóa</p>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="statement-summary__funds">
+                                                <p class="js-earnings__instructor-funds-wrapper">
+                                                    <span class=""></span>
+                                                    <span class="js-earnngs__instructor-funds t-currency" th:text="${All}"></span>
+                                                </p>
+                                            </td>
+                                            <td class="statement-summary__earnings">
+                                                <p class="js-earnings__earnings-wrapper">
+                                                    <span class="tt__earning"></span>
+                                                    <span class="js-earnings__earnings t-currency" th:text="${listUser}"></span>
+                                                </p>
+                                            </td>
+                                            <td class="statement-summary__funds">
+                                                <p class="js-earnings__earnings-wrapper">
+                                                    <span class="tt__earning"></span>
+                                                    <span class="js-earnings__earnings t-currency" th:text="${listTearcher}"></span>
+                                                </p>
+                                            </td>
+                                            <td class="statement-summary__fees">
+                                                <p class="js-earnings__fees-wrapper">
+                                                    <span class="tt__earning"></span>
+                                                    <span class="js-earnings__fees t-currency" th:text="${listBlocked}"></span>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <!--  Search Bar  -->
+                        <div style="margin: 10px;">
+                            <label for="search"><i class="icon-search"></i></label>
+                            <input class="table-filter" type="search" data-table="advanced-web-table" style="height: 40px;"
+                                placeholder="Search...">
+                        </div>
+                        <!--  Table  -->
+                        <div class="table-responsive table ucp-table">
+                            <table id="ordering-table" class="advanced-web-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Tên Thành viên</th>
+                                        <th>Gmail</th>
+                                        <th>Chức vụ</th>
+                                        <th>Trạng thái</th>
+                                        <th>Chặn</th>
+                               
+                                    </tr>
+                                </thead>
+                                <tbody th:each="list : ${listAll}">
+                               
+                                    <tr>
+                                    	
+                                        <td th:text="${list.id}"></td>
+                                        <td hidden=""><form action="/admin/saveblock" id="blockUser" hidden="" method="post">
+                                       			<input type="text" name="id" th:value="${list.id}" />
+                                
+                                       		</form></td>
+                                        <td th:text="${list.fullName}"></td>
+                                        <td th:text="${list.email}"></td>
+                                        <td th:text="${list.role.name}"></td>
+                                        <td th:if="${list.enable} == true">Open</td>
+                                        <td th:if="${list.enable} == false">Closed</td>
+                                        <td>
+                                            <label class="switch">
+                                                <input type="checkbox" class="block">
+                                                <div class="slider"></div>
+                                            </label>
+                                       		 
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/js/vertical-responsive-menu.min.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/OwlCarousel/owl.carousel.js"></script>
+    <script src="/vendor/semantic/semantic.min.js"></script>
+    <script src="/js/custom1.js"></script>
+    <script src="/js/night-mode.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $('#header_html').load('/header');
+            $('#menu_mana').load('/menu_mana', function () {
+                $(".member").addClass("active");
+            });
+        })
+    </script>
+
+    <script>
+        (function (document) {
+            'use strict';
+            var LightTableFilter = (function (Arr) {
+                var _input;
+
+                function _onInputEvent(e) {
+                    _input = e.target;
+                    var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+                    Arr.forEach.call(tables, function (table) {
+                        Arr.forEach.call(table.tBodies, function (tbody) {
+                            Arr.forEach.call(tbody.rows, _filter);
+                        });
+                    });
+                }
+
+                function _filter(row) {
+                    var text = row.textContent.toLowerCase(),
+                        val = _input.value.toLowerCase();
+                    row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+                }
+                return {
+                    init: function () {
+                        var inputs = document.getElementsByClassName('table-filter');
+                        Arr.forEach.call(inputs, function (input) {
+                            input.oninput = _onInputEvent;
+                        });
+                    }
+                };
+            })(Array.prototype);
+
+            document.addEventListener('readystatechange', function () {
+                if (document.readyState === 'complete') {
+                    LightTableFilter.init();
+                }
+            });
+        })(document);
+    </script>
+
+    <script>
+        $(".block").click(function(){
+            alert("block");
+            $("#blockUser").submit();
+        })
+    </script>
+</body>
+
+</html>

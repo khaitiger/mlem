@@ -17,12 +17,14 @@ import fpt.edu.mlem.entities.Account;
 import fpt.edu.mlem.entities.Course;
 import fpt.edu.mlem.entities.Lesson;
 import fpt.edu.mlem.entities.ListStudent;
+import fpt.edu.mlem.entities.Test;
 import fpt.edu.mlem.entities.Vote;
 import fpt.edu.mlem.services.AccountService;
 import fpt.edu.mlem.services.ChapterService;
 import fpt.edu.mlem.services.CourseService;
 import fpt.edu.mlem.services.LessonService;
 import fpt.edu.mlem.services.ListStudentService;
+import fpt.edu.mlem.services.TestService;
 import fpt.edu.mlem.services.VoteService;
 
 
@@ -39,6 +41,8 @@ public class StudentController {
 	private CourseService courseS;
 	@Autowired
 	private LessonService lessonService;
+	@Autowired
+	private TestService testService;
 	@Autowired
 	private VoteService voteService;
 	@RequestMapping("Course/{id}")
@@ -63,8 +67,9 @@ public class StudentController {
 					}
 					if(id == 1) {
 						Course course = courseS.getCourseById(id);
+						List<Test> listTest = testService.getTestbyCourse(id);
 						model.addAttribute("course", course);
-						System.out.println(course.getTestSet().size());
+						model.addAttribute("listTest", listTest);
 						return "study";
 					}
 				}

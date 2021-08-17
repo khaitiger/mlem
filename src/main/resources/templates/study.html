@@ -203,7 +203,7 @@
                   <div class="accordion-title__title">Tổng kết</div>
                 </div>
               </div>
-              <div class="accordion-content clearfix" th:each="c : ${course.testSet}">
+              <div class="accordion-content clearfix" th:each="c : ${listTest}">
                 <a th:href="'/doExam?idExam='+${c.id}" class="accordion-content__row fancybox clearfix">
                   <span class="accordion-content__row__title"><i class="fa fa-pager" style="padding: 5px;"></i>Bài kiểm tra tổng kết</span>
                   <span class="accordion-content__row__time">30 phút</span>

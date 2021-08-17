@@ -36,7 +36,9 @@ public class TestService {
 	public List<Test>getAllTest(){
 		return testRepo.findAll();
 	}
-	
+	public List<Test> getTestbyCourse(int idCourse){
+		return testRepo.getTestbyCourse(idCourse);
+	}
 	
 	public void delete(int id) {
 		testRepo.deleteById(id);
