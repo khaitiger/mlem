@@ -7,25 +7,7 @@ function getBotResponse1(input) {
     }  else if (input.includes("cơ bản")) {
         return "Bạn có thể tham khảo ở đây: <br><a style='color:#F4A460 !important' href='/course_list_view.html' target='_blank'>http://MlemMlem/KhoaHocCoBan</a>";
     }
-    else if (input.includes("co ban")) {
-        return "Bạn có thể tham khảo ở đây: <br><a style='color:#F4A460 !important' href='/course_list_view.html' target='_blank'>http://MlemMlem/KhoaHocCoBan</a>";
-    }
-    else if (input.includes("trung cấp")) {
-        return "Bạn có thể tham khảo ở đây: <br><a style='color:#F4A460 !important' href='/course_list_view.html' target='_blank'>http://MlemMlem/KhoaHoc</a>";
-    }
-    else if (input.includes("trung cap")) {
-        return "Bạn có thể tham khảo ở đây: <br><a style='color:#F4A460 !important' href='/course_list_view.html' target='_blank'>http://MlemMlem/KhoaHoc</a>";
-    }
-    else if (input.includes("cao cấp")) {
-        return "Bạn có thể tham khảo ở đây: <br><a style='color:#F4A460 !important' href='/course_list_view.html' target='_blank'>http://MlemMlem/KhoaHoc</a>";
-    }
-    else if (input.includes("cao cap")) {
-        return "Bạn có thể tham khảo ở đây: <br><a style='color:#F4A460 !important' href='/course_list_view.html' target='_blank'>http://MlemMlem/KhoaHoc</a>";
-    }
     else if (input.includes("khóa học")) {
-        return "Bạn cần chúng tôi tư vấn về khóa học nào";
-    }
-    else if (input.includes("khoa hoc")) {
         return "Bạn cần chúng tôi tư vấn về khóa học nào";
     }
     else if(input.includes("I need advice about the Course")){

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
-  <script data-cfasync="false" src="/etc/clientlibs/pluralsight/main/js/separates/jquery-3.2.1.min.js"></script>
+ 
   <link rel="stylesheet" href="/etc/clientlibs/pluralsight/uber.min.113e7e1f22129bfdbebac050874676a7.css"
     type="text/css">
   <link rel="stylesheet" href="/etc/clientlibs/pluralsight/components/events.min.0583f8ae16feca56727cca16d210b40a.css"
@@ -51,12 +51,14 @@
             <div class="navigation aem-GridColumn aem-GridColumn--default--12">
               <div>
                 <nav class="ps-nav-global" role="navigation">
-                  <button class="bg-warning " onclick="window.location='/course_detail_view.html'"
+                 <a href="javascript:history.back()" > 
+                 <button 
                     style="width: 200px;position: absolute;border: none;top: 10px;background-color: burlywood !important;">Quay
                     lại</button>
+                    </a>
                   <div class="ps-nav--inner">
                     <div class="ps-nav--brand" style="width: 100%;margin-left: 20px;">
-                      <a href="index.html" style="margin: auto;">
+                      <a href="/" style="margin: auto;">
                         <img src="/images/fav.png" width="30px" alt="">
                         <span class="font-Lobster"> MlemMlem</span>
                       </a>
@@ -78,7 +80,7 @@
         <div id="course-content-top" class="clearfix">
           <div id="course-page-hero" class="block  Intermediate has-course-image  ">
             <iframe width="100%" height="550px" id="videoLearn"
-              src="https://www.videoindexer.ai/embed/player/e538bf44-2b70-4f84-9d01-5272ce388112/8194101489/?&locale=vi-VN&location=trial&showCaptions=false&captions=vi-VN"
+              src="https://www.videoindexer.ai/embed/player/e538bf44-2b70-4f84-9d01-5272ce388112/8ad998dd5b/?&locale=vi-VN&location=trial&showCaptions=false&captions=vi-VN"
               frameborder="0" allowfullscreen></iframe>
           </div>
           <div class="course_mobile_accordion">Nội dung</div>
@@ -203,18 +205,18 @@
                   <div class="accordion-title__title">Tổng kết</div>
                 </div>
               </div>
-              <div class="accordion-content clearfix" th:each="c : ${listTest}">
-                <a th:href="'/doExam?idExam='+${c.id}" class="accordion-content__row fancybox clearfix">
-                  <span class="accordion-content__row__title"><i class="fa fa-pager" style="padding: 5px;"></i>Bài kiểm tra tổng kết</span>
-                  <span class="accordion-content__row__time">30 phút</span>
-                </a>
-              </div>
+                    <div class="accordion-content clearfix" th:each="c : ${listTest}">
+                  <a th:href="'/doExam?idExam='+${c.id}" class="accordion-content__row fancybox clearfix">
+                    <span class="accordion-content__row__title"><i class="fa fa-pager" style="padding: 5px;"></i>Bài kiểm tra tổng kết</span>
+                    <span class="accordion-content__row__time">30 phút</span>
+                  </a>
+                </div>
             </div>
           </div>
           <div class="course_modules--shadow"></div>
         </div>
         <div id="course-content-bottom clearfix">
-          <iframe width="100%" height="480" id="insight" src="https://www.videoindexer.ai/embed/insights/e538bf44-2b70-4f84-9d01-5272ce388112/8194101489/?locale=vi-VN&controls=search&widgets=scenes,transcript,people" frameborder="0" allowfullscreen></iframe>
+          <iframe width="100%" height="480" id="insight" src="https://www.videoindexer.ai/embed/insights/e538bf44-2b70-4f84-9d01-5272ce388112/8ad998dd5b/?locale=vi-VN&controls=search&widgets=scenes,transcript,people" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
 
@@ -283,8 +285,8 @@
                           <a href="#" style="font-size: x-large;"><i class="uil uil-thumbs-down"></i><span>20</span></a>
                         </li>
                         <li>
-                          <a data-toggle="collapse" href="" role="button" aria-expanded="false"
-                            aria-controls="collapseExample" href="#" style="font-size: x-large;"><i
+                       <a data-toggle="collapse" href="" role="button" aria-expanded="false"
+                            aria-controls="collapseExample"  style="font-size: x-large;"><i
                               class="uil uil-comment-alt-lines"></i><span>Trả
                               lời</span></a>
                         </li>
@@ -309,7 +311,7 @@
               </div>
             </div>
             <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
-              aria-controls="collapseExample" href="#"
+              aria-controls="collapseExample" 
               style="font-size: small; padding-left: 6rem; color: black; font-family: 'Roboto', sans-serif;"><i
                 class="uil uil-comment"></i><span>1 phản hồi</span></a>
             <div class="review_item">
@@ -360,7 +362,7 @@
                         </li>
                         <li>
                           <a data-toggle="collapse" href="collapseExample1" role="button" aria-expanded="false"
-                            aria-controls="collapseExample1" href="#" style="font-size: x-large;"><i
+                            aria-controls="collapseExample1"style="font-size: x-large;"><i
                               class="uil uil-comment-alt-lines"></i><span>Trả
                               lời</span></a>
                         </li>
@@ -385,7 +387,7 @@
               </div>
             </div>
             <a data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false"
-              aria-controls="collapseExample" href="#"
+              aria-controls="collapseExample" 
               style="font-size: small; padding-left: 6rem; color: black; font-family: 'Roboto', sans-serif;"><i
                 class="uil uil-comment"></i><span>1 phản hồi</span></a>
           </div>
@@ -466,6 +468,7 @@
 
   <script data-cfasync="false " src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js ">
   </script>
+   <script data-cfasync="false" src="/etc/clientlibs/pluralsight/main/js/separates/jquery-3.2.1.min.js"></script>
   <script src="/js/jquery-3.3.1.min.js "></script>
   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js "></script>
   <script src="/vendor/bootstrap/js/bootstrap.min.js "></script>

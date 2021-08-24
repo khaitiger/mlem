@@ -68,10 +68,10 @@ public class CourseService {
 		generalCourseRepository.deleteById(id);
 	}
 	
-//	public List<Course> GetGSbyLevel(int lvid ) {
-//		return  generalCourseRepository.getCoursebyLevel(lvid);
-//	}
-//	
+	public List<Course> GetGSbyLevel(int lvid ) {
+		return  generalCourseRepository.getCoursebyLevel(lvid);
+	}
+	
 	public Course findGeneralCourseById(int id) {
 		return generalCourseRepository.findById(id).get();
 	}

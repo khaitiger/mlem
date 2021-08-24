@@ -105,6 +105,10 @@ public class StudentController {
 		}
 		return null;	
 	}
+	@RequestMapping("/certification_test__result")
+	public String Congratulations()	{
+		return "certification_test__result";
+	}
 	@RequestMapping("/MyCertificate")
 	public String MyCertificate(
 			@CookieValue(value = "MY_USER", defaultValue = "defaultCookieValue") String userCookie,

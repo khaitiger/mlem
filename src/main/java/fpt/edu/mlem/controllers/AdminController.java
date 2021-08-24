@@ -325,15 +325,13 @@ public class AdminController {
 			Model model,@RequestParam("idTeacher") int idTeacher,
 			@RequestParam("idCourse") int idCourse) {
 			ListTeacher listTeacher = new ListTeacher();
-
 			chapterAcountKey chapterAcountKey = new chapterAcountKey();
-			
 			chapterAcountKey.setCourseId(idCourse);
 			chapterAcountKey.setTeacherId(idTeacher);
 			listTeacher.setId(chapterAcountKey);
 			listTeacher.setJoinDate(new Date());
 			listTeacherService.createListTeacher(listTeacher);
-		return "redirect:/admin/account";
+		return "redirect:/admin/course";
 	}
 	@RequestMapping(value = "/course", method = RequestMethod.GET)
 	public String ViewManagerCourse(

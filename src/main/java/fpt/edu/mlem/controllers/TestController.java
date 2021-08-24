@@ -64,6 +64,6 @@ public class TestController {
 			System.out.print(new Date());
 		}
 			
-		return "redirect:/";
+		return "redirect:/certification_test__result";
 	}
 }

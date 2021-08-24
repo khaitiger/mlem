@@ -352,8 +352,11 @@ body a:hover {
              
 		<someHtmlTag th:each="question : ${test.questionList}">
 		<section data-quiz-item>
-			<div class="question" th:text="${question.content}"></div>
+			<div class="question" th:text="${question.content}">
+			</div>
+			<img alt="" th:src="${question.imageUrl}" width="300px">
 			<div class="choices" th:data-choices='${question.anwserSet}'></div>
+			
 		</section>
 		</someHtmlTag>
 		<div class="submit">

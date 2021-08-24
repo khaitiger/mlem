@@ -28,21 +28,9 @@ import fpt.edu.mlem.services.VoteService;
 public class PublicController {
 
 	@RequestMapping("/")
-	public String Home(@CookieValue(value = "MY_USER", defaultValue = "defaultCookieValue") String userCookie,
+	public String Home(
 			Model model) {
-		if(userCookie.equals("defaultCookieValue")) {	
-			model.addAttribute("user", null);
-			System.out.print("defaultCookieValue");
-		} 
-		else {
-			Account user = userService.getAccount(userCookie);
 	
-			model.addAttribute("user", user);
-			System.out.print(user);
-			List<ListStudent> listStudent = studentService.GetBotMail(user);
-			model.addAttribute("listStudent", listStudent);
-		}
-		
 	 return "index";
 	}
 //	@RequestMapping("KhoaHocCoBan")
@@ -66,48 +54,7 @@ public class PublicController {
 //			
 //		return "KhoaHocCoBan";
 //	}
-//	@RequestMapping("KhoaHocTrungCap")
-//	public String LevelTrungCap(@CookieValue(value = "MY_USER", defaultValue = "defaultCookieValue") String userCookie,
-//			Model model) {
-//		if(userCookie.equals("defaultCookieValue")) {
-//			
-//			
-//			model.addAttribute("user", null);
-//		} 
-//		else {
-//	Account user = userService.getAccount(userCookie);
-//			
-//			model.addAttribute("user", user);
-////			Optional<LevelCourse> CoBan =  levelCourseService.findLevelCourseById(1);
-////			model.addAttribute("CoBan",CoBan);
-//			List<Course> TrungCap = generalCourseService.GetGSbyLevel(2);
-//				
-//		        model.addAttribute("TrungCap", TrungCap);
-//		}
-//			
-//		return "KhoaHocTrungCap";
-//	}
-//	@RequestMapping("KhoaHocCaoCap")
-//	public String LevelCaoCap(@CookieValue(value = "MY_USER", defaultValue = "defaultCookieValue") String userCookie,
-//			Model model) {
-//		if(userCookie.equals("defaultCookieValue")) {
-//			
-//			
-//			model.addAttribute("user", null);
-//		} 
-//		else {
-//	Account user = userService.getAccount(userCookie);
-//			
-//			model.addAttribute("user", user);
-////			Optional<LevelCourse> CoBan =  levelCourseService.findLevelCourseById(1);
-////			model.addAttribute("CoBan",CoBan);
-//			List<Course> CaoCap = generalCourseService.GetGSbyLevel(2);
-//				
-//		        model.addAttribute("CaoCap", CaoCap);
-//		}
-//			
-//		return "KhoaHocCaoCap";
-//	}
+
 	@RequestMapping("/header")
 	public String Header(@CookieValue(value = "MY_USER", defaultValue = "defaultCookieValue") String userCookie,
 			Model model) {
@@ -128,6 +75,42 @@ public class PublicController {
 		
 	 return "header";
 	}
+	@RequestMapping("/help")
+	public String Help() {
+		return "help";
+	}
+	@RequestMapping("/rehistory")
+	public String Report_history() {
+		return "report_history";
+	}
+	@RequestMapping("/feedback")
+	public String Feedback() {
+		return "feedback";
+	}
+	@RequestMapping("/coursecoban")
+	public String Coursecoban(Model model) {
+		List<Course> CoBan = generalCourseService.GetGSbyLevel(1);
+		
+        model.addAttribute("CoBan", CoBan);
+		return "course_level_view";
+	}
+	@RequestMapping("/coursetrungcap")
+	public String Coursetrungcap(Model model) {
+		List<Course> TrungCap = generalCourseService.GetGSbyLevel(2);
+		
+        model.addAttribute("TrungCap", TrungCap);
+
+		return "course_level_view_trungcap";
+	}
+	@RequestMapping("/coursecaocap")
+	public String Coursecaocap(Model model) {
+		List<Course> CaoCap = generalCourseService.GetGSbyLevel(3);
+		
+        model.addAttribute("CaoCap", CaoCap);
+
+		return "course_level_view_caocap";
+	}
+	
 	@RequestMapping("/chatbox")
 	public String ChatBot(@CookieValue(value = "MY_USER", defaultValue = "defaultCookieValue") String userCookie,
 			Model model) {

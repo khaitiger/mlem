@@ -305,7 +305,8 @@
                                         <td th:if="${list.enable} == false">Closed</td>
                                         <td>
                                             <label class="switch">
-                                                <input type="checkbox" class="block">
+                                                <input th:if="${list.enable} == false" checked type="checkbox" class="block">
+                                                  <input th:if="${list.enable} == true"  type="checkbox" class="block">
                                                 <div class="slider"></div>
                                             </label>
                                        		 

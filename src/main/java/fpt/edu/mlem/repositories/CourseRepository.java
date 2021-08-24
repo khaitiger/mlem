@@ -19,6 +19,8 @@ import fpt.edu.mlem.entities.Course;
 public interface CourseRepository extends JpaRepository<Course, Integer> {
 	@Query("SELECT c FROM Course c WHERE c.status = ?1")
 	public List<Course> getCoursebyStatus(@Param("status") String status);
+	@Query("SELECT c FROM Course c WHERE c.level.id = ?1")
+	public List<Course> getCoursebyLevel( int idLevel);
 
 	 @Modifying
 	@Query("UPDATE  Course c SET c.sale = ?2 , c.startSale= ?3 , c.endSale= ?4 WHERE c.id = ?1")
